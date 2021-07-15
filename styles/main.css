@@ -1,3 +1,44 @@
 body {
+  background-color: palevioletred;
+  text-align: center;
+}
+
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.new-game {
+  background-color: lightseagreen;
+  color: darkmagenta;
+}
+
+.player-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.main-grid {
+  display: grid;
+  background-color: white;
+  justify-content: center;
+}
+
+.mini-grid {
+  background-color: wheat;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  height: 420px;
+  width: 420px;
+  column-gap: 2px;
+}
+
+.mini-grid div {
   background-color: blue;
+  height: 33%;
+  width: 33%;
 }
