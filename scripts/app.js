@@ -18,6 +18,10 @@ const miniGridCellCount = width * width
 const cells = []
 const playerOne = '🌸'
 const playerTwo = '🌈'
+const winRow = [[0, 1, 2], [3, 4, 5], [6, 7, 8]
+const winColumn = [[0, 3, 6], [1, 4, 7], [2, 5, 8]]
+const winDiagonal = [[0, 4, 8], [2, 4, 6]]
+console.log(winRow)
 let currentPlayer = playerOne
 
 
@@ -34,26 +38,35 @@ function createMiniGrid() {
 }
 createMiniGrid()
 
+function winCheck() {
+
+}
+
 
 function handleClick(event) {
+  // turn taking
   if (currentPlayer === playerOne) {
     if (event.target.innerHTML === '') {
       event.target.innerHTML = '🌸'
-      gameStatus.innerHTML = `Player Two's Turn`
-    } else if (event.target.innerHTML !== '') {
-      gameStatus.innerHTML = 'This square has already been played Please, pick again!'
-    }
-    currentPlayer = playerTwo
-  } else {
+      gameStatus.innerHTML = 'Go, Player Two!'
+      currentPlayer = playerTwo
+    } else {
+      currentPlayer = playerOne
+      gameStatus.innerHTML = 'This square has already been played. Please, choose again!'
+    } 
+  }
+  if (currentPlayer === playerTwo) {
     if (event.target.innerHTML === '') {
       event.target.innerHTML = '🌈'
-      gameStatus.innerHTML = `Player One's Turn`
-    }else if (event.target.innerHTML !== '') {
-      gameStatus.innerHTML = 'This square has already been played. Please, pick again!'
+      gameStatus.innerHTML = 'Go, Player One!'
+      currentPlayer = playerOne
+    } else {
+      currentPlayer = playerTwo
     }
-    currentPlayer = playerOne
   }
-    
+  // logic to check for winner in ROWS
+
+
 }
 
 //  Events
