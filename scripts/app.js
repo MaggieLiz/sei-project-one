@@ -18,10 +18,8 @@ const miniGridCellCount = width * width
 const cells = []
 const playerOne = '🌸'
 const playerTwo = '🌈'
-const winRow = [[0, 1, 2], [3, 4, 5], [6, 7, 8]
-const winColumn = [[0, 3, 6], [1, 4, 7], [2, 5, 8]]
-const winDiagonal = [[0, 4, 8], [2, 4, 6]]
-console.log(winRow)
+
+
 let currentPlayer = playerOne
 
 
@@ -38,9 +36,7 @@ function createMiniGrid() {
 }
 createMiniGrid()
 
-function winCheck() {
 
-}
 
 
 function handleClick(event) {
@@ -64,12 +60,50 @@ function handleClick(event) {
       currentPlayer = playerTwo
     }
   }
-  // logic to check for winner in ROWS
-
-
+  // check for winner in ROWS
+  if ((cells[0].innerHTML === '🌸' && cells[1].innerHTML === '🌸' && cells[2].innerHTML === '🌸')) {
+      gameStatus.innerHTML = 'Player One Wins'
+    } else if ((cells[3].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[5].innerHTML === '🌸')) {
+      gameStatus.innerHTML = 'Player One Wins'
+    } else if ((cells[6].innerHTML === '🌸' && cells[7].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+      gameStatus.innerHTML = 'Player One Wins'
+    } else if ((cells[0].innerHTML === '🌈' && cells[1].innerHTML === '🌈' && cells[2].innerHTML === '🌈')) {
+      gameStatus.innerHTML = 'Player Two Wins'
+    } else if ((cells[3].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[5].innerHTML === '🌈')) {
+      gameStatus.innerHTML = 'Player Two Wins'
+    } else if ((cells[6].innerHTML === '🌈' && cells[7].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+      gameStatus.innerHTML = 'Player Two Wins'
+    }
+    //  Check for winner in columns
+  if ((cells[0].innerHTML === '🌸' && cells[3].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+      gameStatus.innerHTML = 'Player One Wins'
+    } else if ((cells[1].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[7].innerHTML === '🌸')) {
+      gameStatus.innerHTML = 'Player One Wins'
+    } else if ((cells[2].innerHTML === '🌸' && cells[5].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+      gameStatus.innerHTML = 'Player One Wins'
+    } else if ((cells[0].innerHTML === '🌈' && cells[3].innerHTML === '🌈' && cells[6].innerHTML === '🌈')) {
+      gameStatus.innerHTML = 'Player Two Wins'
+    } else if ((cells[1].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[7].innerHTML === '🌈')) {
+      gameStatus.innerHTML = 'Player Two Wins'
+    } else if ((cells[2].innerHTML === '🌈' && cells[5].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+      gameStatus.innerHTML = 'Player Two Wins'
+    }
+    // Check for winner in diagonals
+  if ((cells[0].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+      gameStatus.innerHTML = 'Player One Wins'
+    } else if ((cells[2].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+      gameStatus.innerHTML = 'Player One Wins'
+    } else if ((cells[0].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+      gameStatus.innerHTML = 'Player Two Wins'
+    } else if ((cells[2].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[6].innerHTML === '🌈')) {
+      gameStatus.innerHTML = 'Player Two Wins'
+    }
+  // Check for draw
+ 
 }
 
 //  Events
 cells.forEach(cell => {
   cell.addEventListener('click', handleClick)
 })
+
