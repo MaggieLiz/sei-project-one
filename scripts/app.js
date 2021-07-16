@@ -7,12 +7,18 @@
 
 const miniGrid = document.querySelector('.mini-grid')
 const newGameBtn = document.querySelector('.new-game')
+const gameStatus = document.querySelector('#game-status')
+
+
 
 // Game Variables
 
 const width = 3
 const miniGridCellCount = width * width
 const cells = []
+const playerOne = '🌸'
+const playerTwo = '🌈'
+let currentPlayer = playerOne
 
 
 // Functions
@@ -28,8 +34,26 @@ function createMiniGrid() {
 }
 createMiniGrid()
 
+
 function handleClick(event) {
-  event.target.innerHTML = 'X'
+  if (currentPlayer === playerOne) {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🌸'
+      gameStatus.innerHTML = `Player Two's Turn`
+    } else if (event.target.innerHTML !== '') {
+      gameStatus.innerHTML = 'This square has already been played Please, pick again!'
+    }
+    currentPlayer = playerTwo
+  } else {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🌈'
+      gameStatus.innerHTML = `Player One's Turn`
+    }else if (event.target.innerHTML !== '') {
+      gameStatus.innerHTML = 'This square has already been played. Please, pick again!'
+    }
+    currentPlayer = playerOne
+  }
+    
 }
 
 //  Events
