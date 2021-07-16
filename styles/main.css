@@ -42,3 +42,11 @@ body {
   height: 33%;
   width: 33%;
 }
+
+.player-one {
+  background-color: red;
+}
+
+.player-two {
+  background-color: yellow;
+}

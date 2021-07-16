@@ -14,14 +14,25 @@ const width = 3
 const miniGridCellCount = width * width
 const cells = []
 
+
 // Functions
 
 function createMiniGrid() {
   for (let i = 0; i < 9; i++) {
     const cell = document.createElement('div')
-    cell.setAttribute('data-index', i)
+    cell.setAttribute('value', i)
     cells.push(cell)
     miniGrid.appendChild(cell)
   }
+  
 }
 createMiniGrid()
+
+function handleClick(event) {
+  event.target.innerHTML = 'X'
+}
+
+//  Events
+cells.forEach(cell => {
+  cell.addEventListener('click', handleClick)
+})
