@@ -19,9 +19,13 @@ body {
   justify-content: center;
 }
 
+#game-status {
+  font-size: 30px;
+  margin-top: 0px;
+}
+
 .main-grid {
   display: grid;
-  background-color: white;
   justify-content: center;
 }
 
@@ -38,15 +42,19 @@ body {
 }
 
 .mini-grid div {
-  background-color: blue;
-  height: 33%;
-  width: 33%;
+  height: 32%;
+  width: 32%;
+  border: 1px solid plum;
 }
 
-.player-one {
+.player-one-win {
   background-color: red;
 }
 
-.player-two {
+.player-two-win {
   background-color: yellow;
+}
+
+.draw {
+  background-color: white;
 }
