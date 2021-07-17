@@ -39,7 +39,7 @@ function createGameGrid() {
     }
   }
 }
-console.log(grid)
+
 createGameGrid()
 
 function handleClick(event) {
@@ -86,7 +86,7 @@ function handleClick(event) {
     //  Check for winner in columns
   if ((cells[0].innerHTML === '🌸' && cells[3].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
       gameStatus.innerHTML = 'Player One Wins'
-      miniGrid.classList.add('player-one-win')
+      miniGrid.div.classList.add('player-one-win')
     } else if ((cells[1].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[7].innerHTML === '🌸')) {
       gameStatus.innerHTML = 'Player One Wins'
       miniGrid.classList.add('player-one-win')
@@ -122,7 +122,7 @@ function handleClick(event) {
     && cells[3].innerHTML !== '' && cells[4].innerHTML !== '' && cells[5].innerHTML !== '' 
     && cells[6].innerHTML !== '' && cells[7].innerHTML !== '' && cells[8].innerHTML !== '')) {
         gameStatus.innerHTML = `It's a draw`
-        miniGrid.classList.add('draw')
+        miniGrid.div.classList.add('draw')
       }
 }
 
