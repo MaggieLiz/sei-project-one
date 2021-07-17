@@ -99,7 +99,11 @@ function handleClick(event) {
       gameStatus.innerHTML = 'Player Two Wins'
     }
   // Check for draw
- 
+  if ((cells[0].innerHTML !== '' && cells[1].innerHTML !== '' && cells[2].innerHTML !== '' 
+    && cells[3].innerHTML !== '' && cells[4].innerHTML !== '' && cells[5].innerHTML !== '' 
+    && cells[6].innerHTML !== '' && cells[7].innerHTML !== '' && cells[8].innerHTML !== '')) {
+        gameStatus.innerHTML = `It's a draw`
+      }
 }
 
 //  Events
