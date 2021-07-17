@@ -5,7 +5,7 @@
 
 // DOM Variables
 
-const miniGrid = document.querySelector('.mini-grid')
+const mainGridContainer = document.querySelector('.main-grid')
 const newGameBtn = document.querySelector('.new-game')
 const gameStatus = document.querySelector('#game-status')
 
@@ -18,26 +18,29 @@ const miniGridCellCount = width * width
 const cells = []
 const playerOne = '🌸'
 const playerTwo = '🌈'
-
+const mainGrid = []
 
 let currentPlayer = playerOne
 
-
 // Functions
 
-function createMiniGrid() {
+function createGameGrid() {
   for (let i = 0; i < 9; i++) {
-    const cell = document.createElement('div')
-    cell.setAttribute('value', i)
-    cells.push(cell)
-    miniGrid.appendChild(cell)
+    const grid = document.createElement('div')
+    grid.setAttribute('id', i)
+    grid.classList.add('mini-grid')
+    mainGrid.push(grid)
+    mainGridContainer.appendChild(grid)
+    for (let i = 0; i < 9; i++) {
+      const cell = document.createElement('div')
+      cell.setAttribute('value', i)
+      cells.push(cell)
+      grid.appendChild(cell)
+    }
   }
-  
 }
-createMiniGrid()
-
-
-
+console.log(grid)
+createGameGrid()
 
 function handleClick(event) {
   // turn taking
