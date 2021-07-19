@@ -5,9 +5,13 @@
 
 // DOM Variables
 
-const mainGridContainer = document.querySelector('.main-grid')
 const newGameBtn = document.querySelector('.new-game')
 const gameStatus = document.querySelector('#game-status')
+const mainGridContainer = document.querySelector('.main-grid')
+const cell = document.querySelectorAll('.cell')
+
+
+
 
 
 
@@ -19,28 +23,44 @@ const cells = []
 const playerOne = '🌸'
 const playerTwo = '🌈'
 const mainGrid = []
+let miniGrid 
+
 
 let currentPlayer = playerOne
+let currentGrid = mainGrid
 
 // Functions
 
 function createGameGrid() {
   for (let i = 0; i < 9; i++) {
-    const grid = document.createElement('div')
-    grid.setAttribute('id', i)
-    grid.classList.add('mini-grid')
-    mainGrid.push(grid)
-    mainGridContainer.appendChild(grid)
+    miniGrid = document.createElement('div')
+    miniGrid.setAttribute('class', 'mini-'+ i)
+    miniGrid.classList.add('mini-grid')
+    mainGrid.push(miniGrid)
+    mainGridContainer.appendChild(miniGrid)
     for (let i = 0; i < 9; i++) {
       const cell = document.createElement('div')
-      cell.setAttribute('value', i)
+      cell.setAttribute('value', 'c' + i)
       cells.push(cell)
-      grid.appendChild(cell)
+      miniGrid.appendChild(cell)
     }
   }
 }
 
 createGameGrid()
+
+// link to the dom variables for the nine grids created above
+const gridOne = document.querySelector('.mini-0')
+const gridTwo = document.querySelector('.mini-1')
+const gridThree = document.querySelector('.mini-2')
+const gridFour = document.querySelector('.mini-3')
+const gridFive = document.querySelector('.mini-4')
+const gridSix = document.querySelector('.mini-5')
+const gridSeven = document.querySelector('.mini-6')
+const gridEight = document.querySelector('.mini-7')
+const gridNine = document.querySelector('.mini-8')
+
+console.log(gridOne, gridTwo, gridThree, gridFour, gridFive, gridSix, gridSeven, gridEight, gridNine)
 
 function handleClick(event) {
   // turn taking
@@ -66,7 +86,8 @@ function handleClick(event) {
   // check for winner in ROWS
   if ((cells[0].innerHTML === '🌸' && cells[1].innerHTML === '🌸' && cells[2].innerHTML === '🌸')) {
       gameStatus.innerHTML = 'Player One Wins'
-      miniGrid.classList.add('player-one-win')
+      gridOne.classList.add('player-one-win')
+      
     } else if ((cells[3].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[5].innerHTML === '🌸')) {
       gameStatus.innerHTML = 'Player One Wins'
       miniGrid.classList.add('player-one-win')
@@ -124,6 +145,8 @@ function handleClick(event) {
         gameStatus.innerHTML = `It's a draw`
         miniGrid.div.classList.add('draw')
       }
+  // Function to direct grid available for the next move
+  
 }
 
 //  Events

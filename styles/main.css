@@ -63,3 +63,7 @@ body {
 .draw {
   background-color: white;
 }
+
+div.mini-0.mini-grid.player-one-win {
+  background-color: red;
+}
