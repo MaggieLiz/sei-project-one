@@ -10,11 +10,6 @@ const gameStatus = document.querySelector('#game-status')
 const mainGridContainer = document.querySelector('.main-grid')
 const cell = document.querySelectorAll('.cell')
 
-
-
-
-
-
 // Game Variables
 
 const width = 3
@@ -24,8 +19,6 @@ const playerOne = '🌸'
 const playerTwo = '🌈'
 const mainGrid = []
 let miniGrid 
-
-
 let currentPlayer = playerOne
 let currentGrid = mainGrid
 
@@ -59,8 +52,6 @@ const gridSix = document.querySelector('.mini-5')
 const gridSeven = document.querySelector('.mini-6')
 const gridEight = document.querySelector('.mini-7')
 const gridNine = document.querySelector('.mini-8')
-
-console.log(gridOne, gridTwo, gridThree, gridFour, gridFive, gridSix, gridSeven, gridEight, gridNine)
 
 function handleClick(event) {
   // turn taking
