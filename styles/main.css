@@ -67,3 +67,8 @@ body {
 div.mini-0.mini-grid.player-one-win {
   background-color: red;
 }
+
+active-grid {
+  border: 1px dotted green;
+}
+
