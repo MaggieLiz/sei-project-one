@@ -53,7 +53,96 @@ const gridSeven = document.querySelector('.mini-6')
 const gridEight = document.querySelector('.mini-7')
 const gridNine = document.querySelector('.mini-8')
 
-function handleClick(event) {
+
+// GRID ONE
+function handleClickOne(event) {
+  // turn taking
+  if (currentPlayer === playerOne) {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🌸'
+      gameStatus.innerHTML = 'Go, Player Two!'
+      currentPlayer = playerTwo
+    } else {
+      currentPlayer = playerOne
+      gameStatus.innerHTML = 'This square has already been played. Please, choose again!'
+    } 
+  }
+  if (currentPlayer === playerTwo) {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🌈'
+      gameStatus.innerHTML = 'Go, Player One!'
+      currentPlayer = playerOne
+    } else {
+      currentPlayer = playerTwo
+    }
+  }
+  // check for winner in ROWS
+  if ((cells[0].innerHTML === '🌸' && cells[1].innerHTML === '🌸' && cells[2].innerHTML === '🌸')) {
+      gameStatus.innerHTML = 'Player One Wins'
+      gridOne.classList.add('player-one-win')
+    } else if ((cells[3].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[5].innerHTML === '🌸')) {
+      gameStatus.innerHTML = 'Player One Wins'
+      gridOne.classList.add('player-one-win')
+    } else if ((cells[6].innerHTML === '🌸' && cells[7].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+      gameStatus.innerHTML = 'Player One Wins'
+      gridOne.classList.add('player-one-win')
+    } else if ((cells[0].innerHTML === '🌈' && cells[1].innerHTML === '🌈' && cells[2].innerHTML === '🌈')) {
+      gameStatus.innerHTML = 'Player Two Wins'
+      gridOne.classList.add('player-two-win')
+    } else if ((cells[3].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[5].innerHTML === '🌈')) {
+      gameStatus.innerHTML = 'Player Two Wins'
+      gridOne.classList.add('player-two-win')
+    } else if ((cells[6].innerHTML === '🌈' && cells[7].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+      gameStatus.innerHTML = 'Player Two Wins'
+      gridOne.classList.add('player-two-win')
+    }
+    //  Check for winner in columns
+  if ((cells[0].innerHTML === '🌸' && cells[3].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+      gameStatus.innerHTML = 'Player One Wins'
+      gridOne.classList.add('player-one-win')
+    } else if ((cells[1].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[7].innerHTML === '🌸')) {
+      gameStatus.innerHTML = 'Player One Wins'
+      gridOne.classList.add('player-one-win')
+    } else if ((cells[2].innerHTML === '🌸' && cells[5].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+      gameStatus.innerHTML = 'Player One Wins'
+      gridOne.classList.add('player-one-win')
+    } else if ((cells[0].innerHTML === '🌈' && cells[3].innerHTML === '🌈' && cells[6].innerHTML === '🌈')) {
+      gameStatus.innerHTML = 'Player Two Wins'
+      gridOne.classList.add('player-two-win')
+    } else if ((cells[1].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[7].innerHTML === '🌈')) {
+      gameStatus.innerHTML = 'Player Two Wins'
+      gridOne.classList.add('player-two-win')
+    } else if ((cells[2].innerHTML === '🌈' && cells[5].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+      gameStatus.innerHTML = 'Player Two Wins'
+      gridOne.classList.add('player-two-win')
+    }
+    // Check for winner in diagonals
+  if ((cells[0].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+      gameStatus.innerHTML = 'Player One Wins'
+      gridOne.classList.add('player-one-win')
+    } else if ((cells[2].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+      gameStatus.innerHTML = 'Player One Wins'
+      gridOne.classList.add('player-one-win')
+    } else if ((cells[0].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+      gameStatus.innerHTML = 'Player Two Wins'
+      gridOne.classList.add('player-two-win')
+    } else if ((cells[2].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[6].innerHTML === '🌈')) {
+      gameStatus.innerHTML = 'Player Two Wins'
+      gridOne.classList.add('player-two-win')
+    }
+  // Check for draw
+  if ((cells[0].innerHTML !== '' && cells[1].innerHTML !== '' && cells[2].innerHTML !== '' 
+    && cells[3].innerHTML !== '' && cells[4].innerHTML !== '' && cells[5].innerHTML !== '' 
+    && cells[6].innerHTML !== '' && cells[7].innerHTML !== '' && cells[8].innerHTML !== '')) {
+        gameStatus.innerHTML = `It's a draw`
+        gridOne.classList.add('draw')
+      }
+  // Function to direct grid available for the next move
+  
+}
+
+// GRID TWO
+function handleClickTwo(event) {
   // turn taking
   if (currentPlayer === playerOne) {
     if (event.target.innerHTML === '') {
@@ -135,13 +224,625 @@ function handleClick(event) {
     && cells[6].innerHTML !== '' && cells[7].innerHTML !== '' && cells[8].innerHTML !== '')) {
         gameStatus.innerHTML = `It's a draw`
         miniGrid.div.classList.add('draw')
-      }
+  }
+}
   // Function to direct grid available for the next move
-  
+
+// GRID THREE
+function handleClickThree(event) {
+  // turn taking
+  if (currentPlayer === playerOne) {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🌸'
+      gameStatus.innerHTML = 'Go, Player Two!'
+      currentPlayer = playerTwo
+    } else {
+      currentPlayer = playerOne
+      gameStatus.innerHTML = 'This square has already been played. Please, choose again!'
+    } 
+  }
+  if (currentPlayer === playerTwo) {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🌈'
+      gameStatus.innerHTML = 'Go, Player One!'
+      currentPlayer = playerOne
+    } else {
+      currentPlayer = playerTwo
+    }
+  }
+    // check for winner in ROWS
+  if ((cells[0].innerHTML === '🌸' && cells[1].innerHTML === '🌸' && cells[2].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    gridOne.classList.add('player-one-win')
+        
+  } else if ((cells[3].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[5].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[6].innerHTML === '🌸' && cells[7].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[1].innerHTML === '🌈' && cells[2].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[3].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[5].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[6].innerHTML === '🌈' && cells[7].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+      //  Check for winner in columns
+  if ((cells[0].innerHTML === '🌸' && cells[3].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.div.classList.add('player-one-win')
+  } else if ((cells[1].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[7].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[2].innerHTML === '🌸' && cells[5].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[3].innerHTML === '🌈' && cells[6].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[1].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[7].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[2].innerHTML === '🌈' && cells[5].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+      // Check for winner in diagonals
+  if ((cells[0].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[2].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[2].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[6].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+    // Check for draw
+  if ((cells[0].innerHTML !== '' && cells[1].innerHTML !== '' && cells[2].innerHTML !== '' 
+    && cells[3].innerHTML !== '' && cells[4].innerHTML !== '' && cells[5].innerHTML !== '' 
+    && cells[6].innerHTML !== '' && cells[7].innerHTML !== '' && cells[8].innerHTML !== '')) {
+      gameStatus.innerHTML = `It's a draw`
+      miniGrid.div.classList.add('draw')
+  }
 }
 
+// GRID FOUR
+function handleClickFour(event) {
+  // Turn Taking
+  if (currentPlayer === playerOne) {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🌸'
+      gameStatus.innerHTML = 'Go, Player Two!'
+      currentPlayer = playerTwo
+    } else {
+      currentPlayer = playerOne
+      gameStatus.innerHTML = 'This square has already been played. Please, choose again!'
+    } 
+  }
+  if (currentPlayer === playerTwo) {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🌈'
+      gameStatus.innerHTML = 'Go, Player One!'
+      currentPlayer = playerOne
+    } else {
+      currentPlayer = playerTwo
+    }
+  }
+        // check for winner in ROWS
+  if ((cells[0].innerHTML === '🌸' && cells[1].innerHTML === '🌸' && cells[2].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    gridOne.classList.add('player-one-win')         
+  } else if ((cells[3].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[5].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[6].innerHTML === '🌸' && cells[7].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[1].innerHTML === '🌈' && cells[2].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[3].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[5].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[6].innerHTML === '🌈' && cells[7].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+          //  Check for winner in columns
+  if ((cells[0].innerHTML === '🌸' && cells[3].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.div.classList.add('player-one-win')
+  } else if ((cells[1].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[7].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[2].innerHTML === '🌸' && cells[5].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[3].innerHTML === '🌈' && cells[6].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[1].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[7].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[2].innerHTML === '🌈' && cells[5].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+          // Check for winner in diagonals
+  if ((cells[0].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[2].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[2].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[6].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+        // Check for draw
+  if ((cells[0].innerHTML !== '' && cells[1].innerHTML !== '' && cells[2].innerHTML !== '' 
+    && cells[3].innerHTML !== '' && cells[4].innerHTML !== '' && cells[5].innerHTML !== '' 
+    && cells[6].innerHTML !== '' && cells[7].innerHTML !== '' && cells[8].innerHTML !== '')) {
+      gameStatus.innerHTML = `It's a draw`
+      miniGrid.div.classList.add('draw')
+  }
+}
+// GRID FIVE
+function handleClickFive(event) {
+  // turn taking
+  if (currentPlayer === playerOne) {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🌸'
+      gameStatus.innerHTML = 'Go, Player Two!'
+      currentPlayer = playerTwo
+    } else {
+      currentPlayer = playerOne
+      gameStatus.innerHTML = 'This square has already been played. Please, choose again!'
+    } 
+    }
+    if (currentPlayer === playerTwo) {
+      if (event.target.innerHTML === '') {
+        event.target.innerHTML = '🌈'
+        gameStatus.innerHTML = 'Go, Player One!'
+        currentPlayer = playerOne
+      } else {
+        currentPlayer = playerTwo
+      }
+    }
+      // check for winner in ROWS
+  if ((cells[0].innerHTML === '🌸' && cells[1].innerHTML === '🌸' && cells[2].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    gridOne.classList.add('player-one-win')
+          
+  } else if ((cells[3].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[5].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[6].innerHTML === '🌸' && cells[7].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[1].innerHTML === '🌈' && cells[2].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[3].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[5].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[6].innerHTML === '🌈' && cells[7].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+        //  Check for winner in columns
+  if ((cells[0].innerHTML === '🌸' && cells[3].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.div.classList.add('player-one-win')
+  } else if ((cells[1].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[7].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[2].innerHTML === '🌸' && cells[5].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[3].innerHTML === '🌈' && cells[6].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[1].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[7].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[2].innerHTML === '🌈' && cells[5].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+        // Check for winner in diagonals
+  if ((cells[0].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[2].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[2].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[6].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+      // Check for draw
+  if ((cells[0].innerHTML !== '' && cells[1].innerHTML !== '' && cells[2].innerHTML !== '' 
+    && cells[3].innerHTML !== '' && cells[4].innerHTML !== '' && cells[5].innerHTML !== '' 
+    && cells[6].innerHTML !== '' && cells[7].innerHTML !== '' && cells[8].innerHTML !== '')) {
+      gameStatus.innerHTML = `It's a draw`
+      miniGrid.div.classList.add('draw')
+  }
+}
+
+// GRID SIX
+function handleClickSix(event) {
+  // Turn Taking
+  if (currentPlayer === playerOne) {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🌸'
+      gameStatus.innerHTML = 'Go, Player Two!'
+      currentPlayer = playerTwo
+    } else {
+      currentPlayer = playerOne
+      gameStatus.innerHTML = 'This square has already been played. Please, choose again!'
+    } 
+    }
+    if (currentPlayer === playerTwo) {
+      if (event.target.innerHTML === '') {
+        event.target.innerHTML = '🌈'
+        gameStatus.innerHTML = 'Go, Player One!'
+        currentPlayer = playerOne
+      } else {
+        currentPlayer = playerTwo
+      }
+    }
+      // check for winner in ROWS
+  if ((cells[0].innerHTML === '🌸' && cells[1].innerHTML === '🌸' && cells[2].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    gridOne.classList.add('player-one-win')
+          
+  } else if ((cells[3].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[5].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[6].innerHTML === '🌸' && cells[7].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[1].innerHTML === '🌈' && cells[2].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[3].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[5].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[6].innerHTML === '🌈' && cells[7].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+        //  Check for winner in columns
+  if ((cells[0].innerHTML === '🌸' && cells[3].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.div.classList.add('player-one-win')
+  } else if ((cells[1].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[7].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[2].innerHTML === '🌸' && cells[5].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[3].innerHTML === '🌈' && cells[6].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[1].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[7].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[2].innerHTML === '🌈' && cells[5].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+        // Check for winner in diagonals
+  if ((cells[0].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[2].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[2].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[6].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+      // Check for draw
+  if ((cells[0].innerHTML !== '' && cells[1].innerHTML !== '' && cells[2].innerHTML !== '' 
+    && cells[3].innerHTML !== '' && cells[4].innerHTML !== '' && cells[5].innerHTML !== '' 
+    && cells[6].innerHTML !== '' && cells[7].innerHTML !== '' && cells[8].innerHTML !== '')) {
+      gameStatus.innerHTML = `It's a draw`
+      miniGrid.div.classList.add('draw')
+  }
+}
+
+// GRID SEVEN
+function handleClickSeven(event) {
+  // turn taking
+  if (currentPlayer === playerOne) {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🌸'
+      gameStatus.innerHTML = 'Go, Player Two!'
+      currentPlayer = playerTwo
+    } else {
+      currentPlayer = playerOne
+      gameStatus.innerHTML = 'This square has already been played. Please, choose again!'
+    } 
+    }
+    if (currentPlayer === playerTwo) {
+      if (event.target.innerHTML === '') {
+        event.target.innerHTML = '🌈'
+        gameStatus.innerHTML = 'Go, Player One!'
+        currentPlayer = playerOne
+      } else {
+        currentPlayer = playerTwo
+      }
+    }
+      // check for winner in ROWS
+  if ((cells[0].innerHTML === '🌸' && cells[1].innerHTML === '🌸' && cells[2].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    gridOne.classList.add('player-one-win')
+          
+  } else if ((cells[3].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[5].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[6].innerHTML === '🌸' && cells[7].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[1].innerHTML === '🌈' && cells[2].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[3].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[5].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[6].innerHTML === '🌈' && cells[7].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+        //  Check for winner in columns
+  if ((cells[0].innerHTML === '🌸' && cells[3].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.div.classList.add('player-one-win')
+  } else if ((cells[1].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[7].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[2].innerHTML === '🌸' && cells[5].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[3].innerHTML === '🌈' && cells[6].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[1].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[7].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[2].innerHTML === '🌈' && cells[5].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+        // Check for winner in diagonals
+  if ((cells[0].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[2].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[2].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[6].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+      // Check for draw
+  if ((cells[0].innerHTML !== '' && cells[1].innerHTML !== '' && cells[2].innerHTML !== '' 
+    && cells[3].innerHTML !== '' && cells[4].innerHTML !== '' && cells[5].innerHTML !== '' 
+    && cells[6].innerHTML !== '' && cells[7].innerHTML !== '' && cells[8].innerHTML !== '')) {
+      gameStatus.innerHTML = `It's a draw`
+      miniGrid.div.classList.add('draw')
+  }
+}
+
+// GRID EIGHT
+function handleClickEight(event) {
+  // turn taking
+  if (currentPlayer === playerOne) {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🌸'
+      gameStatus.innerHTML = 'Go, Player Two!'
+      currentPlayer = playerTwo
+    } else {
+      currentPlayer = playerOne
+      gameStatus.innerHTML = 'This square has already been played. Please, choose again!'
+    } 
+    }
+    if (currentPlayer === playerTwo) {
+      if (event.target.innerHTML === '') {
+        event.target.innerHTML = '🌈'
+        gameStatus.innerHTML = 'Go, Player One!'
+        currentPlayer = playerOne
+      } else {
+        currentPlayer = playerTwo
+      }
+    }
+      // check for winner in ROWS
+  if ((cells[0].innerHTML === '🌸' && cells[1].innerHTML === '🌸' && cells[2].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    gridOne.classList.add('player-one-win')
+          
+  } else if ((cells[3].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[5].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[6].innerHTML === '🌸' && cells[7].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[1].innerHTML === '🌈' && cells[2].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[3].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[5].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[6].innerHTML === '🌈' && cells[7].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+        //  Check for winner in columns
+  if ((cells[0].innerHTML === '🌸' && cells[3].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.div.classList.add('player-one-win')
+  } else if ((cells[1].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[7].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[2].innerHTML === '🌸' && cells[5].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[3].innerHTML === '🌈' && cells[6].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[1].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[7].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[2].innerHTML === '🌈' && cells[5].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+        // Check for winner in diagonals
+  if ((cells[0].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[2].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[2].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[6].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+      // Check for draw
+  if ((cells[0].innerHTML !== '' && cells[1].innerHTML !== '' && cells[2].innerHTML !== '' 
+    && cells[3].innerHTML !== '' && cells[4].innerHTML !== '' && cells[5].innerHTML !== '' 
+    && cells[6].innerHTML !== '' && cells[7].innerHTML !== '' && cells[8].innerHTML !== '')) {
+      gameStatus.innerHTML = `It's a draw`
+      miniGrid.div.classList.add('draw')
+  }
+}
+
+// GRID NINE
+function handleClickNine(event) {
+  // turn taking
+  if (currentPlayer === playerOne) {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🌸'
+      gameStatus.innerHTML = 'Go, Player Two!'
+      currentPlayer = playerTwo
+    } else {
+      currentPlayer = playerOne
+      gameStatus.innerHTML = 'This square has already been played. Please, choose again!'
+    } 
+    }
+    if (currentPlayer === playerTwo) {
+      if (event.target.innerHTML === '') {
+        event.target.innerHTML = '🌈'
+        gameStatus.innerHTML = 'Go, Player One!'
+        currentPlayer = playerOne
+      } else {
+        currentPlayer = playerTwo
+      }
+    }
+      // check for winner in ROWS
+  if ((cells[0].innerHTML === '🌸' && cells[1].innerHTML === '🌸' && cells[2].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    gridOne.classList.add('player-one-win')
+          
+  } else if ((cells[3].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[5].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[6].innerHTML === '🌸' && cells[7].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[1].innerHTML === '🌈' && cells[2].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[3].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[5].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[6].innerHTML === '🌈' && cells[7].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+        //  Check for winner in columns
+  if ((cells[0].innerHTML === '🌸' && cells[3].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.div.classList.add('player-one-win')
+  } else if ((cells[1].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[7].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[2].innerHTML === '🌸' && cells[5].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[3].innerHTML === '🌈' && cells[6].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[1].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[7].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[2].innerHTML === '🌈' && cells[5].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+        // Check for winner in diagonals
+  if ((cells[0].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[2].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+    gameStatus.innerHTML = 'Player One Wins'
+    miniGrid.classList.add('player-one-win')
+  } else if ((cells[0].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[8].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  } else if ((cells[2].innerHTML === '🌈' && cells[4].innerHTML === '🌈' && cells[6].innerHTML === '🌈')) {
+    gameStatus.innerHTML = 'Player Two Wins'
+    miniGrid.classList.add('player-two-win')
+  }
+      // Check for draw
+  if ((cells[0].innerHTML !== '' && cells[1].innerHTML !== '' && cells[2].innerHTML !== '' 
+    && cells[3].innerHTML !== '' && cells[4].innerHTML !== '' && cells[5].innerHTML !== '' 
+    && cells[6].innerHTML !== '' && cells[7].innerHTML !== '' && cells[8].innerHTML !== '')) {
+      gameStatus.innerHTML = `It's a draw`
+      miniGrid.div.classList.add('draw')
+  }
+}
+        // Function to direct grid available for the next move
+    // Function to direct grid available for the next move
+
 //  Events
-cells.forEach(cell => {
-  cell.addEventListener('click', handleClick)
-})
+// cells.forEach(cell => {
+//   cell.addEventListener('click', handleClick)
+// })
+
+gridOne.addEventListener('click', handleClickOne)
+gridTwo.addEventListener('click', handleClickTwo)
+gridThree.addEventListener('click', handleClickThree)
+gridFour.addEventListener('click', handleClickFour)
+gridFive.addEventListener('click', handleClickFive)
+gridSix.addEventListener('click', handleClickSix)
+gridSeven.addEventListener('click', handleClickSeven)
+gridEight.addEventListener('click', handleClickEight)
+gridNine.addEventListener('click', handleClickNine)
+
 
