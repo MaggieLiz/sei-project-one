@@ -4,14 +4,11 @@
 // A two player game. Players alternate placing their marker in a cell in the table. The objective is to get three markers in a row in each small game. If you've gotten three mini-games in a row, the game is won. If no player can get three in a row and the cells are all filled, it's a draw.
 
 // DOM Variables
-
 const newGameBtn = document.querySelector('.new-game')
 const gameStatus = document.querySelector('#game-status')
 const mainGridContainer = document.querySelector('.main-grid')
-const cell = document.querySelectorAll('.cell')
 
 // Game Variables
-
 const width = 3
 const miniGridCellCount = width * width
 const cells = []
@@ -25,7 +22,6 @@ let activeGrid = mainGrid
 let closedGrid
 
 // Functions
-
 function createGameGrid() {
   for (let i = 0; i < 9; i++) {
     miniGrid = document.createElement('div')
@@ -141,9 +137,30 @@ function handleClickOne(event) {
         gridOne.classList.add('draw')
       }
   // Function to direct grid available for the next move
-  console.log(event.target)
+  let newValue = parseFloat(event.target.getAttribute('value'))
   
+  if (newValue === 0 ) {
+    console.log('yay')
+  } else if (newValue === 1) {
+    console.log('one')
+  } else if (newValue === 2) {
+    console.log('two')
+  } else if (newValue === 3) {
+    console.log('three')
+  }  else if (newValue === 4) {
+    console.log('four')
+  } else if (newValue === 5) {
+    console.log('five')
+  } else if (newValue === 6) {
+    console.log('six')
+  } else if (newValue === 7) {
+    console.log('seven')
+  }  else {
+    console.log('eight')
+  }
 }
+
+
 
 // GRID TWO
 function handleClickTwo(event) {
