@@ -21,6 +21,8 @@ const mainGrid = []
 let miniGrid 
 let currentPlayer = playerOne
 let currentGrid = mainGrid
+let activeGrid = mainGrid
+let closedGrid
 
 // Functions
 
@@ -33,7 +35,7 @@ function createGameGrid() {
     mainGridContainer.appendChild(miniGrid)
     for (let i = 0; i < 9; i++) {
       const cell = document.createElement('div')
-      cell.setAttribute('value', 'c' + i)
+      cell.setAttribute('value', i)
       cells.push(cell)
       miniGrid.appendChild(cell)
     }
@@ -64,16 +66,16 @@ function handleClickOne(event) {
       currentPlayer = playerTwo
     } else {
       currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square has already been played. Please, choose again!'
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     } 
-  }
-  if (currentPlayer === playerTwo) {
+  } else {
     if (event.target.innerHTML === '') {
       event.target.innerHTML = '🌈'
       gameStatus.innerHTML = 'Go, Player One!'
       currentPlayer = playerOne
     } else {
       currentPlayer = playerTwo
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     }
   }
   // check for winner in ROWS
@@ -97,7 +99,7 @@ function handleClickOne(event) {
       gridOne.classList.add('player-two-win')
     }
     //  Check for winner in columns
-  if ((cells[0].innerHTML === '🌸' && cells[3].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
+  else if ((cells[0].innerHTML === '🌸' && cells[3].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
       gameStatus.innerHTML = 'Player One Wins'
       gridOne.classList.add('player-one-win')
     } else if ((cells[1].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[7].innerHTML === '🌸')) {
@@ -116,8 +118,9 @@ function handleClickOne(event) {
       gameStatus.innerHTML = 'Player Two Wins'
       gridOne.classList.add('player-two-win')
     }
+  
     // Check for winner in diagonals
-  if ((cells[0].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
+  else if ((cells[0].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
       gameStatus.innerHTML = 'Player One Wins'
       gridOne.classList.add('player-one-win')
     } else if ((cells[2].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
@@ -131,14 +134,15 @@ function handleClickOne(event) {
       gridOne.classList.add('player-two-win')
     }
   // Check for draw
-  if ((cells[0].innerHTML !== '' && cells[1].innerHTML !== '' && cells[2].innerHTML !== '' 
+  else if ((cells[0].innerHTML !== '' && cells[1].innerHTML !== '' && cells[2].innerHTML !== '' 
     && cells[3].innerHTML !== '' && cells[4].innerHTML !== '' && cells[5].innerHTML !== '' 
     && cells[6].innerHTML !== '' && cells[7].innerHTML !== '' && cells[8].innerHTML !== '')) {
         gameStatus.innerHTML = `It's a draw`
         gridOne.classList.add('draw')
       }
   // Function to direct grid available for the next move
-
+  console.log(event.target)
+  
 }
 
 // GRID TWO
@@ -151,16 +155,16 @@ function handleClickTwo(event) {
       currentPlayer = playerTwo
     } else {
       currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square has already been played. Please, choose again!'
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     } 
-  }
-  if (currentPlayer === playerTwo) {
+  } else {
     if (event.target.innerHTML === '') {
       event.target.innerHTML = '🌈'
       gameStatus.innerHTML = 'Go, Player One!'
       currentPlayer = playerOne
     } else {
       currentPlayer = playerTwo
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     }
   }
   // check for winner in ROWS
@@ -225,8 +229,12 @@ function handleClickTwo(event) {
         gameStatus.innerHTML = `It's a draw`
         gridTwo.classList.add('draw')
   }
-}
   // Function to direct grid available for the next move
+  console.log(event.target)
+}
+  
+
+
 
 // GRID THREE
 function handleClickThree(event) {
@@ -238,16 +246,16 @@ function handleClickThree(event) {
       currentPlayer = playerTwo
     } else {
       currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square has already been played. Please, choose again!'
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     } 
-  }
-  if (currentPlayer === playerTwo) {
+  } else {
     if (event.target.innerHTML === '') {
       event.target.innerHTML = '🌈'
       gameStatus.innerHTML = 'Go, Player One!'
       currentPlayer = playerOne
     } else {
       currentPlayer = playerTwo
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     }
   }
     // check for winner in ROWS
@@ -323,16 +331,16 @@ function handleClickFour(event) {
       currentPlayer = playerTwo
     } else {
       currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square has already been played. Please, choose again!'
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     } 
-  }
-  if (currentPlayer === playerTwo) {
+  } else {
     if (event.target.innerHTML === '') {
       event.target.innerHTML = '🌈'
       gameStatus.innerHTML = 'Go, Player One!'
       currentPlayer = playerOne
     } else {
       currentPlayer = playerTwo
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     }
   }
         // check for winner in ROWS
@@ -407,18 +415,18 @@ function handleClickFive(event) {
       currentPlayer = playerTwo
     } else {
       currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square has already been played. Please, choose again!'
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     } 
+  } else {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🌈'
+      gameStatus.innerHTML = 'Go, Player One!'
+      currentPlayer = playerOne
+    } else {
+      currentPlayer = playerTwo
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     }
-    if (currentPlayer === playerTwo) {
-      if (event.target.innerHTML === '') {
-        event.target.innerHTML = '🌈'
-        gameStatus.innerHTML = 'Go, Player One!'
-        currentPlayer = playerOne
-      } else {
-        currentPlayer = playerTwo
-      }
-    }
+  }
       // check for winner in ROWS
   if ((cells[36].innerHTML === '🌸' && cells[37].innerHTML === '🌸' && cells[38].innerHTML === '🌸')) {
     gameStatus.innerHTML = 'Player One Wins'
@@ -492,18 +500,18 @@ function handleClickSix(event) {
       currentPlayer = playerTwo
     } else {
       currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square has already been played. Please, choose again!'
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     } 
+  } else {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🌈'
+      gameStatus.innerHTML = 'Go, Player One!'
+      currentPlayer = playerOne
+    } else {
+      currentPlayer = playerTwo
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     }
-    if (currentPlayer === playerTwo) {
-      if (event.target.innerHTML === '') {
-        event.target.innerHTML = '🌈'
-        gameStatus.innerHTML = 'Go, Player One!'
-        currentPlayer = playerOne
-      } else {
-        currentPlayer = playerTwo
-      }
-    }
+  }
       // check for winner in ROWS
   if ((cells[45].innerHTML === '🌸' && cells[46].innerHTML === '🌸' && cells[47].innerHTML === '🌸')) {
     gameStatus.innerHTML = 'Player One Wins'
@@ -577,18 +585,18 @@ function handleClickSeven(event) {
       currentPlayer = playerTwo
     } else {
       currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square has already been played. Please, choose again!'
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     } 
+  } else {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🌈'
+      gameStatus.innerHTML = 'Go, Player One!'
+      currentPlayer = playerOne
+    } else {
+      currentPlayer = playerTwo
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     }
-    if (currentPlayer === playerTwo) {
-      if (event.target.innerHTML === '') {
-        event.target.innerHTML = '🌈'
-        gameStatus.innerHTML = 'Go, Player One!'
-        currentPlayer = playerOne
-      } else {
-        currentPlayer = playerTwo
-      }
-    }
+  }
       // check for winner in ROWS
   if ((cells[54].innerHTML === '🌸' && cells[55].innerHTML === '🌸' && cells[56].innerHTML === '🌸')) {
     gameStatus.innerHTML = 'Player One Wins'
@@ -662,18 +670,18 @@ function handleClickEight(event) {
       currentPlayer = playerTwo
     } else {
       currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square has already been played. Please, choose again!'
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     } 
+  } else {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🌈'
+      gameStatus.innerHTML = 'Go, Player One!'
+      currentPlayer = playerOne
+    } else {
+      currentPlayer = playerTwo
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     }
-    if (currentPlayer === playerTwo) {
-      if (event.target.innerHTML === '') {
-        event.target.innerHTML = '🌈'
-        gameStatus.innerHTML = 'Go, Player One!'
-        currentPlayer = playerOne
-      } else {
-        currentPlayer = playerTwo
-      }
-    }
+  }
       // check for winner in ROWS
   if ((cells[63].innerHTML === '🌸' && cells[64].innerHTML === '🌸' && cells[65].innerHTML === '🌸')) {
     gameStatus.innerHTML = 'Player One Wins'
@@ -747,18 +755,18 @@ function handleClickNine(event) {
       currentPlayer = playerTwo
     } else {
       currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square has already been played. Please, choose again!'
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     } 
+  } else {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🌈'
+      gameStatus.innerHTML = 'Go, Player One!'
+      currentPlayer = playerOne
+    } else {
+      currentPlayer = playerTwo
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     }
-    if (currentPlayer === playerTwo) {
-      if (event.target.innerHTML === '') {
-        event.target.innerHTML = '🌈'
-        gameStatus.innerHTML = 'Go, Player One!'
-        currentPlayer = playerOne
-      } else {
-        currentPlayer = playerTwo
-      }
-    }
+  }
       // check for winner in ROWS
   if ((cells[72].innerHTML === '🌸' && cells[73].innerHTML === '🌸' && cells[74].innerHTML === '🌸')) {
     gameStatus.innerHTML = 'Player One Wins'
