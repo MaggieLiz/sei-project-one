@@ -17,9 +17,19 @@ h1 {
   margin-bottom: 0px;
 }
 
-.player-wrapper {
+.game-wrapper {
   display: flex;
   justify-content: center;
+}
+
+.player-one-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-two-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .new-game {
@@ -27,7 +37,8 @@ h1 {
   color: darkmagenta;
   margin: 5px 20px;
   border-radius: 10px;
-  box-shadow: 5px 5px 5px grey
+  box-shadow: 5px 5px 5px grey;
+  width: 100px;
 }
 
 
@@ -97,4 +108,8 @@ h1 {
 
 .closed {
   border: 1px solid black;
+}
+
+.game-end {
+  pointer-events: none;
 }

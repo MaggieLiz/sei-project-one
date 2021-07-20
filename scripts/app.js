@@ -62,6 +62,12 @@ function handleNewGame() {
   gameStatus.innerHTML = '🦔 Go, Player One! 🦔'
 }
 
+function gameEnd() {
+  allMiniGrids.forEach(miniGrid => {
+    miniGrid.classList.add('game-end')
+  })
+}
+
 // Function to check for GAME end with win or draw
 function gameEndCheck() {
   // Check for GAME winner in rows
