@@ -50,6 +50,72 @@ const gridNine = document.querySelector('.mini-8')
 
 const allMiniGrids = [gridOne, gridTwo, gridThree, gridFour, gridFive, gridSix, gridSeven, gridEight, gridNine]
 
+// Function to check for GAME end with win or draw
+function gameEndCheck() {
+  // Check for GAME winner in rows
+  if ((gridOne.classList.contains('player-one-win') && gridTwo.classList.contains('player-one-win') &&
+    gridThree.classList.contains('player-one-win'))) {
+      gameStatus.innerHTML = '🌸🌸🌸🌸 Player One Wins! 🌸🌸🌸🌸'
+    } else if ((gridFour.classList.contains('player-one-win') && gridFive.classList.contains('player-one-win') &&
+    gridSix.classList.contains('player-one-win'))) {
+      gameStatus.innerHTML = '🌸🌸🌸🌸 Player One Wins! 🌸🌸🌸🌸'
+    } else if ((gridSeven.classList.contains('player-one-win') && gridEight.classList.contains('player-one-win') &&
+    gridNine.classList.contains('player-one-win'))) {
+      gameStatus.innerHTML = '🌸🌸🌸🌸 Player One Wins! 🌸🌸🌸🌸'
+    } else if ((gridOne.classList.contains('player-two-win') && gridTwo.classList.contains('player-two-win') &&
+    gridThree.classList.contains('player-two-win'))) {
+      gameStatus.innerHTML = '🌈🌈🌈🌈 Player Two Wins! 🌈🌈🌈🌈'
+    } else if ((gridFour.classList.contains('player-two-win') && gridFive.classList.contains('player-two-win') &&
+    gridSix.classList.contains('player-two-win'))) {
+      gameStatus.innerHTML = '🌈🌈🌈🌈 Player Two Wins! 🌈🌈🌈🌈'
+    } else if ((gridSeven.classList.contains('player-two-win') && gridEight.classList.contains('player-two-win') &&
+    gridNine.classList.contains('player-two-win'))) {
+      gameStatus.innerHTML = '🌈🌈🌈🌈 Player Two Wins! 🌈🌈🌈🌈'
+    }
+    // check for GAME winner in columns
+  else if ((gridOne.classList.contains('player-one-win') && gridFour.classList.contains('player-one-win') &&
+    gridSeven.classList.contains('player-one-win'))) {
+      gameStatus.innerHTML = '🌸🌸🌸🌸 Player One Wins! 🌸🌸🌸🌸'
+    } else if ((gridTwo.classList.contains('player-one-win') && gridFive.classList.contains('player-one-win') &&
+    gridEight.classList.contains('player-one-win'))) {
+      gameStatus.innerHTML = '🌸🌸🌸🌸 Player One Wins! 🌸🌸🌸🌸'
+    } else if ((gridThree.classList.contains('player-one-win') && gridSix.classList.contains('player-one-win') &&
+    gridNine.classList.contains('player-one-win'))) {
+      gameStatus.innerHTML = '🌸🌸🌸🌸 Player One Wins! 🌸🌸🌸🌸'
+    } else if ((gridOne.classList.contains('player-two-win') && gridFour.classList.contains('player-two-win') &&
+    gridSeven.classList.contains('player-two-win'))) {
+      gameStatus.innerHTML = '🌈🌈🌈🌈 Player Two Wins! 🌈🌈🌈🌈'
+    } else if ((gridTwo.classList.contains('player-two-win') && gridFive.classList.contains('player-two-win') &&
+    gridEight.classList.contains('player-two-win'))) {
+      gameStatus.innerHTML = '🌈🌈🌈🌈 Player Two Wins! 🌈🌈🌈🌈'
+    } else if ((gridThree.classList.contains('player-two-win') && gridSix.classList.contains('player-two-win') &&
+    gridNine.classList.contains('player-two-win'))) {
+      gameStatus.innerHTML = '🌈🌈🌈🌈 Player Two Wins! 🌈🌈🌈🌈'
+    }
+    // check for Game winner in diagonals
+  else if ((gridOne.classList.contains('player-one-win') && gridFive.classList.contains('player-one-win') &&
+    gridNine.classList.contains('player-one-win'))) {
+      gameStatus.innerHTML = '🌸🌸🌸🌸 Player One Wins! 🌸🌸🌸🌸'
+    } else if ((gridThree.classList.contains('player-one-win') && gridFive.classList.contains('player-one-win') &&
+    gridSeven.classList.contains('player-one-win'))) {
+      gameStatus.innerHTML = '🌸🌸🌸🌸 Player One Wins! 🌸🌸🌸🌸'
+    } else if ((gridOne.classList.contains('player-two-win') && gridFive.classList.contains('player-two-win') &&
+    gridNine.classList.contains('player-two-win'))) {
+      gameStatus.innerHTML = '🌈🌈🌈🌈 Player Two Wins! 🌈🌈🌈🌈'
+    } else if ((gridThree.classList.contains('player-two-win') && gridFive.classList.contains('player-two-win') &&
+    gridSeven.classList.contains('player-two-win'))) {
+      gameStatus.innerHTML = '🌈🌈🌈🌈 Player Two Wins! 🌈🌈🌈🌈'
+  }
+  // check for GAME draw
+  else if ((gridOne.classList.contains('closed') && gridTwo.classList.contains('closed') &&
+    gridThree.classList.contains('closed') && gridFour.classList.contains('closed') &&
+    gridFive.classList.contains('closed') && gridSix.classList.contains('closed') && 
+    gridSeven.classList.contains('closed') && gridEight.classList.contains('closed') && 
+    gridNine.classList.contains('closed'))) {
+      gameStatus.innerHTML = `Game Over. It's a draw.`
+  }
+}
+
 // GRID ONE
 function handleClickOne(event) {
   // turn taking
@@ -72,7 +138,7 @@ function handleClickOne(event) {
       gameStatus.innerHTML = 'This square is in play. Please, choose another!'
     }
   }
-  // check for winner in ROWS
+  // check for winner in miniGrid ROWS
   if ((cells[0].innerHTML === '🌸' && cells[1].innerHTML === '🌸' && cells[2].innerHTML === '🌸')) {
       gridOne.classList.add('player-one-win', 'closed')
       gridOne.classList.remove('open')
@@ -92,7 +158,7 @@ function handleClickOne(event) {
       gridOne.classList.add('player-two-win', 'closed')
       gridOne.classList.remove('open')
     }
-    //  Check for winner in columns
+    //  Check for winner in miniGrid columns
   else if ((cells[0].innerHTML === '🌸' && cells[3].innerHTML === '🌸' && cells[6].innerHTML === '🌸')) {
       gridOne.classList.add('player-one-win', 'closed')
       gridOne.classList.remove('open')
@@ -113,7 +179,7 @@ function handleClickOne(event) {
       gridOne.classList.remove('open')
     }
   
-    // Check for winner in diagonals
+    // Check for winner in miniGrid diagonals
   else if ((cells[0].innerHTML === '🌸' && cells[4].innerHTML === '🌸' && cells[8].innerHTML === '🌸')) {
       gridOne.classList.add('player-one-win', 'closed')
       gridOne.classList.remove('open')
@@ -127,18 +193,19 @@ function handleClickOne(event) {
       gridOne.classList.add('player-two-win', 'closed')
       gridOne.classList.remove('open')
     }
-  // Check for draw
+  // Check for miniGrid draw
   else if ((cells[0].innerHTML !== '' && cells[1].innerHTML !== '' && cells[2].innerHTML !== '' 
     && cells[3].innerHTML !== '' && cells[4].innerHTML !== '' && cells[5].innerHTML !== '' 
     && cells[6].innerHTML !== '' && cells[7].innerHTML !== '' && cells[8].innerHTML !== '')) {
         gridOne.classList.add('draw', 'closed')
         gridOne.classList.remove('open')
       }
+  // Function to check for GAME winner  
+  gameEndCheck()
   // Function to direct grid available for the next move
-  
-allMiniGrids.forEach(miniGrid => {
-  miniGrid.classList.remove('inactive-grid', 'active-grid')
-})
+  allMiniGrids.forEach(miniGrid => {
+    miniGrid.classList.remove('inactive-grid', 'active-grid')
+  })
 
   let newValue = parseFloat(event.target.getAttribute('value'))
   if ((newValue === 0 && gridOne.classList.contains('closed'))) {
@@ -382,6 +449,8 @@ function handleClickTwo(event) {
         gridTwo.classList.add('draw', 'closed')
         gridTwo.classList.remove('open')
   }
+  // Function to check for GAME winner 
+  gameEndCheck()
   // Function to direct grid available for the next move
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.remove('inactive-grid', 'active-grid')
@@ -626,6 +695,8 @@ function handleClickThree(event) {
       gridThree.classList.add('draw', 'closed')
       gridThree.classList.remove('open')
   }
+// Function to check for GAME winner 
+  gameEndCheck()
 // direction to next grid
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.remove('inactive-grid', 'active-grid')
@@ -870,6 +941,8 @@ function handleClickFour(event) {
       gridFour.classList.add('draw', 'closed')
       gridFour.classList.remove('open')
   }
+  // Function to check for GAME winner 
+  gameEndCheck()
   // direction to next grid for play
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.remove('inactive-grid', 'active-grid')
@@ -1114,6 +1187,8 @@ function handleClickFive(event) {
       gridFive.classList.add('draw', 'closed')
       gridFive.classList.remove('open')  
   }
+  // Function to check for GAME winner 
+  gameEndCheck()
   // direction to next grid
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.remove('inactive-grid', 'active-grid')
@@ -1358,6 +1433,8 @@ function handleClickSix(event) {
       gridSix.classList.add('draw', 'closed')
       gridSix.classList.remove('open') 
   }
+  // Function to check for GAME winner 
+  gameEndCheck()
   // direction to next grid
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.remove('inactive-grid', 'active-grid')
@@ -1602,6 +1679,8 @@ function handleClickSeven(event) {
       gridSeven.classList.add('draw', 'closed')
       gridSeven.classList.remove('open') 
   }
+  // Function to check for GAME winner 
+  gameEndCheck()
   // direction to next grid
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.remove('inactive-grid', 'active-grid')
@@ -1846,6 +1925,8 @@ function handleClickEight(event) {
       gridEight.classList.add('draw', 'closed')
       gridEight.classList.remove('open')    
   }
+  // Function to check for GAME winner 
+  gameEndCheck()
   // direction to next grid
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.remove('inactive-grid', 'active-grid')
@@ -2090,6 +2171,8 @@ function handleClickNine(event) {
       gridNine.classList.add('draw', 'closed')
       gridNine.classList.remove('open')
   }
+  // Function to check for GAME winner 
+  gameEndCheck()
   // direction to next grid
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.remove('inactive-grid', 'active-grid')
