@@ -57,18 +57,6 @@ body {
   font-size: 50px;
 }
 
-.player-one-win {
-  background-color: red;
-}
-
-.player-two-win {
-  background-color: yellow;
-}
-
-.draw {
-  background-color: white;
-}
-
 .open {
   border: none;
 }
@@ -84,6 +72,18 @@ div.mini-0.mini-grid.player-one-win {
 
 .inactive-grid {
   background-color: lightgrey;
+}
+
+.player-one-win {
+  background-color: red;
+}
+
+.player-two-win {
+  background-color: yellow;
+}
+
+.draw {
+  background-color: white;
 }
 
 .closed {
