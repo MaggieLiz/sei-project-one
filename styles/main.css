@@ -61,10 +61,6 @@ body {
   border: none;
 }
 
-div.mini-0.mini-grid.player-one-win {
-  background-color: red;
-}
-
 .active-grid {
   border: 1px solid green;
   background-color: blanchedalmond;

@@ -50,6 +50,18 @@ const gridNine = document.querySelector('.mini-8')
 
 const allMiniGrids = [gridOne, gridTwo, gridThree, gridFour, gridFive, gridSix, gridSeven, gridEight, gridNine]
 
+function handleNewGame() {
+  currentPlayer = playerOne
+  cells.forEach(cell => {
+    cell.innerHTML = ''
+  })
+  allMiniGrids.forEach(miniGrid => {
+    miniGrid.classList.remove('inactive-grid', 'active-grid', 'closed', 'player-one-win', 'player-two-win', 'draw')
+    miniGrid.classList.add('open')
+  })
+  gameStatus.innerHTML = '🌸 Go, Player One! 🌸'
+}
+
 // Function to check for GAME end with win or draw
 function gameEndCheck() {
   // Check for GAME winner in rows
@@ -2346,5 +2358,7 @@ gridSix.addEventListener('click', handleClickSix)
 gridSeven.addEventListener('click', handleClickSeven)
 gridEight.addEventListener('click', handleClickEight)
 gridNine.addEventListener('click', handleClickNine)
+
+newGameBtn.addEventListener('click', handleNewGame)
 
 
