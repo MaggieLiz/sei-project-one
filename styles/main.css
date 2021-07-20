@@ -50,6 +50,11 @@ body {
   height: 57px;
   width: 58px;
   border: 1px solid plum;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
 }
 
 .player-one-win {
@@ -68,7 +73,11 @@ div.mini-0.mini-grid.player-one-win {
   background-color: red;
 }
 
-active-grid {
-  border: 1px dotted green;
+.active-grid {
+  border: 1px solid green;
+  background-color: blanchedalmond;
 }
 
+.inactive-grid {
+  background-color: lightgrey;
+}
