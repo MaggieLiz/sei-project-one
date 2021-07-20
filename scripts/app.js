@@ -50,6 +50,28 @@ const gridNine = document.querySelector('.mini-8')
 
 const allMiniGrids = [gridOne, gridTwo, gridThree, gridFour, gridFive, gridSix, gridSeven, gridEight, gridNine]
 
+function takeTurns() {
+  if (currentPlayer === playerOne) {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🦔'
+      gameStatus.innerHTML = 'Go, Player Two!'
+      currentPlayer = playerTwo
+    } else {
+      currentPlayer = playerOne
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
+    } 
+  } else {
+    if (event.target.innerHTML === '') {
+      event.target.innerHTML = '🦋'
+      gameStatus.innerHTML = 'Go, Player One!'
+      currentPlayer = playerOne
+    } else {
+      currentPlayer = playerTwo
+      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
+    }
+  }
+}
+
 function handleNewGame() {
   currentPlayer = playerOne
   cells.forEach(cell => {
@@ -74,55 +96,71 @@ function gameEndCheck() {
   if ((gridOne.classList.contains('player-one-win') && gridTwo.classList.contains('player-one-win') &&
     gridThree.classList.contains('player-one-win'))) {
       gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'
+      gameEnd()
     } else if ((gridFour.classList.contains('player-one-win') && gridFive.classList.contains('player-one-win') &&
     gridSix.classList.contains('player-one-win'))) {
       gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'
+      gameEnd()
     } else if ((gridSeven.classList.contains('player-one-win') && gridEight.classList.contains('player-one-win') &&
     gridNine.classList.contains('player-one-win'))) {
       gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'
+      gameEnd()
     } else if ((gridOne.classList.contains('player-two-win') && gridTwo.classList.contains('player-two-win') &&
     gridThree.classList.contains('player-two-win'))) {
       gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
+      gameEnd()
     } else if ((gridFour.classList.contains('player-two-win') && gridFive.classList.contains('player-two-win') &&
     gridSix.classList.contains('player-two-win'))) {
       gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
+      gameEnd()
     } else if ((gridSeven.classList.contains('player-two-win') && gridEight.classList.contains('player-two-win') &&
     gridNine.classList.contains('player-two-win'))) {
       gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
+      gameEnd()
     }
     // check for GAME winner in columns
   else if ((gridOne.classList.contains('player-one-win') && gridFour.classList.contains('player-one-win') &&
     gridSeven.classList.contains('player-one-win'))) {
       gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'
+      gameEnd()
     } else if ((gridTwo.classList.contains('player-one-win') && gridFive.classList.contains('player-one-win') &&
     gridEight.classList.contains('player-one-win'))) {
       gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'
+      gameEnd()
     } else if ((gridThree.classList.contains('player-one-win') && gridSix.classList.contains('player-one-win') &&
     gridNine.classList.contains('player-one-win'))) {
       gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'
+      gameEnd()
     } else if ((gridOne.classList.contains('player-two-win') && gridFour.classList.contains('player-two-win') &&
     gridSeven.classList.contains('player-two-win'))) {
       gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
+      gameEnd()
     } else if ((gridTwo.classList.contains('player-two-win') && gridFive.classList.contains('player-two-win') &&
     gridEight.classList.contains('player-two-win'))) {
       gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
+      gameEnd()
     } else if ((gridThree.classList.contains('player-two-win') && gridSix.classList.contains('player-two-win') &&
     gridNine.classList.contains('player-two-win'))) {
       gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
+      gameEnd()
     }
     // check for Game winner in diagonals
   else if ((gridOne.classList.contains('player-one-win') && gridFive.classList.contains('player-one-win') &&
     gridNine.classList.contains('player-one-win'))) {
       gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'
+      gameEnd()
     } else if ((gridThree.classList.contains('player-one-win') && gridFive.classList.contains('player-one-win') &&
     gridSeven.classList.contains('player-one-win'))) {
       gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'
+      gameEnd()
     } else if ((gridOne.classList.contains('player-two-win') && gridFive.classList.contains('player-two-win') &&
     gridNine.classList.contains('player-two-win'))) {
       gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
+      gameEnd()
     } else if ((gridThree.classList.contains('player-two-win') && gridFive.classList.contains('player-two-win') &&
     gridSeven.classList.contains('player-two-win'))) {
       gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
+      gameEnd()
   }
   // check for GAME draw
   else if ((gridOne.classList.contains('closed') && gridTwo.classList.contains('closed') &&
@@ -131,31 +169,14 @@ function gameEndCheck() {
     gridSeven.classList.contains('closed') && gridEight.classList.contains('closed') && 
     gridNine.classList.contains('closed'))) {
       gameStatus.innerHTML = `Game Over. It's a draw.`
+      gameEnd()
   }
 }
 
 // GRID ONE
 function handleClickOne(event) {
   // turn taking
-  if (currentPlayer === playerOne) {
-    if (event.target.innerHTML === '') {
-      event.target.innerHTML = '🦔'
-      gameStatus.innerHTML = 'Go, Player Two!'
-      currentPlayer = playerTwo
-    } else {
-      currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-    } 
-  } else {
-    if (event.target.innerHTML === '') {
-      event.target.innerHTML = '🦋'
-      gameStatus.innerHTML = 'Go, Player One!'
-      currentPlayer = playerOne
-    } else {
-      currentPlayer = playerTwo
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-    }
-  }
+  takeTurns()
   // check for winner in miniGrid ROWS
   if ((cells[0].innerHTML === '🦔' && cells[1].innerHTML === '🦔' && cells[2].innerHTML === '🦔')) {
       gridOne.classList.add('player-one-win', 'closed')
@@ -387,25 +408,7 @@ function handleClickOne(event) {
 // GRID TWO
 function handleClickTwo(event) {
   // turn taking
-  if (currentPlayer === playerOne) {
-    if (event.target.innerHTML === '') {
-      event.target.innerHTML = '🦔'
-      gameStatus.innerHTML = 'Go, Player Two!'
-      currentPlayer = playerTwo
-    } else {
-      currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-    } 
-  } else {
-    if (event.target.innerHTML === '') {
-      event.target.innerHTML = '🦋'
-      gameStatus.innerHTML = 'Go, Player One!'
-      currentPlayer = playerOne
-    } else {
-      currentPlayer = playerTwo
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-    }
-  }
+  takeTurns()
   // check for winner in ROWS
   if ((cells[9].innerHTML === '🦔' && cells[10].innerHTML === '🦔' && cells[11].innerHTML === '🦔')) {
       gridTwo.classList.add('player-one-win', 'closed')    
@@ -633,25 +636,7 @@ function handleClickTwo(event) {
 // GRID THREE
 function handleClickThree(event) {
   // turn taking
-  if (currentPlayer === playerOne) {
-    if (event.target.innerHTML === '') {
-      event.target.innerHTML = '🦔'
-      gameStatus.innerHTML = 'Go, Player Two!'
-      currentPlayer = playerTwo
-    } else {
-      currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-    } 
-  } else {
-    if (event.target.innerHTML === '') {
-      event.target.innerHTML = '🦋'
-      gameStatus.innerHTML = 'Go, Player One!'
-      currentPlayer = playerOne
-    } else {
-      currentPlayer = playerTwo
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-    }
-  }
+  takeTurns()
     // check for winner in ROWS
   if ((cells[18].innerHTML === '🦔' && cells[19].innerHTML === '🦔' && cells[20].innerHTML === '🦔')) {
     gridThree.classList.add('player-one-win', 'closed')
@@ -879,25 +864,7 @@ function handleClickThree(event) {
 // GRID FOUR
 function handleClickFour(event) {
   // Turn Taking
-  if (currentPlayer === playerOne) {
-    if (event.target.innerHTML === '') {
-      event.target.innerHTML = '🦔'
-      gameStatus.innerHTML = 'Go, Player Two!'
-      currentPlayer = playerTwo
-    } else {
-      currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-    } 
-  } else {
-    if (event.target.innerHTML === '') {
-      event.target.innerHTML = '🦋'
-      gameStatus.innerHTML = 'Go, Player One!'
-      currentPlayer = playerOne
-    } else {
-      currentPlayer = playerTwo
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-    }
-  }
+  takeTurns()
         // check for winner in ROWS
   if ((cells[27].innerHTML === '🦔' && cells[28].innerHTML === '🦔' && cells[29].innerHTML === '🦔')) {
     gridFour.classList.add('player-one-win', 'closed')         
@@ -1125,25 +1092,7 @@ function handleClickFour(event) {
 // GRID FIVE
 function handleClickFive(event) {
   // turn taking
-  if (currentPlayer === playerOne) {
-    if (event.target.innerHTML === '') {
-      event.target.innerHTML = '🦔'
-      gameStatus.innerHTML = 'Go, Player Two!'
-      currentPlayer = playerTwo
-    } else {
-      currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-    } 
-  } else {
-    if (event.target.innerHTML === '') {
-      event.target.innerHTML = '🦋'
-      gameStatus.innerHTML = 'Go, Player One!'
-      currentPlayer = playerOne
-    } else {
-      currentPlayer = playerTwo
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-    }
-  }
+  takeTurns()
       // check for winner in ROWS
   if ((cells[36].innerHTML === '🦔' && cells[37].innerHTML === '🦔' && cells[38].innerHTML === '🦔')) {
     gridFive.classList.add('player-one-win', 'closed')  
@@ -1371,25 +1320,7 @@ function handleClickFive(event) {
 // GRID SIX
 function handleClickSix(event) {
   // Turn Taking
-  if (currentPlayer === playerOne) {
-    if (event.target.innerHTML === '') {
-      event.target.innerHTML = '🦔'
-      gameStatus.innerHTML = 'Go, Player Two!'
-      currentPlayer = playerTwo
-    } else {
-      currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-    } 
-  } else {
-    if (event.target.innerHTML === '') {
-      event.target.innerHTML = '🦋'
-      gameStatus.innerHTML = 'Go, Player One!'
-      currentPlayer = playerOne
-    } else {
-      currentPlayer = playerTwo
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-    }
-  }
+  takeTurns()
       // check for winner in ROWS
   if ((cells[45].innerHTML === '🦔' && cells[46].innerHTML === '🦔' && cells[47].innerHTML === '🦔')) {
     gridSix.classList.add('player-one-win', 'closed')   
@@ -1617,25 +1548,7 @@ function handleClickSix(event) {
 // GRID SEVEN
 function handleClickSeven(event) {
   // turn taking
-  if (currentPlayer === playerOne) {
-    if (event.target.innerHTML === '') {
-      event.target.innerHTML = '🦔'
-      gameStatus.innerHTML = 'Go, Player Two!'
-      currentPlayer = playerTwo
-    } else {
-      currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-    } 
-  } else {
-    if (event.target.innerHTML === '') {
-      event.target.innerHTML = '🦋'
-      gameStatus.innerHTML = 'Go, Player One!'
-      currentPlayer = playerOne
-    } else {
-      currentPlayer = playerTwo
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-    }
-  }
+  takeTurns()
       // check for winner in ROWS
   if ((cells[54].innerHTML === '🦔' && cells[55].innerHTML === '🦔' && cells[56].innerHTML === '🦔')) {
     gridSeven.classList.add('player-one-win', 'closed')     
@@ -1863,25 +1776,7 @@ function handleClickSeven(event) {
 // GRID EIGHT
 function handleClickEight(event) {
   // turn taking
-  if (currentPlayer === playerOne) {
-    if (event.target.innerHTML === '') {
-      event.target.innerHTML = '🦔'
-      gameStatus.innerHTML = 'Go, Player Two!'
-      currentPlayer = playerTwo
-    } else {
-      currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-    } 
-  } else {
-    if (event.target.innerHTML === '') {
-      event.target.innerHTML = '🦋'
-      gameStatus.innerHTML = 'Go, Player One!'
-      currentPlayer = playerOne
-    } else {
-      currentPlayer = playerTwo
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-    }
-  }
+  takeTurns()
       // check for winner in ROWS
   if ((cells[63].innerHTML === '🦔' && cells[64].innerHTML === '🦔' && cells[65].innerHTML === '🦔')) {
     gridEight.classList.add('player-one-win', 'closed')  
@@ -2109,25 +2004,7 @@ function handleClickEight(event) {
 // GRID NINE
 function handleClickNine(event) {
   // turn taking
-  if (currentPlayer === playerOne) {
-    if (event.target.innerHTML === '') {
-      event.target.innerHTML = '🦔'
-      gameStatus.innerHTML = 'Go, Player Two!'
-      currentPlayer = playerTwo
-    } else {
-      currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-    } 
-  } else {
-    if (event.target.innerHTML === '') {
-      event.target.innerHTML = '🦋'
-      gameStatus.innerHTML = 'Go, Player One!'
-      currentPlayer = playerOne
-    } else {
-      currentPlayer = playerTwo
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-    }
-  }
+  takeTurns()
       // check for winner in ROWS
   if ((cells[72].innerHTML === '🦔' && cells[73].innerHTML === '🦔' && cells[74].innerHTML === '🦔')) {
     gridNine.classList.add('player-one-win', 'closed')
