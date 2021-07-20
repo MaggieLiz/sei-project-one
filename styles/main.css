@@ -69,6 +69,10 @@ body {
   background-color: white;
 }
 
+.open {
+  border: none;
+}
+
 div.mini-0.mini-grid.player-one-win {
   background-color: red;
 }
@@ -80,4 +84,8 @@ div.mini-0.mini-grid.player-one-win {
 
 .inactive-grid {
   background-color: lightgrey;
+}
+
+.closed {
+  border: 1px solid black;
 }
