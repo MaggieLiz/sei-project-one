@@ -8,6 +8,7 @@ const newGameBtn = document.querySelector('.new-game')
 const gameStatus = document.querySelector('#game-status')
 const mainGridContainer = document.querySelector('.main-grid')
 const audio = document.querySelector('#audio')
+const winnerList = document.querySelector('.winner-list')
 
 // Game Variables
 const width = 3
@@ -18,6 +19,7 @@ const playerTwo = '🦋'
 const mainGrid = []
 
 let currentPlayer = playerOne
+let winner = playerOne
 
 // Functions
 function createGameGrid() {
@@ -104,25 +106,136 @@ function playerOneGameWin() {
   audio.src = './sounds/zapsplat_magic_wand_spell_appear_twinkle_003_12541.mp3'
   audio.play()
   gameEnd()
+  function listWinner() {
+    winner = document.createElement('li')
+    winner.innerHTML = 'Player One 🦔'
+    winnerList.appendChild(winner)
+    console.log('winner')
+  }
+  listWinner()
 } 
 
 function playerTwoGameWin() {
   gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
-      audio.src = './sounds/zapsplat_magic_wand_spell_appear_twinkle_003_12541.mp3'
-      audio.play()
-      gameEnd()
+  audio.src = './sounds/zapsplat_magic_wand_spell_appear_twinkle_003_12541.mp3'
+  audio.play()
+  gameEnd()
+  function listWinner() {
+    winner = document.createElement('li')
+    winner.innerHTML = 'Player Two 🦋'
+    winnerList.appendChild(winner)
+    console.log('winner')
+  }
+  listWinner()
 }
-
-function playerOneMiniWin() {
+// functions for win in a minigrid by player one
+function playerOneGridOneWin() {
   gridOne.classList.add('player-one-win', 'closed')
   gridOne.classList.remove('open')
   audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
   audio.play()
 }
+function playerOneGridTwoWin() {
+  gridTwo.classList.add('player-one-win', 'closed')
+  gridTwo.classList.remove('open')
+  audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
+  audio.play()
+}
+function playerOneGridThreeWin() {
+  gridThree.classList.add('player-one-win', 'closed')
+  gridThree.classList.remove('open')
+  audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
+  audio.play()
+}
+function playerOneGridFourWin() {
+  gridFour.classList.add('player-one-win', 'closed')
+  gridFour.classList.remove('open')
+  audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
+  audio.play()
+}
+function playerOneGridFiveWin() {
+  gridFive.classList.add('player-one-win', 'closed')
+  gridFive.classList.remove('open')
+  audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
+  audio.play()
+}
+function playerOneGridSixWin() {
+  gridSix.classList.add('player-one-win', 'closed')
+  gridSix.classList.remove('open')
+  audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
+  audio.play()
+}
+function playerOneGridSevenWin() {
+  gridSeven.classList.add('player-one-win', 'closed')
+  gridSeven.classList.remove('open')
+  audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
+  audio.play()
+}
+function playerOneGridEightWin() {
+  gridEight.classList.add('player-one-win', 'closed')
+  gridEight.classList.remove('open')
+  audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
+  audio.play()
+}
+function playerOneGridNineWin() {
+  gridNine.classList.add('player-one-win', 'closed')
+  gridNine.classList.remove('open')
+  audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
+  audio.play()
+}
 
-function playerTwoMiniWin() {
+// functions for win in a minigrid by player two
+function playerTwoGridOneWin() {
   gridOne.classList.add('player-two-win', 'closed')
   gridOne.classList.remove('open')
+  audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
+  audio.play()
+}
+function playerTwoGridTwoWin() {
+  gridTwo.classList.add('player-two-win', 'closed')
+  gridTwo.classList.remove('open')
+  audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
+  audio.play()
+}
+function playerTwoGridThreeWin() {
+  gridThree.classList.add('player-two-win', 'closed')
+  gridThree.classList.remove('open')
+  audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
+  audio.play()
+}
+function playerTwoGridFourWin() {
+  gridFour.classList.add('player-two-win', 'closed')
+  gridFour.classList.remove('open')
+  audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
+  audio.play()
+}
+function playerTwoGridFiveWin() {
+  gridFive.classList.add('player-two-win', 'closed')
+  gridFive.classList.remove('open')
+  audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
+  audio.play()
+}
+function playerTwoGridSixWin() {
+  gridSix.classList.add('player-two-win', 'closed')
+  gridSix.classList.remove('open')
+  audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
+  audio.play()
+}
+function playerTwoGridSevenWin() {
+  gridSeven.classList.add('player-two-win', 'closed')
+  gridSeven.classList.remove('open')
+  audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
+  audio.play()
+}
+function playerTwoGridEightWin() {
+  gridEight.classList.add('player-two-win', 'closed')
+  gridEight.classList.remove('open')
+  audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
+  audio.play()
+}
+function playerTwoGridNineWin() {
+  gridNine.classList.add('player-two-win', 'closed')
+  gridNine.classList.remove('open')
   audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
   audio.play()
 }
@@ -202,42 +315,42 @@ function handleClickOne(event) {
   takeTurns()
   // check for winner in miniGrid ROWS
   if ((cells[0].innerHTML === '🦔' && cells[1].innerHTML === '🦔' && cells[2].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridOneWin()
     } else if ((cells[3].innerHTML === '🦔' && cells[4].innerHTML === '🦔' && cells[5].innerHTML === '🦔')) {
-      playerOneMiniWin()
+      playerOneGridOneWin()
     } else if ((cells[6].innerHTML === '🦔' && cells[7].innerHTML === '🦔' && cells[8].innerHTML === '🦔')) {
-      playerOneMiniWin()
+      playerOneGridOneWin()
     } else if ((cells[0].innerHTML === '🦋' && cells[1].innerHTML === '🦋' && cells[2].innerHTML === '🦋')) {
-      playerTwoMiniWin()
+      playerTwoGridOneWin()
     } else if ((cells[3].innerHTML === '🦋' && cells[4].innerHTML === '🦋' && cells[5].innerHTML === '🦋')) {
-      playerTwoMiniWin()
+      playerTwoGridOneWin()
     } else if ((cells[6].innerHTML === '🦋' && cells[7].innerHTML === '🦋' && cells[8].innerHTML === '🦋')) {
-      playerTwoMiniWin()
+      playerTwoGridOneWin()
     }
     //  Check for winner in miniGrid columns
   else if ((cells[0].innerHTML === '🦔' && cells[3].innerHTML === '🦔' && cells[6].innerHTML === '🦔')) {
-      playerOneMiniWin()
+      playerOneGridOneWin()
     } else if ((cells[1].innerHTML === '🦔' && cells[4].innerHTML === '🦔' && cells[7].innerHTML === '🦔')) {
-      playerOneMiniWin()
+      playerOneGridOneWin()
     } else if ((cells[2].innerHTML === '🦔' && cells[5].innerHTML === '🦔' && cells[8].innerHTML === '🦔')) {
-      playerOneMiniWin()
+      playerOneGridOneWin()
     } else if ((cells[0].innerHTML === '🦋' && cells[3].innerHTML === '🦋' && cells[6].innerHTML === '🦋')) {
-      playerTwoMiniWin()
+      playerTwoGridOneWin()
     } else if ((cells[1].innerHTML === '🦋' && cells[4].innerHTML === '🦋' && cells[7].innerHTML === '🦋')) {
-      playerTwoMiniWin()
+      playerTwoGridOneWin()
     } else if ((cells[2].innerHTML === '🦋' && cells[5].innerHTML === '🦋' && cells[8].innerHTML === '🦋')) {
-      playerTwoMiniWin()
+      playerTwoGridOneWin()
     }
   
     // Check for winner in miniGrid diagonals
   else if ((cells[0].innerHTML === '🦔' && cells[4].innerHTML === '🦔' && cells[8].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridOneWin()
     } else if ((cells[2].innerHTML === '🦔' && cells[4].innerHTML === '🦔' && cells[6].innerHTML === '🦔')) {
-      playerOneMiniWin()
+      playerOneGridOneWin()
     } else if ((cells[0].innerHTML === '🦋' && cells[4].innerHTML === '🦋' && cells[8].innerHTML === '🦋')) {
-      playerTwoMiniWin()
+      playerTwoGridOneWin()
     } else if ((cells[2].innerHTML === '🦋' && cells[4].innerHTML === '🦋' && cells[6].innerHTML === '🦋')) {
-      playerTwoMiniWin()
+      playerTwoGridOneWin()
     }
   // Check for miniGrid draw
   else if ((cells[0].innerHTML !== '' && cells[1].innerHTML !== '' && cells[2].innerHTML !== '' 
@@ -418,41 +531,41 @@ function handleClickTwo(event) {
   takeTurns()
   // check for winner in ROWS
   if ((cells[9].innerHTML === '🦔' && cells[10].innerHTML === '🦔' && cells[11].innerHTML === '🦔')) {
-    playerOneMiniWin()  
+    playerOneGridTwoWin()  
     } else if ((cells[12].innerHTML === '🦔' && cells[13].innerHTML === '🦔' && cells[14].innerHTML === '🦔')) {
-      playerOneMiniWin()
+      playerOneGridTwoWin()
     } else if ((cells[15].innerHTML === '🦔' && cells[16].innerHTML === '🦔' && cells[17].innerHTML === '🦔')) {
-      playerOneMiniWin()
+      playerOneGridTwoWin()
     } else if ((cells[9].innerHTML === '🦋' && cells[10].innerHTML === '🦋' && cells[11].innerHTML === '🦋')) {
-      playerTwoMiniWin()
+      playerTwoGridTwoWin()
     } else if ((cells[12].innerHTML === '🦋' && cells[13].innerHTML === '🦋' && cells[14].innerHTML === '🦋')) {
-      playerTwoMiniWin()
+      playerTwoGridTwoWin()
     } else if ((cells[15].innerHTML === '🦋' && cells[16].innerHTML === '🦋' && cells[17].innerHTML === '🦋')) {
-      playerTwoMiniWin()
+      playerTwoGridTwoWin()
     }
     //  Check for winner in columns
   if ((cells[9].innerHTML === '🦔' && cells[12].innerHTML === '🦔' && cells[15].innerHTML === '🦔')) {
-      playerOneGameWin()
+    playerOneGridTwoWin()
     } else if ((cells[10].innerHTML === '🦔' && cells[13].innerHTML === '🦔' && cells[16].innerHTML === '🦔')) {
-      playerOneMiniWin()
+      playerOneGridTwoWin()
     } else if ((cells[11].innerHTML === '🦔' && cells[14].innerHTML === '🦔' && cells[17].innerHTML === '🦔')) {
-      playerOneMiniWin()
+      playerOneGridTwoWin()
     } else if ((cells[9].innerHTML === '🦋' && cells[12].innerHTML === '🦋' && cells[15].innerHTML === '🦋')) {
-      gplayerTwoMiniWin()
+      playerTwoGridTwoWin()
     } else if ((cells[10].innerHTML === '🦋' && cells[13].innerHTML === '🦋' && cells[16].innerHTML === '🦋')) {
-      playerTwoMiniWin()
+      playerTwoGridTwoWin()
     } else if ((cells[11].innerHTML === '🦋' && cells[14].innerHTML === '🦋' && cells[17].innerHTML === '🦋')) {
-      playerTwoMiniWin()
+      playerTwoGridTwoWin()
     }
     // Check for winner in diagonals
   else if ((cells[9].innerHTML === '🦔' && cells[13].innerHTML === '🦔' && cells[17].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridTwoWin()
     } else if ((cells[11].innerHTML === '🦔' && cells[13].innerHTML === '🦔' && cells[15].innerHTML === '🦔')) {
-      playerOneMiniWin()
+      playerOneGridTwoWin()
     } else if ((cells[9].innerHTML === '🦋' && cells[13].innerHTML === '🦋' && cells[17].innerHTML === '🦋')) {
-      playerTwoMiniWin()
+      playerTwoGridTwoWin()
     } else if ((cells[11].innerHTML === '🦋' && cells[13].innerHTML === '🦋' && cells[15].innerHTML === '🦋')) {
-      playerTwoMiniWin()
+      playerTwoGridTwoWin()
     }
   // Check for draw
   else if ((cells[9].innerHTML !== '' && cells[10].innerHTML !== '' && cells[11].innerHTML !== '' 
@@ -630,41 +743,41 @@ function handleClickThree(event) {
   takeTurns()
     // check for winner in ROWS
   if ((cells[18].innerHTML === '🦔' && cells[19].innerHTML === '🦔' && cells[20].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridThreeWin()
   } else if ((cells[21].innerHTML === '🦔' && cells[22].innerHTML === '🦔' && cells[23].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridThreeWin()
   } else if ((cells[24].innerHTML === '🦔' && cells[25].innerHTML === '🦔' && cells[26].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridThreeWin()
   } else if ((cells[18].innerHTML === '🦋' && cells[19].innerHTML === '🦋' && cells[20].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridThreeWin()
   } else if ((cells[21].innerHTML === '🦋' && cells[22].innerHTML === '🦋' && cells[23].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridThreeWin()
   } else if ((cells[24].innerHTML === '🦋' && cells[25].innerHTML === '🦋' && cells[26].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridThreeWin()
   }
       //  Check for winner in columns
   else if ((cells[18].innerHTML === '🦔' && cells[21].innerHTML === '🦔' && cells[24].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridThreeWin()
   } else if ((cells[19].innerHTML === '🦔' && cells[22].innerHTML === '🦔' && cells[25].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridThreeWin()
   } else if ((cells[20].innerHTML === '🦔' && cells[23].innerHTML === '🦔' && cells[26].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridThreeWin()
   } else if ((cells[18].innerHTML === '🦋' && cells[21].innerHTML === '🦋' && cells[24].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridThreeWin()
   } else if ((cells[19].innerHTML === '🦋' && cells[22].innerHTML === '🦋' && cells[25].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridThreeWin()
   } else if ((cells[20].innerHTML === '🦋' && cells[23].innerHTML === '🦋' && cells[26].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridThreeWin()
   }
       // Check for winner in diagonals
   else if ((cells[18].innerHTML === '🦔' && cells[22].innerHTML === '🦔' && cells[26].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridThreeWin()
   } else if ((cells[20].innerHTML === '🦔' && cells[22].innerHTML === '🦔' && cells[24].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridThreeWin()
   } else if ((cells[18].innerHTML === '🦋' && cells[22].innerHTML === '🦋' && cells[26].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridThreeWin()
   } else if ((cells[20].innerHTML === '🦋' && cells[22].innerHTML === '🦋' && cells[24].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridThreeWin()
   }
     // Check for draw
   else if ((cells[18].innerHTML !== '' && cells[19].innerHTML !== '' && cells[20].innerHTML !== '' 
@@ -842,41 +955,41 @@ function handleClickFour(event) {
   takeTurns()
         // check for winner in ROWS
   if ((cells[27].innerHTML === '🦔' && cells[28].innerHTML === '🦔' && cells[29].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridFourWin()
   } else if ((cells[30].innerHTML === '🦔' && cells[31].innerHTML === '🦔' && cells[32].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridFourWin()
   } else if ((cells[33].innerHTML === '🦔' && cells[34].innerHTML === '🦔' && cells[35].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridFourWin()
   } else if ((cells[27].innerHTML === '🦋' && cells[28].innerHTML === '🦋' && cells[29].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridFourWin()
   } else if ((cells[30].innerHTML === '🦋' && cells[31].innerHTML === '🦋' && cells[32].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridFourWin()
   } else if ((cells[33].innerHTML === '🦋' && cells[34].innerHTML === '🦋' && cells[35].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridFourWin()
   }
           //  Check for winner in columns
   if ((cells[27].innerHTML === '🦔' && cells[30].innerHTML === '🦔' && cells[33].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridFourWin()
   } else if ((cells[28].innerHTML === '🦔' && cells[31].innerHTML === '🦔' && cells[34].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridFourWin()
   } else if ((cells[29].innerHTML === '🦔' && cells[32].innerHTML === '🦔' && cells[35].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridFourWin()
   } else if ((cells[27].innerHTML === '🦋' && cells[30].innerHTML === '🦋' && cells[33].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridFourWin()
   } else if ((cells[28].innerHTML === '🦋' && cells[31].innerHTML === '🦋' && cells[34].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridFourWin()
   } else if ((cells[29].innerHTML === '🦋' && cells[32].innerHTML === '🦋' && cells[35].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridFourWin()
   }
           // Check for winner in diagonals
   if ((cells[27].innerHTML === '🦔' && cells[31].innerHTML === '🦔' && cells[35].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridFourWin()
   } else if ((cells[29].innerHTML === '🦔' && cells[31].innerHTML === '🦔' && cells[33].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridFourWin()
   } else if ((cells[27].innerHTML === '🦋' && cells[31].innerHTML === '🦋' && cells[35].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridFourWin()
   } else if ((cells[29].innerHTML === '🦋' && cells[31].innerHTML === '🦋' && cells[33].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridFourWin()
   }
         // Check for draw
   if ((cells[27].innerHTML !== '' && cells[28].innerHTML !== '' && cells[29].innerHTML !== '' 
@@ -1054,41 +1167,41 @@ function handleClickFive(event) {
   takeTurns()
       // check for winner in ROWS
   if ((cells[36].innerHTML === '🦔' && cells[37].innerHTML === '🦔' && cells[38].innerHTML === '🦔')) {
-    playerOneMiniWin()   
+    playerOneGridFiveWin()   
   } else if ((cells[39].innerHTML === '🦔' && cells[40].innerHTML === '🦔' && cells[41].innerHTML === '🦔')) {
-    playerOneMiniWin()     
+    playerOneGridFiveWin()    
   } else if ((cells[42].innerHTML === '🦔' && cells[43].innerHTML === '🦔' && cells[44].innerHTML === '🦔')) {
-    playerOneMiniWin()     
+    playerOneGridFiveWin()    
   } else if ((cells[36].innerHTML === '🦋' && cells[37].innerHTML === '🦋' && cells[38].innerHTML === '🦋')) {
-    playerTwoMiniWin()  
+    playerTwoGridFiveWin()  
   } else if ((cells[39].innerHTML === '🦋' && cells[40].innerHTML === '🦋' && cells[41].innerHTML === '🦋')) {
-    playerTwoMiniWin()  
+    playerTwoGridFiveWin()  
   } else if ((cells[42].innerHTML === '🦋' && cells[43].innerHTML === '🦋' && cells[44].innerHTML === '🦋')) {
-    playerTwoMiniWin() 
+    playerTwoGridFiveWin()
   }
         //  Check for winner in columns
   if ((cells[36].innerHTML === '🦔' && cells[39].innerHTML === '🦔' && cells[42].innerHTML === '🦔')) {
-    playerOneMiniWin()     
+    playerOneGridFiveWin()     
   } else if ((cells[37].innerHTML === '🦔' && cells[40].innerHTML === '🦔' && cells[43].innerHTML === '🦔')) {
-    playerOneMiniWin()     
+    playerOneGridFiveWin()     
   } else if ((cells[38].innerHTML === '🦔' && cells[41].innerHTML === '🦔' && cells[44].innerHTML === '🦔')) {
-    playerOneMiniWin()     
+    playerOneGridFiveWin()    
   } else if ((cells[36].innerHTML === '🦋' && cells[39].innerHTML === '🦋' && cells[42].innerHTML === '🦋')) {
-    playerTwoMiniWin()  
+    playerTwoGridFiveWin()  
   } else if ((cells[37].innerHTML === '🦋' && cells[40].innerHTML === '🦋' && cells[43].innerHTML === '🦋')) {
-    playerTwoMiniWin() 
+    playerTwoGridFiveWin() 
   } else if ((cells[38].innerHTML === '🦋' && cells[41].innerHTML === '🦋' && cells[44].innerHTML === '🦋')) {
-    playerTwoMiniWin()  
+    playerTwoGridFiveWin()  
   }
         // Check for winner in diagonals
   if ((cells[36].innerHTML === '🦔' && cells[40].innerHTML === '🦔' && cells[44].innerHTML === '🦔')) {
-    playerOneMiniWin()     
+    playerOneGridFiveWin()     
   } else if ((cells[38].innerHTML === '🦔' && cells[40].innerHTML === '🦔' && cells[42].innerHTML === '🦔')) {
-    playerOneMiniWin()     
+    playerOneGridFiveWin()     
   } else if ((cells[36].innerHTML === '🦋' && cells[40].innerHTML === '🦋' && cells[44].innerHTML === '🦋')) {
-    playerTwoMiniWin()  
+    playerTwoGridFiveWin()  
   } else if ((cells[38].innerHTML === '🦋' && cells[40].innerHTML === '🦋' && cells[42].innerHTML === '🦋')) {
-    playerTwoMiniWin()  
+    playerTwoGridFiveWin() 
   }
       // Check for draw
   if ((cells[36].innerHTML !== '' && cells[37].innerHTML !== '' && cells[38].innerHTML !== '' 
@@ -1266,41 +1379,41 @@ function handleClickSix(event) {
   takeTurns()
       // check for winner in ROWS
   if ((cells[45].innerHTML === '🦔' && cells[46].innerHTML === '🦔' && cells[47].innerHTML === '🦔')) {
-    playerOneMiniWin()   
+    playerOneGridSixWin()   
   } else if ((cells[48].innerHTML === '🦔' && cells[49].innerHTML === '🦔' && cells[50].innerHTML === '🦔')) {
-    playerOneMiniWin() 
+    playerOneGridSixWin()   
   } else if ((cells[51].innerHTML === '🦔' && cells[52].innerHTML === '🦔' && cells[53].innerHTML === '🦔')) {
-    playerOneMiniWin() 
+    playerOneGridSixWin() 
   } else if ((cells[45].innerHTML === '🦋' && cells[46].innerHTML === '🦋' && cells[47].innerHTML === '🦋')) {
-    playerTwoMiniWin() 
+    playerTwoGridSixWin() 
   } else if ((cells[48].innerHTML === '🦋' && cells[49].innerHTML === '🦋' && cells[50].innerHTML === '🦋')) {
-    playerTwoMiniWin() 
+    playerTwoGridSixWin()
   } else if ((cells[51].innerHTML === '🦋' && cells[52].innerHTML === '🦋' && cells[53].innerHTML === '🦋')) {
-    playerTwoMiniWin() 
+    playerTwoGridSixWin()
   }
         //  Check for winner in columns
   if ((cells[45].innerHTML === '🦔' && cells[48].innerHTML === '🦔' && cells[51].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridSixWin() 
   } else if ((cells[46].innerHTML === '🦔' && cells[49].innerHTML === '🦔' && cells[52].innerHTML === '🦔')) {
-    playerOneMiniWin() 
+    playerOneGridSixWin() 
   } else if ((cells[47].innerHTML === '🦔' && cells[50].innerHTML === '🦔' && cells[53].innerHTML === '🦔')) {
-    playerOneMiniWin() 
+    playerOneGridSixWin()  
   } else if ((cells[45].innerHTML === '🦋' && cells[48].innerHTML === '🦋' && cells[51].innerHTML === '🦋')) {
-    playerTwoMiniWin() 
+    playerTwoGridSixWin() 
   } else if ((cells[46].innerHTML === '🦋' && cells[49].innerHTML === '🦋' && cells[52].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridSixWin()
   } else if ((cells[47].innerHTML === '🦋' && cells[50].innerHTML === '🦋' && cells[53].innerHTML === '🦋')) {
-    playerTwoMiniWin() 
+    playerTwoGridSixWin() 
   }
         // Check for winner in diagonals
   if ((cells[45].innerHTML === '🦔' && cells[49].innerHTML === '🦔' && cells[53].innerHTML === '🦔')) {
-    playerOneMiniWin() 
+    playerOneGridSixWin() 
   } else if ((cells[47].innerHTML === '🦔' && cells[49].innerHTML === '🦔' && cells[51].innerHTML === '🦔')) {
-    playerOneMiniWin() 
+    playerOneGridSixWin() 
   } else if ((cells[45].innerHTML === '🦋' && cells[49].innerHTML === '🦋' && cells[53].innerHTML === '🦋')) {
-    playerTwoMiniWin() 
+    playerTwoGridSixWin() 
   } else if ((cells[47].innerHTML === '🦋' && cells[49].innerHTML === '🦋' && cells[51].innerHTML === '🦋')) {
-    playerTwoMiniWin() 
+    playerTwoGridSixWin() 
   }
       // Check for draw
   if ((cells[45].innerHTML !== '' && cells[46].innerHTML !== '' && cells[47].innerHTML !== '' 
@@ -1478,41 +1591,41 @@ function handleClickSeven(event) {
   takeTurns()
       // check for winner in ROWS
   if ((cells[54].innerHTML === '🦔' && cells[55].innerHTML === '🦔' && cells[56].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridSevenWin()
   } else if ((cells[57].innerHTML === '🦔' && cells[58].innerHTML === '🦔' && cells[59].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridSevenWin()
   } else if ((cells[60].innerHTML === '🦔' && cells[61].innerHTML === '🦔' && cells[62].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridSevenWin()
   } else if ((cells[54].innerHTML === '🦋' && cells[55].innerHTML === '🦋' && cells[56].innerHTML === '🦋')) {
-    playerTwoMiniWin() 
+    playerTwoGridSevenWin() 
   } else if ((cells[57].innerHTML === '🦋' && cells[58].innerHTML === '🦋' && cells[59].innerHTML === '🦋')) {
-    playerTwoMiniWin() 
+    playerTwoGridSevenWin()
   } else if ((cells[60].innerHTML === '🦋' && cells[61].innerHTML === '🦋' && cells[62].innerHTML === '🦋')) {
-    playerTwoMiniWin() 
+    playerTwoGridSevenWin() 
   }
         //  Check for winner in columns
   if ((cells[54].innerHTML === '🦔' && cells[57].innerHTML === '🦔' && cells[60].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridSevenWin()
   } else if ((cells[55].innerHTML === '🦔' && cells[58].innerHTML === '🦔' && cells[61].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridSevenWin()
   } else if ((cells[56].innerHTML === '🦔' && cells[59].innerHTML === '🦔' && cells[62].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridSevenWin()
   } else if ((cells[54].innerHTML === '🦋' && cells[57].innerHTML === '🦋' && cells[60].innerHTML === '🦋')) {
-    playerTwoMiniWin() 
+    playerTwoGridSevenWin() 
   } else if ((cells[55].innerHTML === '🦋' && cells[58].innerHTML === '🦋' && cells[61].innerHTML === '🦋')) {
-    playerTwoMiniWin() 
+    playerTwoGridSevenWin() 
   } else if ((cells[56].innerHTML === '🦋' && cells[59].innerHTML === '🦋' && cells[62].innerHTML === '🦋')) {
-    playerTwoMiniWin() 
+    playerTwoGridSevenWin() 
   }
         // Check for winner in diagonals
   if ((cells[54].innerHTML === '🦔' && cells[58].innerHTML === '🦔' && cells[62].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridSevenWin()
   } else if ((cells[56].innerHTML === '🦔' && cells[58].innerHTML === '🦔' && cells[60].innerHTML === '🦔')) {
-    playerOneMiniWin()
+    playerOneGridSevenWin()
   } else if ((cells[54].innerHTML === '🦋' && cells[58].innerHTML === '🦋' && cells[62].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridSevenWin()
   } else if ((cells[56].innerHTML === '🦋' && cells[58].innerHTML === '🦋' && cells[60].innerHTML === '🦋')) {
-    playerTwoMiniWin() 
+    playerTwoGridSevenWin() 
   }
       // Check for draw
   if ((cells[54].innerHTML !== '' && cells[55].innerHTML !== '' && cells[56].innerHTML !== '' 
@@ -1690,41 +1803,41 @@ function handleClickEight(event) {
   takeTurns()
       // check for winner in ROWS
   if ((cells[63].innerHTML === '🦔' && cells[64].innerHTML === '🦔' && cells[65].innerHTML === '🦔')) {
-    playerOneMiniWin()    
+    playerOneGridEightWin()    
   } else if ((cells[66].innerHTML === '🦔' && cells[67].innerHTML === '🦔' && cells[68].innerHTML === '🦔')) {
-    playerOneMiniWin()   
+    playerOneGridEightWin()   
   } else if ((cells[69].innerHTML === '🦔' && cells[70].innerHTML === '🦔' && cells[71].innerHTML === '🦔')) {
-    playerOneMiniWin()   
+    playerOneGridEightWin()   
   } else if ((cells[63].innerHTML === '🦋' && cells[64].innerHTML === '🦋' && cells[65].innerHTML === '🦋')) {
-    playerTwoMiniWin()    
+    playerTwoGridEightWin()    
   } else if ((cells[66].innerHTML === '🦋' && cells[67].innerHTML === '🦋' && cells[68].innerHTML === '🦋')) {
-    playerTwoMiniWin()    
+    playerTwoGridEightWin()    
   } else if ((cells[69].innerHTML === '🦋' && cells[70].innerHTML === '🦋' && cells[71].innerHTML === '🦋')) {
-    playerTwoMiniWin()    
+    playerTwoGridEightWin()    
   }
         //  Check for winner in columns
   if ((cells[63].innerHTML === '🦔' && cells[66].innerHTML === '🦔' && cells[69].innerHTML === '🦔')) {
-    playerOneMiniWin()   
+    playerOneGridEightWin()   
   } else if ((cells[64].innerHTML === '🦔' && cells[67].innerHTML === '🦔' && cells[70].innerHTML === '🦔')) {
-    playerOneMiniWin()   
+    playerOneGridEightWin()   
   } else if ((cells[65].innerHTML === '🦔' && cells[68].innerHTML === '🦔' && cells[71].innerHTML === '🦔')) {
-    playerOneMiniWin()   
+    playerOneGridEightWin()   
   } else if ((cells[63].innerHTML === '🦋' && cells[66].innerHTML === '🦋' && cells[69].innerHTML === '🦋')) {
-    playerTwoMiniWin()    
+    playerTwoGridEightWin()    
   } else if ((cells[64].innerHTML === '🦋' && cells[67].innerHTML === '🦋' && cells[70].innerHTML === '🦋')) {
-    playerTwoMiniWin()    
+    playerTwoGridEightWin()    
   } else if ((cells[65].innerHTML === '🦋' && cells[68].innerHTML === '🦋' && cells[71].innerHTML === '🦋')) {
-    playerTwoMiniWin()   
+    playerTwoGridEightWin()   
   }
         // Check for winner in diagonals
   if ((cells[63].innerHTML === '🦔' && cells[67].innerHTML === '🦔' && cells[71].innerHTML === '🦔')) {
-    playerOneMiniWin()   
+    playerOneGridEightWin()   
   } else if ((cells[65].innerHTML === '🦔' && cells[67].innerHTML === '🦔' && cells[69].innerHTML === '🦔')) {
-    playerOneMiniWin()   
+    playerOneGridEightWin()   
   } else if ((cells[63].innerHTML === '🦋' && cells[67].innerHTML === '🦋' && cells[71].innerHTML === '🦋')) {
-    playerTwoMiniWin()   
+    playerTwoGridEightWin()   
   } else if ((cells[65].innerHTML === '🦋' && cells[67].innerHTML === '🦋' && cells[69].innerHTML === '🦋')) {
-    playerTwoMiniWin()   
+    playerTwoGridEightWin()   
   }
       // Check for draw
   if ((cells[63].innerHTML !== '' && cells[64].innerHTML !== '' && cells[65].innerHTML !== '' 
@@ -1902,41 +2015,41 @@ function handleClickNine(event) {
   takeTurns()
       // check for winner in ROWS
   if ((cells[72].innerHTML === '🦔' && cells[73].innerHTML === '🦔' && cells[74].innerHTML === '🦔')) {
-    playerOneMiniWin()   
+    playerOneGridNineWin()   
   } else if ((cells[75].innerHTML === '🦔' && cells[76].innerHTML === '🦔' && cells[77].innerHTML === '🦔')) {
-    playerOneMiniWin() 
+    playerOneGridNineWin()  
   } else if ((cells[78].innerHTML === '🦔' && cells[79].innerHTML === '🦔' && cells[80].innerHTML === '🦔')) {
-    playerOneMiniWin() 
+    playerOneGridNineWin() 
   } else if ((cells[72].innerHTML === '🦋' && cells[73].innerHTML === '🦋' && cells[74].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridNineWin()
   } else if ((cells[75].innerHTML === '🦋' && cells[76].innerHTML === '🦋' && cells[77].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridNineWin()
   } else if ((cells[78].innerHTML === '🦋' && cells[79].innerHTML === '🦋' && cells[80].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridNineWin()
   }
         //  Check for winner in columns
   if ((cells[72].innerHTML === '🦔' && cells[75].innerHTML === '🦔' && cells[78].innerHTML === '🦔')) {
-    playerOneMiniWin() 
+    playerOneGridNineWin() 
   } else if ((cells[73].innerHTML === '🦔' && cells[76].innerHTML === '🦔' && cells[79].innerHTML === '🦔')) {
-    playerOneMiniWin() 
+    playerOneGridNineWin()  
   } else if ((cells[74].innerHTML === '🦔' && cells[77].innerHTML === '🦔' && cells[80].innerHTML === '🦔')) {
-    playerOneMiniWin() 
+    playerOneGridNineWin() 
   } else if ((cells[72].innerHTML === '🦋' && cells[75].innerHTML === '🦋' && cells[78].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridNineWin()
   } else if ((cells[73].innerHTML === '🦋' && cells[76].innerHTML === '🦋' && cells[79].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridNineWin()
   } else if ((cells[74].innerHTML === '🦋' && cells[77].innerHTML === '🦋' && cells[80].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridNineWin()
   }
         // Check for winner in diagonals
   if ((cells[72].innerHTML === '🦔' && cells[76].innerHTML === '🦔' && cells[80].innerHTML === '🦔')) {
-    playerOneMiniWin() 
+    playerOneGridNineWin() 
   } else if ((cells[74].innerHTML === '🦔' && cells[76].innerHTML === '🦔' && cells[78].innerHTML === '🦔')) {
-    playerOneMiniWin() 
+    playerOneGridNineWin()  
   } else if ((cells[72].innerHTML === '🦋' && cells[76].innerHTML === '🦋' && cells[80].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridNineWin()
   } else if ((cells[74].innerHTML === '🦋' && cells[76].innerHTML === '🦋' && cells[78].innerHTML === '🦋')) {
-    playerTwoMiniWin()
+    playerTwoGridNineWin()
   }
       // Check for draw
   if ((cells[72].innerHTML !== '' && cells[73].innerHTML !== '' && cells[74].innerHTML !== '' 
