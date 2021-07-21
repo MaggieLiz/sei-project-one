@@ -89,7 +89,7 @@ function handleNewGame() {
     cell.innerHTML = ''
   })
   allMiniGrids.forEach(miniGrid => {
-    miniGrid.classList.remove('inactive-grid', 'active-grid', 'closed', 'player-one-win', 'player-two-win', 'draw')
+    miniGrid.classList.remove('inactive-grid', 'active-grid', 'closed', 'player-one-win', 'player-two-win', 'draw', 'game-end')
     miniGrid.classList.add('open')
   })
   gameStatus.innerHTML = '🦔 Go, Player One! 🦔'
