@@ -10,6 +10,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 h1 {
@@ -78,6 +79,11 @@ h1 {
   justify-content: center;
   align-items: center;
   font-size: 50px;
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .open {

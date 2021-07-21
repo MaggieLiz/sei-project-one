@@ -7,6 +7,7 @@
 const newGameBtn = document.querySelector('.new-game')
 const gameStatus = document.querySelector('#game-status')
 const mainGridContainer = document.querySelector('.main-grid')
+const audio = document.querySelector('#audio')
 
 // Game Variables
 const width = 3
@@ -56,18 +57,26 @@ function takeTurns() {
       event.target.innerHTML = '🦔'
       gameStatus.innerHTML = 'Go, Player Two!'
       currentPlayer = playerTwo
+      audio.src = './sounds/zapsplat_magic_wand_ping_001_12529.mp3'
+      audio.play()
     } else {
       currentPlayer = playerOne
       gameStatus.innerHTML = 'This square is in play. Please, choose another!'
+      audio.src = './sounds/zapsplat_magic_wand_zap_spell_005_12559.mp3'
+      audio.play()
     } 
   } else {
     if (event.target.innerHTML === '') {
       event.target.innerHTML = '🦋'
       gameStatus.innerHTML = 'Go, Player One!'
       currentPlayer = playerOne
+      audio.src = './sounds/zapsplat_magic_wand_ping_004_12532.mp3'
+      audio.play()
     } else {
       currentPlayer = playerTwo
       gameStatus.innerHTML = 'This square is in play. Please, choose another!'
+      audio.src = './sounds/zapsplat_magic_wand_zap_spell_005_12559.mp3'
+      audio.play()
     }
   }
 }
@@ -90,77 +99,89 @@ function gameEnd() {
   })
 }
 
+function playerOneGameWin() {
+  gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'     
+  audio.src = './sounds/zapsplat_magic_wand_spell_appear_twinkle_003_12541.mp3'
+  audio.play()
+  gameEnd()
+} 
+
+function playerTwoGameWin() {
+  gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
+      audio.src = './sounds/zapsplat_magic_wand_spell_appear_twinkle_003_12541.mp3'
+      audio.play()
+      gameEnd()
+}
+
+function playerOneMiniWin() {
+  gridOne.classList.add('player-one-win', 'closed')
+  gridOne.classList.remove('open')
+  audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
+  audio.play()
+}
+
+function playerTwoMiniWin() {
+  gridOne.classList.add('player-two-win', 'closed')
+  gridOne.classList.remove('open')
+  audio.src = './sounds/zapsplat_magic_wand_whoosh_burst_002_12547.mp3'
+  audio.play()
+}
+
 // Function to check for GAME end with win or draw
 function gameEndCheck() {
   // Check for GAME winner in rows
   if ((gridOne.classList.contains('player-one-win') && gridTwo.classList.contains('player-one-win') &&
     gridThree.classList.contains('player-one-win'))) {
-      gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'
-      gameEnd()
+      playerOneGameWin()
     } else if ((gridFour.classList.contains('player-one-win') && gridFive.classList.contains('player-one-win') &&
     gridSix.classList.contains('player-one-win'))) {
-      gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'
-      gameEnd()
+      playerOneGameWin()
     } else if ((gridSeven.classList.contains('player-one-win') && gridEight.classList.contains('player-one-win') &&
     gridNine.classList.contains('player-one-win'))) {
-      gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'
-      gameEnd()
+      playerOneGameWin()
     } else if ((gridOne.classList.contains('player-two-win') && gridTwo.classList.contains('player-two-win') &&
     gridThree.classList.contains('player-two-win'))) {
-      gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
-      gameEnd()
+      playerTwoGameWin()
     } else if ((gridFour.classList.contains('player-two-win') && gridFive.classList.contains('player-two-win') &&
     gridSix.classList.contains('player-two-win'))) {
-      gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
-      gameEnd()
+      playerTwoGameWin()
     } else if ((gridSeven.classList.contains('player-two-win') && gridEight.classList.contains('player-two-win') &&
     gridNine.classList.contains('player-two-win'))) {
-      gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
-      gameEnd()
+      playerTwoGameWin()
     }
     // check for GAME winner in columns
   else if ((gridOne.classList.contains('player-one-win') && gridFour.classList.contains('player-one-win') &&
     gridSeven.classList.contains('player-one-win'))) {
-      gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'
-      gameEnd()
+      playerOneGameWin()
     } else if ((gridTwo.classList.contains('player-one-win') && gridFive.classList.contains('player-one-win') &&
     gridEight.classList.contains('player-one-win'))) {
-      gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'
-      gameEnd()
+      playerOneGameWin()
     } else if ((gridThree.classList.contains('player-one-win') && gridSix.classList.contains('player-one-win') &&
     gridNine.classList.contains('player-one-win'))) {
-      gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'
-      gameEnd()
+      playerOneGameWin()
     } else if ((gridOne.classList.contains('player-two-win') && gridFour.classList.contains('player-two-win') &&
     gridSeven.classList.contains('player-two-win'))) {
-      gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
-      gameEnd()
+      playerTwoGameWin()
     } else if ((gridTwo.classList.contains('player-two-win') && gridFive.classList.contains('player-two-win') &&
     gridEight.classList.contains('player-two-win'))) {
-      gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
-      gameEnd()
+      playerTwoGameWin()
     } else if ((gridThree.classList.contains('player-two-win') && gridSix.classList.contains('player-two-win') &&
     gridNine.classList.contains('player-two-win'))) {
-      gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
-      gameEnd()
+      playerTwoGameWin()
     }
     // check for Game winner in diagonals
   else if ((gridOne.classList.contains('player-one-win') && gridFive.classList.contains('player-one-win') &&
     gridNine.classList.contains('player-one-win'))) {
-      gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'
-      gameEnd()
+      playerOneGameWin()
     } else if ((gridThree.classList.contains('player-one-win') && gridFive.classList.contains('player-one-win') &&
     gridSeven.classList.contains('player-one-win'))) {
-      gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'
-      gameEnd()
+      playerOneGameWin()
     } else if ((gridOne.classList.contains('player-two-win') && gridFive.classList.contains('player-two-win') &&
     gridNine.classList.contains('player-two-win'))) {
-      gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
-      gameEnd()
+      playerTwoGameWin()
     } else if ((gridThree.classList.contains('player-two-win') && gridFive.classList.contains('player-two-win') &&
     gridSeven.classList.contains('player-two-win'))) {
-      gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
-      gameEnd()
+      playerTwoGameWin()
   }
   // check for GAME draw
   else if ((gridOne.classList.contains('closed') && gridTwo.classList.contains('closed') &&
@@ -169,6 +190,8 @@ function gameEndCheck() {
     gridSeven.classList.contains('closed') && gridEight.classList.contains('closed') && 
     gridNine.classList.contains('closed'))) {
       gameStatus.innerHTML = `Game Over. It's a draw.`
+      audio.src = './sounds/zapsplat_magic_wand_spell_appear_twinkle_003_12541.mp3'
+      audio.play()
       gameEnd()
   }
 }
@@ -179,58 +202,42 @@ function handleClickOne(event) {
   takeTurns()
   // check for winner in miniGrid ROWS
   if ((cells[0].innerHTML === '🦔' && cells[1].innerHTML === '🦔' && cells[2].innerHTML === '🦔')) {
-      gridOne.classList.add('player-one-win', 'closed')
-      gridOne.classList.remove('open')
+    playerOneMiniWin()
     } else if ((cells[3].innerHTML === '🦔' && cells[4].innerHTML === '🦔' && cells[5].innerHTML === '🦔')) {
-      gridOne.classList.add('player-one-win', 'closed')
-      gridOne.classList.remove('open')
+      playerOneMiniWin()
     } else if ((cells[6].innerHTML === '🦔' && cells[7].innerHTML === '🦔' && cells[8].innerHTML === '🦔')) {
-      gridOne.classList.add('player-one-win', 'closed')
-      gridOne.classList.remove('open')
+      playerOneMiniWin()
     } else if ((cells[0].innerHTML === '🦋' && cells[1].innerHTML === '🦋' && cells[2].innerHTML === '🦋')) {
-      gridOne.classList.add('player-two-win', 'closed')
-      gridOne.classList.remove('open')
+      playerTwoMiniWin()
     } else if ((cells[3].innerHTML === '🦋' && cells[4].innerHTML === '🦋' && cells[5].innerHTML === '🦋')) {
-      gridOne.classList.add('player-two-win', 'closed')
-      gridOne.classList.remove('open')
+      playerTwoMiniWin()
     } else if ((cells[6].innerHTML === '🦋' && cells[7].innerHTML === '🦋' && cells[8].innerHTML === '🦋')) {
-      gridOne.classList.add('player-two-win', 'closed')
-      gridOne.classList.remove('open')
+      playerTwoMiniWin()
     }
     //  Check for winner in miniGrid columns
   else if ((cells[0].innerHTML === '🦔' && cells[3].innerHTML === '🦔' && cells[6].innerHTML === '🦔')) {
-      gridOne.classList.add('player-one-win', 'closed')
-      gridOne.classList.remove('open')
+      playerOneMiniWin()
     } else if ((cells[1].innerHTML === '🦔' && cells[4].innerHTML === '🦔' && cells[7].innerHTML === '🦔')) {
-      gridOne.classList.add('player-one-win', 'closed')
-      gridOne.classList.remove('open')
+      playerOneMiniWin()
     } else if ((cells[2].innerHTML === '🦔' && cells[5].innerHTML === '🦔' && cells[8].innerHTML === '🦔')) {
-      gridOne.classList.add('player-one-win', 'closed')
-      gridOne.classList.remove('open')
+      playerOneMiniWin()
     } else if ((cells[0].innerHTML === '🦋' && cells[3].innerHTML === '🦋' && cells[6].innerHTML === '🦋')) {
-      gridOne.classList.add('player-two-win', 'closed')
-      gridOne.classList.remove('open')
+      playerTwoMiniWin()
     } else if ((cells[1].innerHTML === '🦋' && cells[4].innerHTML === '🦋' && cells[7].innerHTML === '🦋')) {
-      gridOne.classList.add('player-two-win', 'closed')
-      gridOne.classList.remove('open')
+      playerTwoMiniWin()
     } else if ((cells[2].innerHTML === '🦋' && cells[5].innerHTML === '🦋' && cells[8].innerHTML === '🦋')) {
-      gridOne.classList.add('player-two-win', 'closed')
-      gridOne.classList.remove('open')
+      playerTwoMiniWin()
     }
   
     // Check for winner in miniGrid diagonals
   else if ((cells[0].innerHTML === '🦔' && cells[4].innerHTML === '🦔' && cells[8].innerHTML === '🦔')) {
-      gridOne.classList.add('player-one-win', 'closed')
-      gridOne.classList.remove('open')
+    playerOneMiniWin()
     } else if ((cells[2].innerHTML === '🦔' && cells[4].innerHTML === '🦔' && cells[6].innerHTML === '🦔')) {
-      gridOne.classList.add('player-one-win', 'closed')
-      gridOne.classList.remove('open')
+      playerOneMiniWin()
     } else if ((cells[0].innerHTML === '🦋' && cells[4].innerHTML === '🦋' && cells[8].innerHTML === '🦋')) {
-      gridOne.classList.add('player-two-win', 'closed')
-      gridOne.classList.remove('open')
+      playerTwoMiniWin()
     } else if ((cells[2].innerHTML === '🦋' && cells[4].innerHTML === '🦋' && cells[6].innerHTML === '🦋')) {
-      gridOne.classList.add('player-two-win', 'closed')
-      gridOne.classList.remove('open')
+      playerTwoMiniWin()
     }
   // Check for miniGrid draw
   else if ((cells[0].innerHTML !== '' && cells[1].innerHTML !== '' && cells[2].innerHTML !== '' 
@@ -411,57 +418,41 @@ function handleClickTwo(event) {
   takeTurns()
   // check for winner in ROWS
   if ((cells[9].innerHTML === '🦔' && cells[10].innerHTML === '🦔' && cells[11].innerHTML === '🦔')) {
-      gridTwo.classList.add('player-one-win', 'closed')    
-      gridTwo.classList.remove('open')  
+    playerOneMiniWin()  
     } else if ((cells[12].innerHTML === '🦔' && cells[13].innerHTML === '🦔' && cells[14].innerHTML === '🦔')) {
-      gridTwo.classList.add('player-one-win', 'closed')
-      gridTwo.classList.remove('open')
+      playerOneMiniWin()
     } else if ((cells[15].innerHTML === '🦔' && cells[16].innerHTML === '🦔' && cells[17].innerHTML === '🦔')) {
-      gridTwo.classList.add('player-one-win', 'closed')
-      gridTwo.classList.remove('open')
+      playerOneMiniWin()
     } else if ((cells[9].innerHTML === '🦋' && cells[10].innerHTML === '🦋' && cells[11].innerHTML === '🦋')) {
-      gridTwo.classList.add('player-two-win', 'closed')
-      gridTwo.classList.remove('open')
+      playerTwoMiniWin()
     } else if ((cells[12].innerHTML === '🦋' && cells[13].innerHTML === '🦋' && cells[14].innerHTML === '🦋')) {
-      gridTwo.classList.add('player-two-win', 'closed')
-      gridTwo.classList.remove('open')
+      playerTwoMiniWin()
     } else if ((cells[15].innerHTML === '🦋' && cells[16].innerHTML === '🦋' && cells[17].innerHTML === '🦋')) {
-      gridTwo.classList.add('player-two-win', 'closed')
-      gridTwo.classList.remove('open')
+      playerTwoMiniWin()
     }
     //  Check for winner in columns
   if ((cells[9].innerHTML === '🦔' && cells[12].innerHTML === '🦔' && cells[15].innerHTML === '🦔')) {
-      gridTwo.div.classList.add('player-one-win', 'closed')
-      gridTwo.classList.remove('open')
+      playerOneGameWin()
     } else if ((cells[10].innerHTML === '🦔' && cells[13].innerHTML === '🦔' && cells[16].innerHTML === '🦔')) {
-      gridTwo.classList.add('player-one-win', 'closed')
-      gridTwo.classList.remove('open')
+      playerOneMiniWin()
     } else if ((cells[11].innerHTML === '🦔' && cells[14].innerHTML === '🦔' && cells[17].innerHTML === '🦔')) {
-      gridTwo.classList.add('player-one-win', 'closed')
-      gridTwo.classList.remove('open')
+      playerOneMiniWin()
     } else if ((cells[9].innerHTML === '🦋' && cells[12].innerHTML === '🦋' && cells[15].innerHTML === '🦋')) {
-      gridTwo.classList.add('player-two-win', 'closed')
-      gridTwo.classList.remove('open')
+      gplayerTwoMiniWin()
     } else if ((cells[10].innerHTML === '🦋' && cells[13].innerHTML === '🦋' && cells[16].innerHTML === '🦋')) {
-      gridTwo.classList.add('player-two-win', 'closed')
-      gridTwo.classList.remove('open')
+      playerTwoMiniWin()
     } else if ((cells[11].innerHTML === '🦋' && cells[14].innerHTML === '🦋' && cells[17].innerHTML === '🦋')) {
-      gridTwo.classList.add('player-two-win', 'closed')
-      gridTwo.classList.remove('open')
+      playerTwoMiniWin()
     }
     // Check for winner in diagonals
   else if ((cells[9].innerHTML === '🦔' && cells[13].innerHTML === '🦔' && cells[17].innerHTML === '🦔')) {
-      gridTwo.classList.add('player-one-win', 'closed')
-      gridTwo.classList.remove('open')
+    playerOneMiniWin()
     } else if ((cells[11].innerHTML === '🦔' && cells[13].innerHTML === '🦔' && cells[15].innerHTML === '🦔')) {
-      gridTwo.classList.add('player-one-win', 'closed')
-      gridTwo.classList.remove('open')
+      playerOneMiniWin()
     } else if ((cells[9].innerHTML === '🦋' && cells[13].innerHTML === '🦋' && cells[17].innerHTML === '🦋')) {
-      gridTwo.classList.add('player-two-win', 'closed')
-      gridTwo.classList.remove('open')
+      playerTwoMiniWin()
     } else if ((cells[11].innerHTML === '🦋' && cells[13].innerHTML === '🦋' && cells[15].innerHTML === '🦋')) {
-      gridTwo.classList.add('player-two-win', 'closed')
-      gridTwo.classList.remove('open')
+      playerTwoMiniWin()
     }
   // Check for draw
   else if ((cells[9].innerHTML !== '' && cells[10].innerHTML !== '' && cells[11].innerHTML !== '' 
@@ -639,57 +630,41 @@ function handleClickThree(event) {
   takeTurns()
     // check for winner in ROWS
   if ((cells[18].innerHTML === '🦔' && cells[19].innerHTML === '🦔' && cells[20].innerHTML === '🦔')) {
-    gridThree.classList.add('player-one-win', 'closed')
-    gridThree.classList.remove('open')
+    playerOneMiniWin()
   } else if ((cells[21].innerHTML === '🦔' && cells[22].innerHTML === '🦔' && cells[23].innerHTML === '🦔')) {
-    gridThree.classList.add('player-one-win', 'closed')
-    gridThree.classList.remove('open')
+    playerOneMiniWin()
   } else if ((cells[24].innerHTML === '🦔' && cells[25].innerHTML === '🦔' && cells[26].innerHTML === '🦔')) {
-    gridThree.classList.add('player-one-win', 'closed')
-    gridThree.classList.remove('open')
+    playerOneMiniWin()
   } else if ((cells[18].innerHTML === '🦋' && cells[19].innerHTML === '🦋' && cells[20].innerHTML === '🦋')) {
-    gridThree.classList.add('player-two-win', 'closed')
-    gridThree.classList.remove('open')
+    playerTwoMiniWin()
   } else if ((cells[21].innerHTML === '🦋' && cells[22].innerHTML === '🦋' && cells[23].innerHTML === '🦋')) {
-    gridThree.classList.add('player-two-win', 'closed')
-    gridThree.classList.remove('open')
+    playerTwoMiniWin()
   } else if ((cells[24].innerHTML === '🦋' && cells[25].innerHTML === '🦋' && cells[26].innerHTML === '🦋')) {
-    gridThree.classList.add('player-two-win', 'closed')
-    gridThree.classList.remove('open')
+    playerTwoMiniWin()
   }
       //  Check for winner in columns
   else if ((cells[18].innerHTML === '🦔' && cells[21].innerHTML === '🦔' && cells[24].innerHTML === '🦔')) {
-    gridThree.classList.add('player-one-win', 'closed')
-    gridThree.classList.remove('open')
+    playerOneMiniWin()
   } else if ((cells[19].innerHTML === '🦔' && cells[22].innerHTML === '🦔' && cells[25].innerHTML === '🦔')) {
-    gridThree.classList.add('player-one-win', 'closed')
-    gridThree.classList.remove('open')
+    playerOneMiniWin()
   } else if ((cells[20].innerHTML === '🦔' && cells[23].innerHTML === '🦔' && cells[26].innerHTML === '🦔')) {
-    gridThree.classList.add('player-one-win', 'closed')
-    gridThree.classList.remove('open')
+    playerOneMiniWin()
   } else if ((cells[18].innerHTML === '🦋' && cells[21].innerHTML === '🦋' && cells[24].innerHTML === '🦋')) {
-    gridThree.classList.add('player-two-win', 'closed')
-    gridThree.classList.remove('open')
+    playerTwoMiniWin()
   } else if ((cells[19].innerHTML === '🦋' && cells[22].innerHTML === '🦋' && cells[25].innerHTML === '🦋')) {
-    gridThree.classList.add('player-two-win', 'closed')
-    gridThree.classList.remove('open')
+    playerTwoMiniWin()
   } else if ((cells[20].innerHTML === '🦋' && cells[23].innerHTML === '🦋' && cells[26].innerHTML === '🦋')) {
-    gridThree.classList.add('player-two-win', 'closed')
-    gridThree.classList.remove('open')
+    playerTwoMiniWin()
   }
       // Check for winner in diagonals
   else if ((cells[18].innerHTML === '🦔' && cells[22].innerHTML === '🦔' && cells[26].innerHTML === '🦔')) {
-    gridThree.classList.add('player-one-win', 'closed')
-    gridThree.classList.remove('open')
+    playerOneMiniWin()
   } else if ((cells[20].innerHTML === '🦔' && cells[22].innerHTML === '🦔' && cells[24].innerHTML === '🦔')) {
-    gridThree.classList.add('player-one-win', 'closed')
-    gridThree.classList.remove('open')
+    playerOneMiniWin()
   } else if ((cells[18].innerHTML === '🦋' && cells[22].innerHTML === '🦋' && cells[26].innerHTML === '🦋')) {
-    gridThree.classList.add('player-two-win', 'closed')
-    gridThree.classList.remove('open')
+    playerTwoMiniWin()
   } else if ((cells[20].innerHTML === '🦋' && cells[22].innerHTML === '🦋' && cells[24].innerHTML === '🦋')) {
-    gridThree.classList.add('player-two-win', 'closed')
-    gridThree.classList.remove('open')
+    playerTwoMiniWin()
   }
     // Check for draw
   else if ((cells[18].innerHTML !== '' && cells[19].innerHTML !== '' && cells[20].innerHTML !== '' 
@@ -867,57 +842,41 @@ function handleClickFour(event) {
   takeTurns()
         // check for winner in ROWS
   if ((cells[27].innerHTML === '🦔' && cells[28].innerHTML === '🦔' && cells[29].innerHTML === '🦔')) {
-    gridFour.classList.add('player-one-win', 'closed')         
-    gridFour.classList.remove('open')
+    playerOneMiniWin()
   } else if ((cells[30].innerHTML === '🦔' && cells[31].innerHTML === '🦔' && cells[32].innerHTML === '🦔')) {
-    gridFour.classList.add('player-one-win', 'closed')
-    gridFour.classList.remove('open')
+    playerOneMiniWin()
   } else if ((cells[33].innerHTML === '🦔' && cells[34].innerHTML === '🦔' && cells[35].innerHTML === '🦔')) {
-    gridFour.classList.add('player-one-win', 'closed')
-    gridFour.classList.remove('open')
+    playerOneMiniWin()
   } else if ((cells[27].innerHTML === '🦋' && cells[28].innerHTML === '🦋' && cells[29].innerHTML === '🦋')) {
-    gridFour.classList.add('player-two-win', 'closed')
-    gridFour.classList.remove('open')
+    playerTwoMiniWin()
   } else if ((cells[30].innerHTML === '🦋' && cells[31].innerHTML === '🦋' && cells[32].innerHTML === '🦋')) {
-    gridFour.classList.add('player-two-win', 'closed')
-    gridFour.classList.remove('open')
+    playerTwoMiniWin()
   } else if ((cells[33].innerHTML === '🦋' && cells[34].innerHTML === '🦋' && cells[35].innerHTML === '🦋')) {
-    gridFour.classList.add('player-two-win', 'closed')
-    gridFour.classList.remove('open')
+    playerTwoMiniWin()
   }
           //  Check for winner in columns
   if ((cells[27].innerHTML === '🦔' && cells[30].innerHTML === '🦔' && cells[33].innerHTML === '🦔')) {
-    gridFour.classList.add('player-one-win', 'closed')
-    gridFour.classList.remove('open')
+    playerOneMiniWin()
   } else if ((cells[28].innerHTML === '🦔' && cells[31].innerHTML === '🦔' && cells[34].innerHTML === '🦔')) {
-    gridFour.classList.add('player-one-win', 'closed')
-    gridFour.classList.remove('open')
+    playerOneMiniWin()
   } else if ((cells[29].innerHTML === '🦔' && cells[32].innerHTML === '🦔' && cells[35].innerHTML === '🦔')) {
-    gridFour.classList.add('player-one-win', 'closed')
-    gridFour.classList.remove('open')
+    playerOneMiniWin()
   } else if ((cells[27].innerHTML === '🦋' && cells[30].innerHTML === '🦋' && cells[33].innerHTML === '🦋')) {
-    gridFour.classList.add('player-two-win', 'closed')
-    gridFour.classList.remove('open')
+    playerTwoMiniWin()
   } else if ((cells[28].innerHTML === '🦋' && cells[31].innerHTML === '🦋' && cells[34].innerHTML === '🦋')) {
-    gridFour.classList.add('player-two-win', 'closed')
-    gridFour.classList.remove('open')
+    playerTwoMiniWin()
   } else if ((cells[29].innerHTML === '🦋' && cells[32].innerHTML === '🦋' && cells[35].innerHTML === '🦋')) {
-    gridFour.classList.add('player-two-win', 'closed')
-    gridFour.classList.remove('open')
+    playerTwoMiniWin()
   }
           // Check for winner in diagonals
   if ((cells[27].innerHTML === '🦔' && cells[31].innerHTML === '🦔' && cells[35].innerHTML === '🦔')) {
-    gridFour.classList.add('player-one-win', 'closed')
-    gridFour.classList.remove('open')
+    playerOneMiniWin()
   } else if ((cells[29].innerHTML === '🦔' && cells[31].innerHTML === '🦔' && cells[33].innerHTML === '🦔')) {
-    gridFour.classList.add('player-one-win', 'closed')
-    gridFour.classList.remove('open')
+    playerOneMiniWin()
   } else if ((cells[27].innerHTML === '🦋' && cells[31].innerHTML === '🦋' && cells[35].innerHTML === '🦋')) {
-    gridFour.classList.add('player-two-win', 'closed')
-    gridFour.classList.remove('open')
+    playerTwoMiniWin()
   } else if ((cells[29].innerHTML === '🦋' && cells[31].innerHTML === '🦋' && cells[33].innerHTML === '🦋')) {
-    gridFour.classList.add('player-two-win', 'closed')
-    gridFour.classList.remove('open')
+    playerTwoMiniWin()
   }
         // Check for draw
   if ((cells[27].innerHTML !== '' && cells[28].innerHTML !== '' && cells[29].innerHTML !== '' 
@@ -1095,57 +1054,41 @@ function handleClickFive(event) {
   takeTurns()
       // check for winner in ROWS
   if ((cells[36].innerHTML === '🦔' && cells[37].innerHTML === '🦔' && cells[38].innerHTML === '🦔')) {
-    gridFive.classList.add('player-one-win', 'closed')  
-    gridFive.classList.remove('open')   
+    playerOneMiniWin()   
   } else if ((cells[39].innerHTML === '🦔' && cells[40].innerHTML === '🦔' && cells[41].innerHTML === '🦔')) {
-    gridFive.classList.add('player-one-win', 'closed')
-    gridFive.classList.remove('open')  
+    playerOneMiniWin()     
   } else if ((cells[42].innerHTML === '🦔' && cells[43].innerHTML === '🦔' && cells[44].innerHTML === '🦔')) {
-    gridFive.classList.add('player-one-win', 'closed')
-    gridFive.classList.remove('open')  
+    playerOneMiniWin()     
   } else if ((cells[36].innerHTML === '🦋' && cells[37].innerHTML === '🦋' && cells[38].innerHTML === '🦋')) {
-    gridFive.classList.add('player-two-win', 'closed')
-    gridFive.classList.remove('open')  
+    playerTwoMiniWin()  
   } else if ((cells[39].innerHTML === '🦋' && cells[40].innerHTML === '🦋' && cells[41].innerHTML === '🦋')) {
-    gridFive.classList.add('player-two-win', 'closed')
-    gridFive.classList.remove('open')  
+    playerTwoMiniWin()  
   } else if ((cells[42].innerHTML === '🦋' && cells[43].innerHTML === '🦋' && cells[44].innerHTML === '🦋')) {
-    gridFive.classList.add('player-two-win', 'closed')
-    gridFive.classList.remove('open')  
+    playerTwoMiniWin() 
   }
         //  Check for winner in columns
   if ((cells[36].innerHTML === '🦔' && cells[39].innerHTML === '🦔' && cells[42].innerHTML === '🦔')) {
-    gridFive.classList.add('player-one-win', 'closed')
-    gridFive.classList.remove('open')  
+    playerOneMiniWin()     
   } else if ((cells[37].innerHTML === '🦔' && cells[40].innerHTML === '🦔' && cells[43].innerHTML === '🦔')) {
-    gridFive.classList.add('player-one-win', 'closed')
-    gridFive.classList.remove('open')  
+    playerOneMiniWin()     
   } else if ((cells[38].innerHTML === '🦔' && cells[41].innerHTML === '🦔' && cells[44].innerHTML === '🦔')) {
-    gridFive.classList.add('player-one-win', 'closed')
-    gridFive.classList.remove('open')  
+    playerOneMiniWin()     
   } else if ((cells[36].innerHTML === '🦋' && cells[39].innerHTML === '🦋' && cells[42].innerHTML === '🦋')) {
-    gridFive.classList.add('player-two-win', 'closed')
-    gridFive.classList.remove('open')  
+    playerTwoMiniWin()  
   } else if ((cells[37].innerHTML === '🦋' && cells[40].innerHTML === '🦋' && cells[43].innerHTML === '🦋')) {
-    gridFive.classList.add('player-two-win', 'closed')
-    gridFive.classList.remove('open')  
+    playerTwoMiniWin() 
   } else if ((cells[38].innerHTML === '🦋' && cells[41].innerHTML === '🦋' && cells[44].innerHTML === '🦋')) {
-    gridFive.classList.add('player-two-win', 'closed')
-    gridFive.classList.remove('open')  
+    playerTwoMiniWin()  
   }
         // Check for winner in diagonals
   if ((cells[36].innerHTML === '🦔' && cells[40].innerHTML === '🦔' && cells[44].innerHTML === '🦔')) {
-    gridFive.classList.add('player-one-win', 'closed')
-    gridFive.classList.remove('open')  
+    playerOneMiniWin()     
   } else if ((cells[38].innerHTML === '🦔' && cells[40].innerHTML === '🦔' && cells[42].innerHTML === '🦔')) {
-    gridFive.classList.add('player-one-win', 'closed')
-    gridFive.classList.remove('open')  
+    playerOneMiniWin()     
   } else if ((cells[36].innerHTML === '🦋' && cells[40].innerHTML === '🦋' && cells[44].innerHTML === '🦋')) {
-    gridFive.classList.add('player-two-win', 'closed')
-    gridFive.classList.remove('open')  
+    playerTwoMiniWin()  
   } else if ((cells[38].innerHTML === '🦋' && cells[40].innerHTML === '🦋' && cells[42].innerHTML === '🦋')) {
-    gridFive.classList.add('player-two-win', 'closed')
-    gridFive.classList.remove('open')  
+    playerTwoMiniWin()  
   }
       // Check for draw
   if ((cells[36].innerHTML !== '' && cells[37].innerHTML !== '' && cells[38].innerHTML !== '' 
@@ -1323,57 +1266,41 @@ function handleClickSix(event) {
   takeTurns()
       // check for winner in ROWS
   if ((cells[45].innerHTML === '🦔' && cells[46].innerHTML === '🦔' && cells[47].innerHTML === '🦔')) {
-    gridSix.classList.add('player-one-win', 'closed')   
-    gridSix.classList.remove('open')      
+    playerOneMiniWin()   
   } else if ((cells[48].innerHTML === '🦔' && cells[49].innerHTML === '🦔' && cells[50].innerHTML === '🦔')) {
-    gridSix.classList.add('player-one-win', 'closed')
-    gridSix.classList.remove('open') 
+    playerOneMiniWin() 
   } else if ((cells[51].innerHTML === '🦔' && cells[52].innerHTML === '🦔' && cells[53].innerHTML === '🦔')) {
-    gridSix.classList.add('player-one-win', 'closed')
-    gridSix.classList.remove('open') 
+    playerOneMiniWin() 
   } else if ((cells[45].innerHTML === '🦋' && cells[46].innerHTML === '🦋' && cells[47].innerHTML === '🦋')) {
-    gridSix.classList.add('player-two-win', 'closed')
-    gridSix.classList.remove('open') 
+    playerTwoMiniWin() 
   } else if ((cells[48].innerHTML === '🦋' && cells[49].innerHTML === '🦋' && cells[50].innerHTML === '🦋')) {
-    gridSix.classList.add('player-two-win', 'closed')
-    gridSix.classList.remove('open') 
+    playerTwoMiniWin() 
   } else if ((cells[51].innerHTML === '🦋' && cells[52].innerHTML === '🦋' && cells[53].innerHTML === '🦋')) {
-    gridSix.classList.add('player-two-win', 'closed')
-    gridSix.classList.remove('open') 
+    playerTwoMiniWin() 
   }
         //  Check for winner in columns
   if ((cells[45].innerHTML === '🦔' && cells[48].innerHTML === '🦔' && cells[51].innerHTML === '🦔')) {
-    gridSix.classList.add('player-one-win')
-    gridSix.classList.remove('open') 
+    playerOneMiniWin()
   } else if ((cells[46].innerHTML === '🦔' && cells[49].innerHTML === '🦔' && cells[52].innerHTML === '🦔')) {
-    gridSix.classList.add('player-one-win', 'closed')
-    gridSix.classList.remove('open') 
+    playerOneMiniWin() 
   } else if ((cells[47].innerHTML === '🦔' && cells[50].innerHTML === '🦔' && cells[53].innerHTML === '🦔')) {
-    gridSix.classList.add('player-one-win', 'closed')
-    gridSix.classList.remove('open') 
+    playerOneMiniWin() 
   } else if ((cells[45].innerHTML === '🦋' && cells[48].innerHTML === '🦋' && cells[51].innerHTML === '🦋')) {
-    gridSix.classList.add('player-two-win', 'closed')
-    gridSix.classList.remove('open') 
+    playerTwoMiniWin() 
   } else if ((cells[46].innerHTML === '🦋' && cells[49].innerHTML === '🦋' && cells[52].innerHTML === '🦋')) {
-    gridSix.classList.add('player-two-win', 'closed')
-    gridSix.classList.remove('open') 
+    playerTwoMiniWin()
   } else if ((cells[47].innerHTML === '🦋' && cells[50].innerHTML === '🦋' && cells[53].innerHTML === '🦋')) {
-    gridSix.classList.add('player-two-win', 'closed')
-    gridSix.classList.remove('open') 
+    playerTwoMiniWin() 
   }
         // Check for winner in diagonals
   if ((cells[45].innerHTML === '🦔' && cells[49].innerHTML === '🦔' && cells[53].innerHTML === '🦔')) {
-    gridSix.classList.add('player-one-win', 'closed')
-    gridSix.classList.remove('open') 
+    playerOneMiniWin() 
   } else if ((cells[47].innerHTML === '🦔' && cells[49].innerHTML === '🦔' && cells[51].innerHTML === '🦔')) {
-    gridSix.classList.add('player-one-win', 'closed')
-    gridSix.classList.remove('open') 
+    playerOneMiniWin() 
   } else if ((cells[45].innerHTML === '🦋' && cells[49].innerHTML === '🦋' && cells[53].innerHTML === '🦋')) {
-    gridSix.classList.add('player-two-win', 'closed')
-    gridSix.classList.remove('open') 
+    playerTwoMiniWin() 
   } else if ((cells[47].innerHTML === '🦋' && cells[49].innerHTML === '🦋' && cells[51].innerHTML === '🦋')) {
-    gridSix.classList.add('player-two-win', 'closed')
-    gridSix.classList.remove('open') 
+    playerTwoMiniWin() 
   }
       // Check for draw
   if ((cells[45].innerHTML !== '' && cells[46].innerHTML !== '' && cells[47].innerHTML !== '' 
@@ -1551,57 +1478,41 @@ function handleClickSeven(event) {
   takeTurns()
       // check for winner in ROWS
   if ((cells[54].innerHTML === '🦔' && cells[55].innerHTML === '🦔' && cells[56].innerHTML === '🦔')) {
-    gridSeven.classList.add('player-one-win', 'closed')     
-    gridSeven.classList.remove('open') 
+    playerOneMiniWin()
   } else if ((cells[57].innerHTML === '🦔' && cells[58].innerHTML === '🦔' && cells[59].innerHTML === '🦔')) {
-    gridSeven.classList.add('player-one-win', 'closed')
-    gridSeven.classList.remove('open') 
+    playerOneMiniWin()
   } else if ((cells[60].innerHTML === '🦔' && cells[61].innerHTML === '🦔' && cells[62].innerHTML === '🦔')) {
-    gridSeven.classList.add('player-one-win', 'closed')
-    gridSeven.classList.remove('open') 
+    playerOneMiniWin()
   } else if ((cells[54].innerHTML === '🦋' && cells[55].innerHTML === '🦋' && cells[56].innerHTML === '🦋')) {
-    gridSeven.classList.add('player-two-win', 'closed')
-    gridSeven.classList.remove('open') 
+    playerTwoMiniWin() 
   } else if ((cells[57].innerHTML === '🦋' && cells[58].innerHTML === '🦋' && cells[59].innerHTML === '🦋')) {
-    gridSeven.classList.add('player-two-win', 'closed')
-    gridSeven.classList.remove('open') 
+    playerTwoMiniWin() 
   } else if ((cells[60].innerHTML === '🦋' && cells[61].innerHTML === '🦋' && cells[62].innerHTML === '🦋')) {
-    gridSeven.classList.add('player-two-win', 'closed')
-    gridSeven.classList.remove('open') 
+    playerTwoMiniWin() 
   }
         //  Check for winner in columns
   if ((cells[54].innerHTML === '🦔' && cells[57].innerHTML === '🦔' && cells[60].innerHTML === '🦔')) {
-    gridSeven.classList.add('player-one-win', 'closed')
-    gridSeven.classList.remove('open') 
+    playerOneMiniWin()
   } else if ((cells[55].innerHTML === '🦔' && cells[58].innerHTML === '🦔' && cells[61].innerHTML === '🦔')) {
-    gridSeven.classList.add('player-one-win', 'closed')
-    gridSeven.classList.remove('open') 
+    playerOneMiniWin()
   } else if ((cells[56].innerHTML === '🦔' && cells[59].innerHTML === '🦔' && cells[62].innerHTML === '🦔')) {
-    gridSeven.classList.add('player-one-win', 'closed')
-    gridSeven.classList.remove('open') 
+    playerOneMiniWin()
   } else if ((cells[54].innerHTML === '🦋' && cells[57].innerHTML === '🦋' && cells[60].innerHTML === '🦋')) {
-    gridSeven.classList.add('player-two-win', 'closed')
-    gridSeven.classList.remove('open') 
+    playerTwoMiniWin() 
   } else if ((cells[55].innerHTML === '🦋' && cells[58].innerHTML === '🦋' && cells[61].innerHTML === '🦋')) {
-    gridSeven.classList.add('player-two-win', 'closed')
-    gridSeven.classList.remove('open') 
+    playerTwoMiniWin() 
   } else if ((cells[56].innerHTML === '🦋' && cells[59].innerHTML === '🦋' && cells[62].innerHTML === '🦋')) {
-    gridSeven.classList.add('player-two-win', 'closed')
-    gridSeven.classList.remove('open') 
+    playerTwoMiniWin() 
   }
         // Check for winner in diagonals
   if ((cells[54].innerHTML === '🦔' && cells[58].innerHTML === '🦔' && cells[62].innerHTML === '🦔')) {
-    gridSeven.classList.add('player-one-win', 'closed')
-    gridSeven.classList.remove('open') 
+    playerOneMiniWin()
   } else if ((cells[56].innerHTML === '🦔' && cells[58].innerHTML === '🦔' && cells[60].innerHTML === '🦔')) {
-    gridSeven.classList.add('player-one-win', 'closed')
-    gridSeven.classList.remove('open') 
+    playerOneMiniWin()
   } else if ((cells[54].innerHTML === '🦋' && cells[58].innerHTML === '🦋' && cells[62].innerHTML === '🦋')) {
-    gridSeven.classList.add('player-two-win', 'closed')
-    gridSeven.classList.remove('open') 
+    playerTwoMiniWin()
   } else if ((cells[56].innerHTML === '🦋' && cells[58].innerHTML === '🦋' && cells[60].innerHTML === '🦋')) {
-    gridSeven.classList.add('player-two-win', 'closed')
-    gridSeven.classList.remove('open') 
+    playerTwoMiniWin() 
   }
       // Check for draw
   if ((cells[54].innerHTML !== '' && cells[55].innerHTML !== '' && cells[56].innerHTML !== '' 
@@ -1779,57 +1690,41 @@ function handleClickEight(event) {
   takeTurns()
       // check for winner in ROWS
   if ((cells[63].innerHTML === '🦔' && cells[64].innerHTML === '🦔' && cells[65].innerHTML === '🦔')) {
-    gridEight.classList.add('player-one-win', 'closed')  
-    gridEight.classList.remove('open')    
+    playerOneMiniWin()    
   } else if ((cells[66].innerHTML === '🦔' && cells[67].innerHTML === '🦔' && cells[68].innerHTML === '🦔')) {
-    gridEight.classList.add('player-one-win', 'closed')
-    gridEight.classList.remove('open')    
+    playerOneMiniWin()   
   } else if ((cells[69].innerHTML === '🦔' && cells[70].innerHTML === '🦔' && cells[71].innerHTML === '🦔')) {
-    gridEight.classList.add('player-one-win', 'closed')
-    gridEight.classList.remove('open')    
+    playerOneMiniWin()   
   } else if ((cells[63].innerHTML === '🦋' && cells[64].innerHTML === '🦋' && cells[65].innerHTML === '🦋')) {
-    gridEight.classList.add('player-two-win', 'closed')
-    gridEight.classList.remove('open')    
+    playerTwoMiniWin()    
   } else if ((cells[66].innerHTML === '🦋' && cells[67].innerHTML === '🦋' && cells[68].innerHTML === '🦋')) {
-    gridEight.classList.add('player-two-win', 'closed')
-    gridEight.classList.remove('open')    
+    playerTwoMiniWin()    
   } else if ((cells[69].innerHTML === '🦋' && cells[70].innerHTML === '🦋' && cells[71].innerHTML === '🦋')) {
-    gridEight.classList.add('player-two-win', 'closed')
-    gridEight.classList.remove('open')    
+    playerTwoMiniWin()    
   }
         //  Check for winner in columns
   if ((cells[63].innerHTML === '🦔' && cells[66].innerHTML === '🦔' && cells[69].innerHTML === '🦔')) {
-    gridEight.classList.add('player-one-win', 'closed')
-    gridEight.classList.remove('open')    
+    playerOneMiniWin()   
   } else if ((cells[64].innerHTML === '🦔' && cells[67].innerHTML === '🦔' && cells[70].innerHTML === '🦔')) {
-    gridEight.classList.add('player-one-win', 'closed')
-    gridEight.classList.remove('open')    
+    playerOneMiniWin()   
   } else if ((cells[65].innerHTML === '🦔' && cells[68].innerHTML === '🦔' && cells[71].innerHTML === '🦔')) {
-    gridEight.classList.add('player-one-win', 'closed')
-    gridEight.classList.remove('open')    
+    playerOneMiniWin()   
   } else if ((cells[63].innerHTML === '🦋' && cells[66].innerHTML === '🦋' && cells[69].innerHTML === '🦋')) {
-    gridEight.classList.add('player-two-win', 'closed')
-    gridEight.classList.remove('open')    
+    playerTwoMiniWin()    
   } else if ((cells[64].innerHTML === '🦋' && cells[67].innerHTML === '🦋' && cells[70].innerHTML === '🦋')) {
-    gridEight.classList.add('player-two-win', 'closed')
-    gridEight.classList.remove('open')    
+    playerTwoMiniWin()    
   } else if ((cells[65].innerHTML === '🦋' && cells[68].innerHTML === '🦋' && cells[71].innerHTML === '🦋')) {
-    gridEight.classList.add('player-two-win', 'closed')
-    gridEight.classList.remove('open')    
+    playerTwoMiniWin()   
   }
         // Check for winner in diagonals
   if ((cells[63].innerHTML === '🦔' && cells[67].innerHTML === '🦔' && cells[71].innerHTML === '🦔')) {
-    gridEight.classList.add('player-one-win', 'closed')
-    gridEight.classList.remove('open')    
+    playerOneMiniWin()   
   } else if ((cells[65].innerHTML === '🦔' && cells[67].innerHTML === '🦔' && cells[69].innerHTML === '🦔')) {
-    gridEight.classList.add('player-one-win', 'closed')
-    gridEight.classList.remove('open')    
+    playerOneMiniWin()   
   } else if ((cells[63].innerHTML === '🦋' && cells[67].innerHTML === '🦋' && cells[71].innerHTML === '🦋')) {
-    gridEight.classList.add('player-two-win', 'closed')
-    gridEight.classList.remove('open')    
+    playerTwoMiniWin()   
   } else if ((cells[65].innerHTML === '🦋' && cells[67].innerHTML === '🦋' && cells[69].innerHTML === '🦋')) {
-    gridEight.classList.add('player-two-win', 'closed')
-    gridEight.classList.remove('open')    
+    playerTwoMiniWin()   
   }
       // Check for draw
   if ((cells[63].innerHTML !== '' && cells[64].innerHTML !== '' && cells[65].innerHTML !== '' 
@@ -2007,57 +1902,41 @@ function handleClickNine(event) {
   takeTurns()
       // check for winner in ROWS
   if ((cells[72].innerHTML === '🦔' && cells[73].innerHTML === '🦔' && cells[74].innerHTML === '🦔')) {
-    gridNine.classList.add('player-one-win', 'closed')
-    gridNine.classList.remove('open')    
+    playerOneMiniWin()   
   } else if ((cells[75].innerHTML === '🦔' && cells[76].innerHTML === '🦔' && cells[77].innerHTML === '🦔')) {
-    gridNine.classList.add('player-one-win', 'closed')
-    gridNine.classList.remove('open')
+    playerOneMiniWin() 
   } else if ((cells[78].innerHTML === '🦔' && cells[79].innerHTML === '🦔' && cells[80].innerHTML === '🦔')) {
-    gridNine.classList.add('player-one-win', 'closed')
-    gridNine.classList.remove('open')
+    playerOneMiniWin() 
   } else if ((cells[72].innerHTML === '🦋' && cells[73].innerHTML === '🦋' && cells[74].innerHTML === '🦋')) {
-    gridNine.classList.add('player-two-win', 'closed')
-    gridNine.classList.remove('open')
+    playerTwoMiniWin()
   } else if ((cells[75].innerHTML === '🦋' && cells[76].innerHTML === '🦋' && cells[77].innerHTML === '🦋')) {
-    gridNine.classList.add('player-two-win', 'closed')
-    gridNine.classList.remove('open')
+    playerTwoMiniWin()
   } else if ((cells[78].innerHTML === '🦋' && cells[79].innerHTML === '🦋' && cells[80].innerHTML === '🦋')) {
-    gridNine.classList.add('player-two-win', 'closed')
-    gridNine.classList.remove('open')
+    playerTwoMiniWin()
   }
         //  Check for winner in columns
   if ((cells[72].innerHTML === '🦔' && cells[75].innerHTML === '🦔' && cells[78].innerHTML === '🦔')) {
-    gridNine.classList.add('player-one-win', 'closed')
-    gridNine.classList.remove('open')
+    playerOneMiniWin() 
   } else if ((cells[73].innerHTML === '🦔' && cells[76].innerHTML === '🦔' && cells[79].innerHTML === '🦔')) {
-    gridNine.classList.add('player-one-win', 'closed')
-    gridNine.classList.remove('open')
+    playerOneMiniWin() 
   } else if ((cells[74].innerHTML === '🦔' && cells[77].innerHTML === '🦔' && cells[80].innerHTML === '🦔')) {
-    gridNine.classList.add('player-one-win', 'closed')
-    gridNine.classList.remove('open')
+    playerOneMiniWin() 
   } else if ((cells[72].innerHTML === '🦋' && cells[75].innerHTML === '🦋' && cells[78].innerHTML === '🦋')) {
-    gridNine.classList.add('player-two-win', 'closed')
-    gridNine.classList.remove('open')
+    playerTwoMiniWin()
   } else if ((cells[73].innerHTML === '🦋' && cells[76].innerHTML === '🦋' && cells[79].innerHTML === '🦋')) {
-    gridNine.classList.add('player-two-win', 'closed')
-    gridNine.classList.remove('open')
+    playerTwoMiniWin()
   } else if ((cells[74].innerHTML === '🦋' && cells[77].innerHTML === '🦋' && cells[80].innerHTML === '🦋')) {
-    gridNine.classList.add('player-two-win', 'closed')
-    gridNine.classList.remove('open')
+    playerTwoMiniWin()
   }
         // Check for winner in diagonals
   if ((cells[72].innerHTML === '🦔' && cells[76].innerHTML === '🦔' && cells[80].innerHTML === '🦔')) {
-    gridNine.classList.add('player-one-win', 'closed')
-    gridNine.classList.remove('open')
+    playerOneMiniWin() 
   } else if ((cells[74].innerHTML === '🦔' && cells[76].innerHTML === '🦔' && cells[78].innerHTML === '🦔')) {
-    gridNine.classList.add('player-one-win', 'closed')
-    gridNine.classList.remove('open')
+    playerOneMiniWin() 
   } else if ((cells[72].innerHTML === '🦋' && cells[76].innerHTML === '🦋' && cells[80].innerHTML === '🦋')) {
-    gridNine.classList.add('player-two-win', 'closed')
-    gridNine.classList.remove('open')
+    playerTwoMiniWin()
   } else if ((cells[74].innerHTML === '🦋' && cells[76].innerHTML === '🦋' && cells[78].innerHTML === '🦋')) {
-    gridNine.classList.add('player-two-win', 'closed')
-    gridNine.classList.remove('open')
+    playerTwoMiniWin()
   }
       // Check for draw
   if ((cells[72].innerHTML !== '' && cells[73].innerHTML !== '' && cells[74].innerHTML !== '' 
