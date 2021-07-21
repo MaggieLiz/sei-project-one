@@ -20,8 +20,15 @@ const mainGrid = []
 
 let currentPlayer = playerOne
 let winner = playerOne
+let winners = []
 
 // Functions
+// function to use local storage to remember winner list
+// if (localStorage) {
+//   localStorage.getItem(winnerList)
+//   console.log(winnerList)
+// }
+// function to create grid and move it to the page
 function createGameGrid() {
   for (let i = 0; i < 9; i++) {
     miniGrid = document.createElement('div')
@@ -37,7 +44,6 @@ function createGameGrid() {
     }
   }
 }
-
 createGameGrid()
 
 // link to the dom variables for the nine grids created above
@@ -52,37 +58,28 @@ const gridEight = document.querySelector('.mini-7')
 const gridNine = document.querySelector('.mini-8')
 
 const allMiniGrids = [gridOne, gridTwo, gridThree, gridFour, gridFive, gridSix, gridSeven, gridEight, gridNine]
-
+// function to establish turn taking
 function takeTurns() {
-  if (currentPlayer === playerOne) {
-    if (event.target.innerHTML === '') {
+  if ((currentPlayer === playerOne && event.target.innerHTML === '')) {
       event.target.innerHTML = '🦔'
       gameStatus.innerHTML = 'Go, Player Two!'
       currentPlayer = playerTwo
       audio.src = './sounds/zapsplat_magic_wand_ping_001_12529.mp3'
       audio.play()
-    } else {
-      currentPlayer = playerOne
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-      audio.src = './sounds/zapsplat_magic_wand_zap_spell_005_12559.mp3'
-      audio.play()
-    } 
-  } else {
-    if (event.target.innerHTML === '') {
+      event.target.classList.add('inactive-cell')
+  } else if ((currentPlayer === playerTwo && event.target.innerHTML === '')) {
       event.target.innerHTML = '🦋'
       gameStatus.innerHTML = 'Go, Player One!'
       currentPlayer = playerOne
       audio.src = './sounds/zapsplat_magic_wand_ping_004_12532.mp3'
       audio.play()
-    } else {
-      currentPlayer = playerTwo
-      gameStatus.innerHTML = 'This square is in play. Please, choose another!'
-      audio.src = './sounds/zapsplat_magic_wand_zap_spell_005_12559.mp3'
-      audio.play()
-    }
+      event.target.classList.add('inactive-cell')
+  } else {
+    return
   }
 }
 
+// function to set new game when New Game Button is pressed
 function handleNewGame() {
   currentPlayer = playerOne
   cells.forEach(cell => {
@@ -94,18 +91,11 @@ function handleNewGame() {
   })
   gameStatus.innerHTML = '🦔 Go, Player One! 🦔'
 }
-
-function gameEnd() {
-  allMiniGrids.forEach(miniGrid => {
-    miniGrid.classList.add('game-end')
-  })
-}
-
+// Function to register Player One Win
 function playerOneGameWin() {
   gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'     
   audio.src = './sounds/zapsplat_magic_wand_spell_appear_twinkle_003_12541.mp3'
   audio.play()
-  gameEnd()
   function listWinner() {
     winner = document.createElement('li')
     winner.innerHTML = 'Player One 🦔'
@@ -113,20 +103,32 @@ function playerOneGameWin() {
     console.log('winner')
   }
   listWinner()
-} 
-
+  if (localStorage) {
+    localStorage.setItem(winnerList)
+  }
+  gameEnd()
+}
+// function to register Player Two win
 function playerTwoGameWin() {
   gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
   audio.src = './sounds/zapsplat_magic_wand_spell_appear_twinkle_003_12541.mp3'
   audio.play()
-  gameEnd()
-  function listWinner() {
-    winner = document.createElement('li')
-    winner.innerHTML = 'Player Two 🦋'
-    winnerList.appendChild(winner)
-    console.log('winner')
+  function gameEnd() {
+    allMiniGrids.forEach(miniGrid => {
+      miniGrid.classList.add('game-end')
+    })
+    function listWinner() {
+      winner = document.createElement('li')
+      winner.innerHTML = 'Player Two 🦋'
+      winnerList.appendChild(winner)
+      console.log('winner')
+    }
+    listWinner()
+    if (localStorage) {
+      localStorage.setItem(winnerList)
+    }
   }
-  listWinner()
+  gameEnd()
 }
 // functions for win in a minigrid by player one
 function playerOneGridOneWin() {

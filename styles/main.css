@@ -105,6 +105,10 @@ a {
   pointer-events: none;
 }
 
+.inactive-cell {
+  pointer-events: none;
+}
+
 .player-one-win {
   background-color: red;
 }
