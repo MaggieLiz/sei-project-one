@@ -310,65 +310,10 @@ function gameEndCheck() {
       gameEnd()
   }
 }
-
-// GRID ONE
-function handleClickOne(event) {
-  // turn taking
-  takeTurns()
-  // check for winner in miniGrid ROWS
-  if ((cells[0].innerHTML === '🦔' && cells[1].innerHTML === '🦔' && cells[2].innerHTML === '🦔')) {
-    playerOneGridOneWin()
-    } else if ((cells[3].innerHTML === '🦔' && cells[4].innerHTML === '🦔' && cells[5].innerHTML === '🦔')) {
-      playerOneGridOneWin()
-    } else if ((cells[6].innerHTML === '🦔' && cells[7].innerHTML === '🦔' && cells[8].innerHTML === '🦔')) {
-      playerOneGridOneWin()
-    } else if ((cells[0].innerHTML === '🦋' && cells[1].innerHTML === '🦋' && cells[2].innerHTML === '🦋')) {
-      playerTwoGridOneWin()
-    } else if ((cells[3].innerHTML === '🦋' && cells[4].innerHTML === '🦋' && cells[5].innerHTML === '🦋')) {
-      playerTwoGridOneWin()
-    } else if ((cells[6].innerHTML === '🦋' && cells[7].innerHTML === '🦋' && cells[8].innerHTML === '🦋')) {
-      playerTwoGridOneWin()
-    }
-    //  Check for winner in miniGrid columns
-  else if ((cells[0].innerHTML === '🦔' && cells[3].innerHTML === '🦔' && cells[6].innerHTML === '🦔')) {
-      playerOneGridOneWin()
-    } else if ((cells[1].innerHTML === '🦔' && cells[4].innerHTML === '🦔' && cells[7].innerHTML === '🦔')) {
-      playerOneGridOneWin()
-    } else if ((cells[2].innerHTML === '🦔' && cells[5].innerHTML === '🦔' && cells[8].innerHTML === '🦔')) {
-      playerOneGridOneWin()
-    } else if ((cells[0].innerHTML === '🦋' && cells[3].innerHTML === '🦋' && cells[6].innerHTML === '🦋')) {
-      playerTwoGridOneWin()
-    } else if ((cells[1].innerHTML === '🦋' && cells[4].innerHTML === '🦋' && cells[7].innerHTML === '🦋')) {
-      playerTwoGridOneWin()
-    } else if ((cells[2].innerHTML === '🦋' && cells[5].innerHTML === '🦋' && cells[8].innerHTML === '🦋')) {
-      playerTwoGridOneWin()
-    }
+function moveToNextGrid() {
   
-    // Check for winner in miniGrid diagonals
-  else if ((cells[0].innerHTML === '🦔' && cells[4].innerHTML === '🦔' && cells[8].innerHTML === '🦔')) {
-    playerOneGridOneWin()
-    } else if ((cells[2].innerHTML === '🦔' && cells[4].innerHTML === '🦔' && cells[6].innerHTML === '🦔')) {
-      playerOneGridOneWin()
-    } else if ((cells[0].innerHTML === '🦋' && cells[4].innerHTML === '🦋' && cells[8].innerHTML === '🦋')) {
-      playerTwoGridOneWin()
-    } else if ((cells[2].innerHTML === '🦋' && cells[4].innerHTML === '🦋' && cells[6].innerHTML === '🦋')) {
-      playerTwoGridOneWin()
-    }
-  // Check for miniGrid draw
-  else if ((cells[0].innerHTML !== '' && cells[1].innerHTML !== '' && cells[2].innerHTML !== '' 
-    && cells[3].innerHTML !== '' && cells[4].innerHTML !== '' && cells[5].innerHTML !== '' 
-    && cells[6].innerHTML !== '' && cells[7].innerHTML !== '' && cells[8].innerHTML !== '')) {
-        gridOne.classList.add('draw', 'closed')
-        gridOne.classList.remove('open')
-      }
-  // Function to check for GAME winner  
-  gameEndCheck()
-  // Function to direct grid available for the next move
-  allMiniGrids.forEach(miniGrid => {
-    miniGrid.classList.remove('inactive-grid', 'active-grid')
-  })
-
   let newValue = parseFloat(event.target.getAttribute('value'))
+
   if ((newValue === 0 && gridOne.classList.contains('closed'))) {
     const openGrids = allMiniGrids.filter(miniGrid => {
       return miniGrid.classList.contains('open')
@@ -512,7 +457,7 @@ function handleClickOne(event) {
     gridSeven.classList.add('inactive-grid')
     gridEight.classList.add('active-grid')
     gridNine.classList.add('inactive-grid')
-  }  else {
+  } else if (newValue === 8) {
     gridOne.classList.add('inactive-grid')
     gridTwo.classList.add('inactive-grid')
     gridThree.classList.add('inactive-grid')
@@ -522,7 +467,66 @@ function handleClickOne(event) {
     gridSeven.classList.add('inactive-grid')
     gridEight.classList.add('inactive-grid')
     gridNine.classList.add('active-grid')
-  }
+  } 
+}
+
+// GRID ONE
+function handleClickOne(event) {
+  // turn taking
+  takeTurns()
+  // check for winner in miniGrid ROWS
+  if ((cells[0].innerHTML === '🦔' && cells[1].innerHTML === '🦔' && cells[2].innerHTML === '🦔')) {
+    playerOneGridOneWin()
+    } else if ((cells[3].innerHTML === '🦔' && cells[4].innerHTML === '🦔' && cells[5].innerHTML === '🦔')) {
+      playerOneGridOneWin()
+    } else if ((cells[6].innerHTML === '🦔' && cells[7].innerHTML === '🦔' && cells[8].innerHTML === '🦔')) {
+      playerOneGridOneWin()
+    } else if ((cells[0].innerHTML === '🦋' && cells[1].innerHTML === '🦋' && cells[2].innerHTML === '🦋')) {
+      playerTwoGridOneWin()
+    } else if ((cells[3].innerHTML === '🦋' && cells[4].innerHTML === '🦋' && cells[5].innerHTML === '🦋')) {
+      playerTwoGridOneWin()
+    } else if ((cells[6].innerHTML === '🦋' && cells[7].innerHTML === '🦋' && cells[8].innerHTML === '🦋')) {
+      playerTwoGridOneWin()
+    }
+    //  Check for winner in miniGrid columns
+  else if ((cells[0].innerHTML === '🦔' && cells[3].innerHTML === '🦔' && cells[6].innerHTML === '🦔')) {
+      playerOneGridOneWin()
+    } else if ((cells[1].innerHTML === '🦔' && cells[4].innerHTML === '🦔' && cells[7].innerHTML === '🦔')) {
+      playerOneGridOneWin()
+    } else if ((cells[2].innerHTML === '🦔' && cells[5].innerHTML === '🦔' && cells[8].innerHTML === '🦔')) {
+      playerOneGridOneWin()
+    } else if ((cells[0].innerHTML === '🦋' && cells[3].innerHTML === '🦋' && cells[6].innerHTML === '🦋')) {
+      playerTwoGridOneWin()
+    } else if ((cells[1].innerHTML === '🦋' && cells[4].innerHTML === '🦋' && cells[7].innerHTML === '🦋')) {
+      playerTwoGridOneWin()
+    } else if ((cells[2].innerHTML === '🦋' && cells[5].innerHTML === '🦋' && cells[8].innerHTML === '🦋')) {
+      playerTwoGridOneWin()
+    }
+  
+    // Check for winner in miniGrid diagonals
+  else if ((cells[0].innerHTML === '🦔' && cells[4].innerHTML === '🦔' && cells[8].innerHTML === '🦔')) {
+    playerOneGridOneWin()
+    } else if ((cells[2].innerHTML === '🦔' && cells[4].innerHTML === '🦔' && cells[6].innerHTML === '🦔')) {
+      playerOneGridOneWin()
+    } else if ((cells[0].innerHTML === '🦋' && cells[4].innerHTML === '🦋' && cells[8].innerHTML === '🦋')) {
+      playerTwoGridOneWin()
+    } else if ((cells[2].innerHTML === '🦋' && cells[4].innerHTML === '🦋' && cells[6].innerHTML === '🦋')) {
+      playerTwoGridOneWin()
+    }
+  // Check for miniGrid draw
+  else if ((cells[0].innerHTML !== '' && cells[1].innerHTML !== '' && cells[2].innerHTML !== '' 
+    && cells[3].innerHTML !== '' && cells[4].innerHTML !== '' && cells[5].innerHTML !== '' 
+    && cells[6].innerHTML !== '' && cells[7].innerHTML !== '' && cells[8].innerHTML !== '')) {
+        gridOne.classList.add('draw', 'closed')
+        gridOne.classList.remove('open')
+      }
+  // Function to check for GAME winner  
+  gameEndCheck()
+  // Function to direct grid available for the next move
+  allMiniGrids.forEach(miniGrid => {
+    miniGrid.classList.remove('inactive-grid', 'active-grid')
+  })
+  moveToNextGrid()
 }
 
 
@@ -582,161 +586,7 @@ function handleClickTwo(event) {
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.remove('inactive-grid', 'active-grid')
   })
-  let newValue = parseFloat(event.target.getAttribute('value'))
-  if ((newValue === 0 && gridOne.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 1 && gridTwo.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 2 && gridThree.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 3 && gridFour.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 4 && gridFive.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 5 && gridSix.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 6 && gridSeven.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 7 && gridEight.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 8 && gridNine.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if (newValue === 0 ) {
-    gridOne.classList.add('active-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 1) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('active-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 2) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('active-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 3) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('active-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  }  else if (newValue === 4) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('active-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 5) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('active-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 6) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('active-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 7) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('active-grid')
-    gridNine.classList.add('inactive-grid')
-  }  else {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('active-grid')
-  }
+  moveToNextGrid()
 }
   
 // GRID THREE
@@ -794,161 +644,7 @@ function handleClickThree(event) {
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.remove('inactive-grid', 'active-grid')
   })
-  let newValue = parseFloat(event.target.getAttribute('value'))
-  if ((newValue === 0 && gridOne.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 1 && gridTwo.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 2 && gridThree.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 3 && gridFour.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 4 && gridFive.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 5 && gridSix.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 6 && gridSeven.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 7 && gridEight.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 8 && gridNine.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if (newValue === 0 ) {
-    gridOne.classList.add('active-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 1) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('active-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 2) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('active-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 3) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('active-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  }  else if (newValue === 4) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('active-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 5) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('active-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 6) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('active-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 7) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('active-grid')
-    gridNine.classList.add('inactive-grid')
-  }  else {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('active-grid')
-  }
+  moveToNextGrid()
 }
 
 // GRID FOUR
@@ -1006,161 +702,7 @@ function handleClickFour(event) {
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.remove('inactive-grid', 'active-grid')
   })
-  let newValue = parseFloat(event.target.getAttribute('value'))
-  if ((newValue === 0 && gridOne.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 1 && gridTwo.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 2 && gridThree.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 3 && gridFour.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 4 && gridFive.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 5 && gridSix.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 6 && gridSeven.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 7 && gridEight.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 8 && gridNine.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if (newValue === 0 ) {
-    gridOne.classList.add('active-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 1) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('active-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 2) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('active-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 3) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('active-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  }  else if (newValue === 4) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('active-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 5) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('active-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 6) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('active-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 7) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('active-grid')
-    gridNine.classList.add('inactive-grid')
-  }  else {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('active-grid')
-  }
+  moveToNextGrid()
 }
 
 // GRID FIVE
@@ -1218,161 +760,7 @@ function handleClickFive(event) {
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.remove('inactive-grid', 'active-grid')
   })
-  let newValue = parseFloat(event.target.getAttribute('value'))
-  if ((newValue === 0 && gridOne.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 1 && gridTwo.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 2 && gridThree.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 3 && gridFour.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 4 && gridFive.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 5 && gridSix.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 6 && gridSeven.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 7 && gridEight.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 8 && gridNine.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if (newValue === 0 ) {
-    gridOne.classList.add('active-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 1) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('active-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 2) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('active-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 3) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('active-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  }  else if (newValue === 4) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('active-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 5) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('active-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 6) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('active-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 7) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('active-grid')
-    gridNine.classList.add('inactive-grid')
-  }  else {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('active-grid')
-  }
+  moveToNextGrid()
 }
 
 // GRID SIX
@@ -1430,161 +818,7 @@ function handleClickSix(event) {
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.remove('inactive-grid', 'active-grid')
   })
-  let newValue = parseFloat(event.target.getAttribute('value'))
-  if ((newValue === 0 && gridOne.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 1 && gridTwo.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 2 && gridThree.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 3 && gridFour.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 4 && gridFive.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 5 && gridSix.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 6 && gridSeven.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 7 && gridEight.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 8 && gridNine.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if (newValue === 0 ) {
-    gridOne.classList.add('active-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 1) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('active-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 2) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('active-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 3) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('active-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  }  else if (newValue === 4) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('active-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 5) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('active-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 6) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('active-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 7) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('active-grid')
-    gridNine.classList.add('inactive-grid')
-  }  else {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('active-grid')
-  }
+  moveToNextGrid()
 }
 
 // GRID SEVEN
@@ -1642,161 +876,7 @@ function handleClickSeven(event) {
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.remove('inactive-grid', 'active-grid')
   })
-  let newValue = parseFloat(event.target.getAttribute('value'))
-  if ((newValue === 0 && gridOne.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 1 && gridTwo.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 2 && gridThree.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 3 && gridFour.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 4 && gridFive.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 5 && gridSix.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 6 && gridSeven.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 7 && gridEight.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 8 && gridNine.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if (newValue === 0 ) {
-    gridOne.classList.add('active-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 1) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('active-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 2) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('active-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 3) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('active-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  }  else if (newValue === 4) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('active-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 5) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('active-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 6) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('active-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 7) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('active-grid')
-    gridNine.classList.add('inactive-grid')
-  }  else {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('active-grid')
-  }
+  moveToNextGrid()
 }
 
 // GRID EIGHT
@@ -1854,161 +934,7 @@ function handleClickEight(event) {
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.remove('inactive-grid', 'active-grid')
   })
-  let newValue = parseFloat(event.target.getAttribute('value'))
-  if ((newValue === 0 && gridOne.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 1 && gridTwo.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 2 && gridThree.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 3 && gridFour.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 4 && gridFive.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 5 && gridSix.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 6 && gridSeven.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 7 && gridEight.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 8 && gridNine.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if (newValue === 0 ) {
-    gridOne.classList.add('active-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 1) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('active-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 2) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('active-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 3) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('active-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  }  else if (newValue === 4) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('active-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 5) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('active-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 6) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('active-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 7) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('active-grid')
-    gridNine.classList.add('inactive-grid')
-  }  else {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('active-grid')
-  }
+  moveToNextGrid()
 }
 
 // GRID NINE
@@ -2066,161 +992,7 @@ function handleClickNine(event) {
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.remove('inactive-grid', 'active-grid')
   })
-  let newValue = parseFloat(event.target.getAttribute('value'))
-  if ((newValue === 0 && gridOne.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 1 && gridTwo.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 2 && gridThree.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 3 && gridFour.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 4 && gridFive.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 5 && gridSix.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 6 && gridSeven.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 7 && gridEight.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if ((newValue === 8 && gridNine.classList.contains('closed'))) {
-    const openGrids = allMiniGrids.filter(miniGrid => {
-      return miniGrid.classList.contains('open')
-    })
-    openGrids.forEach(openGrid => {
-      openGrid.classList.add('active-grid')
-    })
-  } else if (newValue === 0 ) {
-    gridOne.classList.add('active-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 1) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('active-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 2) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('active-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 3) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('active-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  }  else if (newValue === 4) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('active-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 5) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('active-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 6) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('active-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('inactive-grid')
-  } else if (newValue === 7) {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('active-grid')
-    gridNine.classList.add('inactive-grid')
-  }  else {
-    gridOne.classList.add('inactive-grid')
-    gridTwo.classList.add('inactive-grid')
-    gridThree.classList.add('inactive-grid')
-    gridFour.classList.add('inactive-grid')
-    gridFive.classList.add('inactive-grid')
-    gridSix.classList.add('inactive-grid')
-    gridSeven.classList.add('inactive-grid')
-    gridEight.classList.add('inactive-grid')
-    gridNine.classList.add('active-grid')
-  }
+  moveToNextGrid()
 }
     // Function to direct grid available for the next move
 

@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Otomanopee+One');
 
 body {
-  background-color: palevioletred;
+  background-color: #85d1ed;
+  /* background: url(https://i.imgur.com/c9RIfEm.png); */
+  background-image: src('./images/1619885.jpg');
   text-align: center;
   font-family: 'Otomanopee One', sans-serif;
 }
@@ -20,7 +22,15 @@ h1 {
 
 .game-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+}
+
+.player-wrapper {
+  display: flex; 
+  flex-direction: column;
+  background-color: wheat;
+  padding: 0px 10px;
+  justify-content: space-between;
 }
 
 .player-one-wrapper {
@@ -28,20 +38,40 @@ h1 {
   flex-direction: column;
 }
 
+.player-one-wrapper p {
+  font-size: 90px;
+  margin: 0px auto;
+}
+
 .player-two-wrapper {
   display: flex;
   flex-direction: column;
 }
 
+.player-two-wrapper p {
+  font-size: 90px;
+  margin: 0px auto;
+}
+
+.winner-history {
+  background-color: wheat;
+  padding: 0px 10px;
+}
+
+.winner-list {
+  padding: 0;
+  list-style: none;
+}
+
 .new-game {
-  background-color: lightseagreen;
+  background-color: plum;
   color: darkmagenta;
   margin: 5px 20px;
   border-radius: 10px;
   box-shadow: 5px 5px 5px grey;
-  width: 100px;
+  width: 120px;
+  font-size: 20px
 }
-
 
 #game-status {
   font-size: 30px;
@@ -55,6 +85,7 @@ h1 {
   flex-direction: wrap;
   grid-column-gap: 8px;
   grid-row-gap: 4px;
+  margin: auto 20px;
 }
 
 .mini-grid {
@@ -86,6 +117,10 @@ h1 {
   justify-content: space-evenly;
 }
 
+.footer-wrapper p {
+  margin: 0 auto;
+}
+
 a {
   text-decoration: none;
   color: teal;
@@ -110,11 +145,11 @@ a {
 }
 
 .player-one-win {
-  background-color: red;
+  background-color: #72cfb9;
 }
 
 .player-two-win {
-  background-color: yellow;
+  background-color: #ed85c7;
 }
 
 .draw {
