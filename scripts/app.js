@@ -9,6 +9,8 @@ const gameStatus = document.querySelector('#game-status')
 const mainGridContainer = document.querySelector('.main-grid')
 const audio = document.querySelector('#audio')
 const winnerList = document.querySelector('.winner-list')
+const rulesBtn = document.querySelector('.rules-btn')
+const rules = document.querySelector('#rules')
 
 // Game Variables
 const width = 3
@@ -28,6 +30,13 @@ let winners = []
 //   localStorage.getItem(winnerList)
 //   console.log(winnerList)
 // }
+
+// Function to show or hide rules
+function showRules() {
+  rules.classList.toggle('show-rules')
+}
+
+
 // function to create grid and move it to the page
 function createGameGrid() {
   for (let i = 0; i < 9; i++) {
@@ -84,6 +93,7 @@ function handleNewGame() {
   currentPlayer = playerOne
   cells.forEach(cell => {
     cell.innerHTML = ''
+    cell.classList.remove('inactive-cell')
   })
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.remove('inactive-grid', 'active-grid', 'closed', 'player-one-win', 'player-two-win', 'draw', 'game-end')
@@ -104,7 +114,7 @@ function playerOneGameWin() {
   }
   listWinner()
   if (localStorage) {
-    localStorage.setItem(winnerList)
+    console.log('winner list')
   }
   gameEnd()
 }
@@ -313,7 +323,7 @@ function gameEndCheck() {
 function moveToNextGrid() {
   
   let newValue = parseFloat(event.target.getAttribute('value'))
-
+  
   if ((newValue === 0 && gridOne.classList.contains('closed'))) {
     const openGrids = allMiniGrids.filter(miniGrid => {
       return miniGrid.classList.contains('open')
@@ -1009,5 +1019,5 @@ gridEight.addEventListener('click', handleClickEight)
 gridNine.addEventListener('click', handleClickNine)
 
 newGameBtn.addEventListener('click', handleNewGame)
-
+rulesBtn.addEventListener('click', showRules)
 
