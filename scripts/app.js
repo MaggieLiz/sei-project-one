@@ -27,15 +27,14 @@ let winners = []
 // Functions
 // function to use local storage to remember winner list
 // if (localStorage) {
-//   localStorage.getItem(winnerList)
-//   console.log(winnerList)
+//   parse(localStorage.getItem(winList))
+//   console.log(winList)
 // }
 
 // Function to show or hide rules
 function showRules() {
   rules.classList.toggle('show-rules')
 }
-
 
 // function to create grid and move it to the page
 function createGameGrid() {
@@ -67,8 +66,19 @@ const gridEight = document.querySelector('.mini-7')
 const gridNine = document.querySelector('.mini-8')
 
 const allMiniGrids = [gridOne, gridTwo, gridThree, gridFour, gridFive, gridSix, gridSeven, gridEight, gridNine]
+
+// function to check for inactive cell
+function checkInactiveCell(event) {
+  // if (event.target.classList.contains('inactive-cell')) {
+  //   console.log('inactive cell clicked')
+  // }
+  console.log('event.')
+}
+
+
 // function to establish turn taking
 function takeTurns() {
+  
   if ((currentPlayer === playerOne && event.target.innerHTML === '')) {
       event.target.innerHTML = '🦔'
       gameStatus.innerHTML = 'Go, Player Two!'
@@ -76,6 +86,9 @@ function takeTurns() {
       audio.src = './sounds/zapsplat_magic_wand_ping_001_12529.mp3'
       audio.play()
       event.target.classList.add('inactive-cell')
+      allMiniGrids.forEach(miniGrid => {
+        miniGrid.classList.remove('inactive-grid', 'active-grid')
+  })
   } else if ((currentPlayer === playerTwo && event.target.innerHTML === '')) {
       event.target.innerHTML = '🦋'
       gameStatus.innerHTML = 'Go, Player One!'
@@ -83,8 +96,11 @@ function takeTurns() {
       audio.src = './sounds/zapsplat_magic_wand_ping_004_12532.mp3'
       audio.play()
       event.target.classList.add('inactive-cell')
+      allMiniGrids.forEach(miniGrid => {
+        miniGrid.classList.remove('inactive-grid', 'active-grid')
+  })
   } else {
-    return
+    return window.alert('invalid move')
   }
 }
 
@@ -108,7 +124,6 @@ function gameEnd() {
     })
   if (localStorage) {
   localStorage.setItem('winList', JSON.stringify(winners))
-    console.log(winners)
     }
 }
 
@@ -128,7 +143,7 @@ function playerOneGameWin() {
 }
 // function to register Player Two win
 function playerTwoGameWin() {
-  gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
+  gameStatus.innerHTML = '🦋🦋🦋🦋 Player Two Wins! 🦋🦋🦋🦋'
   audio.src = './sounds/zapsplat_magic_wand_spell_appear_twinkle_003_12541.mp3'
   audio.play()
   function listWinner() {
@@ -483,7 +498,6 @@ function moveToNextGrid() {
 
 // GRID ONE
 function handleClickOne(event) {
-  // turn taking
   takeTurns()
   // check for winner in miniGrid ROWS
   if ((cells[0].innerHTML === '🦔' && cells[1].innerHTML === '🦔' && cells[2].innerHTML === '🦔')) {
@@ -531,12 +545,7 @@ function handleClickOne(event) {
         gridOne.classList.add('draw', 'closed')
         gridOne.classList.remove('open')
       }
-  // Function to check for GAME winner  
   gameEndCheck()
-  // Function to direct grid available for the next move
-  allMiniGrids.forEach(miniGrid => {
-    miniGrid.classList.remove('inactive-grid', 'active-grid')
-  })
   moveToNextGrid()
 }
 
@@ -544,7 +553,6 @@ function handleClickOne(event) {
 
 // GRID TWO
 function handleClickTwo(event) {
-  // turn taking
   takeTurns()
   // check for winner in ROWS
   if ((cells[9].innerHTML === '🦔' && cells[10].innerHTML === '🦔' && cells[11].innerHTML === '🦔')) {
@@ -591,18 +599,12 @@ function handleClickTwo(event) {
         gridTwo.classList.add('draw', 'closed')
         gridTwo.classList.remove('open')
   }
-  // Function to check for GAME winner 
   gameEndCheck()
-  // Function to direct grid available for the next move
-  allMiniGrids.forEach(miniGrid => {
-    miniGrid.classList.remove('inactive-grid', 'active-grid')
-  })
   moveToNextGrid()
 }
   
 // GRID THREE
 function handleClickThree(event) {
-  // turn taking
   takeTurns()
     // check for winner in ROWS
   if ((cells[18].innerHTML === '🦔' && cells[19].innerHTML === '🦔' && cells[20].innerHTML === '🦔')) {
@@ -651,16 +653,11 @@ function handleClickThree(event) {
   }
 // Function to check for GAME winner 
   gameEndCheck()
-// direction to next grid
-  allMiniGrids.forEach(miniGrid => {
-    miniGrid.classList.remove('inactive-grid', 'active-grid')
-  })
   moveToNextGrid()
 }
 
 // GRID FOUR
 function handleClickFour(event) {
-  // Turn Taking
   takeTurns()
         // check for winner in ROWS
   if ((cells[27].innerHTML === '🦔' && cells[28].innerHTML === '🦔' && cells[29].innerHTML === '🦔')) {
@@ -707,18 +704,12 @@ function handleClickFour(event) {
       gridFour.classList.add('draw', 'closed')
       gridFour.classList.remove('open')
   }
-  // Function to check for GAME winner 
   gameEndCheck()
-  // direction to next grid for play
-  allMiniGrids.forEach(miniGrid => {
-    miniGrid.classList.remove('inactive-grid', 'active-grid')
-  })
   moveToNextGrid()
 }
 
 // GRID FIVE
 function handleClickFive(event) {
-  // turn taking
   takeTurns()
       // check for winner in ROWS
   if ((cells[36].innerHTML === '🦔' && cells[37].innerHTML === '🦔' && cells[38].innerHTML === '🦔')) {
@@ -765,18 +756,12 @@ function handleClickFive(event) {
       gridFive.classList.add('draw', 'closed')
       gridFive.classList.remove('open')  
   }
-  // Function to check for GAME winner 
   gameEndCheck()
-  // direction to next grid
-  allMiniGrids.forEach(miniGrid => {
-    miniGrid.classList.remove('inactive-grid', 'active-grid')
-  })
   moveToNextGrid()
 }
 
 // GRID SIX
 function handleClickSix(event) {
-  // Turn Taking
   takeTurns()
       // check for winner in ROWS
   if ((cells[45].innerHTML === '🦔' && cells[46].innerHTML === '🦔' && cells[47].innerHTML === '🦔')) {
@@ -823,18 +808,12 @@ function handleClickSix(event) {
       gridSix.classList.add('draw', 'closed')
       gridSix.classList.remove('open') 
   }
-  // Function to check for GAME winner 
   gameEndCheck()
-  // direction to next grid
-  allMiniGrids.forEach(miniGrid => {
-    miniGrid.classList.remove('inactive-grid', 'active-grid')
-  })
   moveToNextGrid()
 }
 
 // GRID SEVEN
 function handleClickSeven(event) {
-  // turn taking
   takeTurns()
       // check for winner in ROWS
   if ((cells[54].innerHTML === '🦔' && cells[55].innerHTML === '🦔' && cells[56].innerHTML === '🦔')) {
@@ -881,18 +860,12 @@ function handleClickSeven(event) {
       gridSeven.classList.add('draw', 'closed')
       gridSeven.classList.remove('open') 
   }
-  // Function to check for GAME winner 
   gameEndCheck()
-  // direction to next grid
-  allMiniGrids.forEach(miniGrid => {
-    miniGrid.classList.remove('inactive-grid', 'active-grid')
-  })
   moveToNextGrid()
 }
 
 // GRID EIGHT
 function handleClickEight(event) {
-  // turn taking
   takeTurns()
       // check for winner in ROWS
   if ((cells[63].innerHTML === '🦔' && cells[64].innerHTML === '🦔' && cells[65].innerHTML === '🦔')) {
@@ -939,18 +912,12 @@ function handleClickEight(event) {
       gridEight.classList.add('draw', 'closed')
       gridEight.classList.remove('open')    
   }
-  // Function to check for GAME winner 
   gameEndCheck()
-  // direction to next grid
-  allMiniGrids.forEach(miniGrid => {
-    miniGrid.classList.remove('inactive-grid', 'active-grid')
-  })
   moveToNextGrid()
 }
 
 // GRID NINE
 function handleClickNine(event) {
-  // turn taking
   takeTurns()
       // check for winner in ROWS
   if ((cells[72].innerHTML === '🦔' && cells[73].innerHTML === '🦔' && cells[74].innerHTML === '🦔')) {
@@ -997,15 +964,9 @@ function handleClickNine(event) {
       gridNine.classList.add('draw', 'closed')
       gridNine.classList.remove('open')
   }
-  // Function to check for GAME winner 
   gameEndCheck()
-  // direction to next grid
-  allMiniGrids.forEach(miniGrid => {
-    miniGrid.classList.remove('inactive-grid', 'active-grid')
-  })
   moveToNextGrid()
 }
-    // Function to direct grid available for the next move
 
 //  Events
 

@@ -28,10 +28,15 @@ h1 {
 
 .rules-btn {
   color: darkmagenta;
+  background-color: plum;
+  padding: 0 5px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px grey;
 }
 
 #rules p {
-  color: darkmagenta;
+  color: black;
+  margin: 0 50px;
 }
 
 .hide-rules {
@@ -40,6 +45,9 @@ h1 {
 
 .show-rules {
   display: block;
+  border: 1px solid black;
+  margin: 20px 40px;
+  padding: 20px 0;
 }
 
 .game-wrapper {
@@ -88,11 +96,12 @@ h1 {
 .new-game {
   background-color: plum;
   color: darkmagenta;
-  margin: 5px 20px;
+  margin: 5px 20px 0px 20px;
   border-radius: 10px;
   box-shadow: 5px 5px 5px grey;
   width: 120px;
-  font-size: 20px
+  font-size: 20px;
+  cursor: pointer;
 }
 
 #game-status {
@@ -132,6 +141,7 @@ h1 {
   justify-content: center;
   align-items: center;
   font-size: 50px;
+  cursor: pointer;
 }
 
 .footer-wrapper {
@@ -153,7 +163,7 @@ a {
 }
 
 .active-grid {
-  border: 1px solid green;
+  border: 1px solid white;
   background-color: blanchedalmond;
 }
 
@@ -179,9 +189,67 @@ a {
 }
 
 .closed {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
   border: 1px solid black;
+  pointer-events: none;
 }
 
 .game-end {
   pointer-events: none;
 }
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    margin: auto 20px;
+  }
+  
+  .rules-container {
+    margin: 20px;
+  }
+  
+  .player-wrapper {
+    display: none;
+  }
+
+  .winner-history {
+    display: none;
+  }
+  
+  .main-grid {
+    margin: 30px auto;
+  }
+
+  .mini-grid {
+    height: 105px;
+    width: 105px;
+  }
+
+  .mini-grid div {
+    height: 33px;
+    width: 33px;
+    font-size: 25px;
+  }
+  
+  footer {
+    margin: 40px 0 0 0
+  }
+}
+
