@@ -106,6 +106,10 @@ function gameEnd() {
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.add('game-end')
     })
+  if (localStorage) {
+  localStorage.setItem('winList', JSON.stringify(winners))
+    console.log(winners)
+    }
 }
 
 // Function to register Player One Win
@@ -117,6 +121,7 @@ function playerOneGameWin() {
     winner = document.createElement('li')
     winner.innerHTML = 'Player One 🦔'
     winnerList.insertBefore(winner, winnerList.firstChild)
+    winners.push(winner)
   }
   listWinner()
   gameEnd()
@@ -130,6 +135,7 @@ function playerTwoGameWin() {
     winner = document.createElement('li')
     winner.innerHTML = 'Player Two 🦋'
     winnerList.insertBefore(winner, winnerList.firstChild)
+    winners.push(winner)
   }
   listWinner()
   gameEnd()
