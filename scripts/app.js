@@ -116,7 +116,7 @@ function playerOneGameWin() {
   function listWinner() {
     winner = document.createElement('li')
     winner.innerHTML = 'Player One 🦔'
-    winnerList.appendChild(winner)
+    winnerList.insertBefore(winner, winnerList.firstChild)
   }
   listWinner()
   gameEnd()
@@ -129,7 +129,7 @@ function playerTwoGameWin() {
   function listWinner() {
     winner = document.createElement('li')
     winner.innerHTML = 'Player Two 🦋'
-    winnerList.appendChild(winner)
+    winnerList.insertBefore(winner, winnerList.firstChild)
   }
   listWinner()
   gameEnd()
