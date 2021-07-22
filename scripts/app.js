@@ -101,6 +101,13 @@ function handleNewGame() {
   })
   gameStatus.innerHTML = '🦔 Go, Player One! 🦔'
 }
+
+function gameEnd() {
+  allMiniGrids.forEach(miniGrid => {
+    miniGrid.classList.add('game-end')
+    })
+}
+
 // Function to register Player One Win
 function playerOneGameWin() {
   gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'     
@@ -110,12 +117,8 @@ function playerOneGameWin() {
     winner = document.createElement('li')
     winner.innerHTML = 'Player One 🦔'
     winnerList.appendChild(winner)
-    console.log('winner')
   }
   listWinner()
-  if (localStorage) {
-    console.log('winner list')
-  }
   gameEnd()
 }
 // function to register Player Two win
@@ -123,21 +126,12 @@ function playerTwoGameWin() {
   gameStatus.innerHTML = '🦋🦋🦋🦋Player Two Wins! 🦋🦋🦋🦋'
   audio.src = './sounds/zapsplat_magic_wand_spell_appear_twinkle_003_12541.mp3'
   audio.play()
-  function gameEnd() {
-    allMiniGrids.forEach(miniGrid => {
-      miniGrid.classList.add('game-end')
-    })
-    function listWinner() {
-      winner = document.createElement('li')
-      winner.innerHTML = 'Player Two 🦋'
-      winnerList.appendChild(winner)
-      console.log('winner')
-    }
-    listWinner()
-    if (localStorage) {
-      localStorage.setItem(winnerList)
-    }
+  function listWinner() {
+    winner = document.createElement('li')
+    winner.innerHTML = 'Player Two 🦋'
+    winnerList.appendChild(winner)
   }
+  listWinner()
   gameEnd()
 }
 // functions for win in a minigrid by player one
@@ -319,6 +313,7 @@ function gameEndCheck() {
       audio.play()
       gameEnd()
   }
+  // function to use local storage to maintain winner history list
 }
 function moveToNextGrid() {
   
