@@ -26,10 +26,13 @@ let winners = []
 
 // Functions
 // function to use local storage to remember winner list
-// if (localStorage) {
-//   parse(localStorage.getItem(winList))
-//   console.log(winList)
-// }
+if (localStorage) {
+  winList = JSON.parse(localStorage.getItem('winList')) || []
+  console.log(winList)
+  winner = document.createElement('li')
+    winner.innerHTML = winList
+    winnerList.insertBefore(winner, winnerList.firstChild)
+}
 
 // Function to show or hide rules
 function showRules() {
@@ -68,12 +71,12 @@ const gridNine = document.querySelector('.mini-8')
 const allMiniGrids = [gridOne, gridTwo, gridThree, gridFour, gridFive, gridSix, gridSeven, gridEight, gridNine]
 
 // function to check for inactive cell
-function checkInactiveCell(event) {
+// function checkInactiveCell(event) {
   // if (event.target.classList.contains('inactive-cell')) {
   //   console.log('inactive cell clicked')
   // }
-  console.log('event.')
-}
+//   console.log('event.')
+// }
 
 
 // function to establish turn taking
@@ -124,6 +127,7 @@ function gameEnd() {
     })
   if (localStorage) {
   localStorage.setItem('winList', JSON.stringify(winners))
+  console.log(winners)
     }
 }
 
@@ -136,7 +140,7 @@ function playerOneGameWin() {
     winner = document.createElement('li')
     winner.innerHTML = 'Player One 🦔'
     winnerList.insertBefore(winner, winnerList.firstChild)
-    winners.push(winner)
+    winners.push('Player One 🦔')
   }
   listWinner()
   gameEnd()
@@ -150,7 +154,7 @@ function playerTwoGameWin() {
     winner = document.createElement('li')
     winner.innerHTML = 'Player Two 🦋'
     winnerList.insertBefore(winner, winnerList.firstChild)
-    winners.push(winner)
+    winners.push('Player Two 🦋')
   }
   listWinner()
   gameEnd()

@@ -222,7 +222,13 @@ a {
   }
   
   .rules-container {
-    margin: 20px;
+    margin: 20px 5px;
+  }
+  
+  .show-rules {
+    margin: 5px;
+    padding: 5px;
+    text-align: justify;
   }
   
   .player-wrapper {
