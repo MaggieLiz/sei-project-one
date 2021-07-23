@@ -125,40 +125,53 @@ function gameEnd() {
   allMiniGrids.forEach(miniGrid => {
     miniGrid.classList.add('game-end')
     })
-  if (localStorage) {
-  localStorage.setItem('winList', JSON.stringify(winners))
-  console.log(winners)
-    }
 }
 
 // Function to register Player One Win
-function playerOneGameWin() {
-  gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'     
+// function playerOneGameWin() {
+//   gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'     
+//   audio.src = './sounds/zapsplat_magic_wand_spell_appear_twinkle_003_12541.mp3'
+//   audio.play()
+//   function listWinner() {
+//     winner = document.createElement('li')
+//     winner.innerHTML = 'Player One 🦔'
+//     winnerList.insertBefore(winner, winnerList.firstChild)
+//     winners.push('Player One 🦔')
+//   }
+//   listWinner()
+//   gameEnd()
+// }
+// // function to register Player Two win
+// function playerTwoGameWin() {
+//   gameStatus.innerHTML = '🦋🦋🦋🦋 Player Two Wins! 🦋🦋🦋🦋'
+//   audio.src = './sounds/zapsplat_magic_wand_spell_appear_twinkle_003_12541.mp3'
+//   audio.play()
+//   function listWinner() {
+//     winner = document.createElement('li')
+//     winner.innerHTML = 'Player Two 🦋'
+//     winnerList.insertBefore(winner, winnerList.firstChild)
+//     winners.push('Player Two 🦋')
+//   }
+//   listWinner()
+//   gameEnd()
+// }
+function playerGameWin(player) {
+  const gameWinner = player === 'player one' ? '🦔 Player One' : '🦋 Player Two'
+  gameStatus.innerHTML = `${gameWinner} Wins!!`
   audio.src = './sounds/zapsplat_magic_wand_spell_appear_twinkle_003_12541.mp3'
   audio.play()
-  function listWinner() {
+  function listWinner(player) {
     winner = document.createElement('li')
-    winner.innerHTML = 'Player One 🦔'
+    winner.innerHTML = gameWinner
     winnerList.insertBefore(winner, winnerList.firstChild)
-    winners.push('Player One 🦔')
-  }
-  listWinner()
-  gameEnd()
+    winners.push(gameWinner)
+    if (localStorage) {
+      localStorage.setItem('winList', JSON.stringify(winners))
+        }
+  } 
+  listWinner(player)
 }
-// function to register Player Two win
-function playerTwoGameWin() {
-  gameStatus.innerHTML = '🦋🦋🦋🦋 Player Two Wins! 🦋🦋🦋🦋'
-  audio.src = './sounds/zapsplat_magic_wand_spell_appear_twinkle_003_12541.mp3'
-  audio.play()
-  function listWinner() {
-    winner = document.createElement('li')
-    winner.innerHTML = 'Player Two 🦋'
-    winnerList.insertBefore(winner, winnerList.firstChild)
-    winners.push('Player Two 🦋')
-  }
-  listWinner()
-  gameEnd()
-}
+
 // functions for win in a minigrid by player one
 function playerOneGridOneWin() {
   gridOne.classList.add('player-one-win', 'closed')
@@ -276,56 +289,56 @@ function gameEndCheck() {
   // Check for GAME winner in rows
   if ((gridOne.classList.contains('player-one-win') && gridTwo.classList.contains('player-one-win') &&
     gridThree.classList.contains('player-one-win'))) {
-      playerOneGameWin()
+      playerGameWin('player one')
     } else if ((gridFour.classList.contains('player-one-win') && gridFive.classList.contains('player-one-win') &&
     gridSix.classList.contains('player-one-win'))) {
-      playerOneGameWin()
+      playerGameWin('player one')
     } else if ((gridSeven.classList.contains('player-one-win') && gridEight.classList.contains('player-one-win') &&
     gridNine.classList.contains('player-one-win'))) {
-      playerOneGameWin()
+      playerGameWin('player one')
     } else if ((gridOne.classList.contains('player-two-win') && gridTwo.classList.contains('player-two-win') &&
     gridThree.classList.contains('player-two-win'))) {
-      playerTwoGameWin()
+      playerGameWin('player two')
     } else if ((gridFour.classList.contains('player-two-win') && gridFive.classList.contains('player-two-win') &&
     gridSix.classList.contains('player-two-win'))) {
-      playerTwoGameWin()
+      playerGameWin('player two')
     } else if ((gridSeven.classList.contains('player-two-win') && gridEight.classList.contains('player-two-win') &&
     gridNine.classList.contains('player-two-win'))) {
-      playerTwoGameWin()
+      playerGameWin('player two')
     }
     // check for GAME winner in columns
   else if ((gridOne.classList.contains('player-one-win') && gridFour.classList.contains('player-one-win') &&
     gridSeven.classList.contains('player-one-win'))) {
-      playerOneGameWin()
+      playerGameWin('player one')
     } else if ((gridTwo.classList.contains('player-one-win') && gridFive.classList.contains('player-one-win') &&
     gridEight.classList.contains('player-one-win'))) {
-      playerOneGameWin()
+      playerGameWin('player one')
     } else if ((gridThree.classList.contains('player-one-win') && gridSix.classList.contains('player-one-win') &&
     gridNine.classList.contains('player-one-win'))) {
-      playerOneGameWin()
+      playerGameWin('player one')
     } else if ((gridOne.classList.contains('player-two-win') && gridFour.classList.contains('player-two-win') &&
     gridSeven.classList.contains('player-two-win'))) {
-      playerTwoGameWin()
+      playerGameWin('player two')
     } else if ((gridTwo.classList.contains('player-two-win') && gridFive.classList.contains('player-two-win') &&
     gridEight.classList.contains('player-two-win'))) {
-      playerTwoGameWin()
+      playerGameWin('player two')
     } else if ((gridThree.classList.contains('player-two-win') && gridSix.classList.contains('player-two-win') &&
     gridNine.classList.contains('player-two-win'))) {
-      playerTwoGameWin()
+      playerGameWin('player two')    
     }
     // check for Game winner in diagonals
   else if ((gridOne.classList.contains('player-one-win') && gridFive.classList.contains('player-one-win') &&
     gridNine.classList.contains('player-one-win'))) {
-      playerOneGameWin()
+      playerGameWin('player one')
     } else if ((gridThree.classList.contains('player-one-win') && gridFive.classList.contains('player-one-win') &&
     gridSeven.classList.contains('player-one-win'))) {
-      playerOneGameWin()
+      playerGameWin('player one')
     } else if ((gridOne.classList.contains('player-two-win') && gridFive.classList.contains('player-two-win') &&
     gridNine.classList.contains('player-two-win'))) {
-      playerTwoGameWin()
+      playerGameWin('player two')
     } else if ((gridThree.classList.contains('player-two-win') && gridFive.classList.contains('player-two-win') &&
     gridSeven.classList.contains('player-two-win'))) {
-      playerTwoGameWin()
+      playerGameWin('player two')
   }
   // check for GAME draw
   else if ((gridOne.classList.contains('closed') && gridTwo.classList.contains('closed') &&
