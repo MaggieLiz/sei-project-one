@@ -24,15 +24,17 @@ let currentPlayer = playerOne
 let winner = playerOne
 let winners = []
 
-// Functions
-// function to use local storage to remember winner list
+// FUNCTIONS
+
+// function to use local storage to retrieve winner list
 if (localStorage) {
   winList = JSON.parse(localStorage.getItem('winList')) || []
-  console.log(winList)
   winner = document.createElement('li')
-    winner.innerHTML = winList
-    winnerList.insertBefore(winner, winnerList.firstChild)
-}
+  winList.map(player => {
+    console.log(player)
+    winnerList.innerHTML = winList
+    })
+  }
 
 // Function to show or hide rules
 function showRules() {
@@ -69,15 +71,6 @@ const gridEight = document.querySelector('.mini-7')
 const gridNine = document.querySelector('.mini-8')
 
 const allMiniGrids = [gridOne, gridTwo, gridThree, gridFour, gridFive, gridSix, gridSeven, gridEight, gridNine]
-
-// function to check for inactive cell
-// function checkInactiveCell(event) {
-  // if (event.target.classList.contains('inactive-cell')) {
-  //   console.log('inactive cell clicked')
-  // }
-//   console.log('event.')
-// }
-
 
 // function to establish turn taking
 function takeTurns() {
@@ -127,40 +120,13 @@ function gameEnd() {
     })
 }
 
-// Function to register Player One Win
-// function playerOneGameWin() {
-//   gameStatus.innerHTML = '🦔🦔🦔🦔 Player One Wins! 🦔🦔🦔🦔'     
-//   audio.src = './sounds/zapsplat_magic_wand_spell_appear_twinkle_003_12541.mp3'
-//   audio.play()
-//   function listWinner() {
-//     winner = document.createElement('li')
-//     winner.innerHTML = 'Player One 🦔'
-//     winnerList.insertBefore(winner, winnerList.firstChild)
-//     winners.push('Player One 🦔')
-//   }
-//   listWinner()
-//   gameEnd()
-// }
-// // function to register Player Two win
-// function playerTwoGameWin() {
-//   gameStatus.innerHTML = '🦋🦋🦋🦋 Player Two Wins! 🦋🦋🦋🦋'
-//   audio.src = './sounds/zapsplat_magic_wand_spell_appear_twinkle_003_12541.mp3'
-//   audio.play()
-//   function listWinner() {
-//     winner = document.createElement('li')
-//     winner.innerHTML = 'Player Two 🦋'
-//     winnerList.insertBefore(winner, winnerList.firstChild)
-//     winners.push('Player Two 🦋')
-//   }
-//   listWinner()
-//   gameEnd()
-// }
+// function upon Game Win
 function playerGameWin(player) {
   const gameWinner = player === 'player one' ? '🦔 Player One' : '🦋 Player Two'
   gameStatus.innerHTML = `${gameWinner} Wins!!`
   audio.src = './sounds/zapsplat_magic_wand_spell_appear_twinkle_003_12541.mp3'
   audio.play()
-  function listWinner(player) {
+  function listWinner() {
     winner = document.createElement('li')
     winner.innerHTML = gameWinner
     winnerList.insertBefore(winner, winnerList.firstChild)
